@@ -23,7 +23,7 @@ class LoginController extends Controller
     
         $credentials = $request->only(['Email', 'password']);
         if(auth()->attempt($credentials))
-        {
+        {   
             if(Auth::user()->Trangthai == 1) {
         		session_start();
         		$_SESSION["tennguoithi"] = $request->Email;

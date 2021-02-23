@@ -32,11 +32,11 @@
         <thead class="thead-light">
           <tr>
             <th><i class="fa fa-star"></i></th>
-            <th>Người gửi</th>
-            <th>Nội dung</th>
-            <th>Loại câu hỏi</th>
+            <th width="20%">Người gửi</th>
+            <th width="25%">Nội dung</th>
+            <th width="20%">Loại câu hỏi</th>
             <th>Trả lời</th>
-            <th>Thực hiện</th>
+            <th width="10%">Thực hiện</th>
           </tr>
         </thead>
         <tbody>
@@ -55,15 +55,15 @@
                 </a>
             </td>
             <td>
-                <span class="badge badge-success">{{$question->type}}</span>
+                <span class="">{{$question->type}}</span>
             </td>
             <td>
                 <p style="width: 35vh;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;height:5vh;">{{$question->questionReply == null? "---": $question->questionReply->content}}
                 </p>
             </td>
             <td>
-                <button class="reply" data-id="{{ $question->id }}">Trả lời</button>
-                <button class="change-type" data-id="{{ $question->id }}">Loại câu hỏi</button>
+                <button class="reply" data-id="{{ $question->id }}" style="width: 65px;">Trả lời</button>
+                <button class="change-type" data-id="{{ $question->id }}" style="width: 65px;">Loại câu</button>
             </td>
           </tr>
           <tr id="{{$question->id}}" style="display: none;">
