@@ -7,23 +7,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <link href="img/logo/logo.png" rel="icon">
   <title>@yield('title')</title>
-
-  <link href="{{asset('css/libs/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-  <link href="{{asset('js/libs/jquery/jquery.nicescroll.min.js')}}"rel="stylesheet" type="text/css">
+  <link href="{{asset('css/libs/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{asset('css/libs/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="{{asset('js/libs/jquery/jquery.nicescroll.min.js')}}">
   <link href="{{asset('css/libs/ruang-admin.min.css')}}" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  rel="stylesheet">
-  
-  
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.23/datatables.min.css"/>
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    {{--    PDF--}}
+    <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
   @yield('style')
 
 </head>
@@ -109,6 +116,7 @@
             <h4 class="collapse-header">Dịch vụ</h4>
             <a class="collapse-item" href="{{ route('admin.service.create') }}">Thêm dịch vụ</a>
             <a class="collapse-item" href="{{ route('admin.service.index') }}">Quản lý dịch vụ</a>
+            <a class="collapse-item" href="{{ route('admin.service.list.register') }}">Danh sách đăng ký dịch vụ</a>
           </div>
         </div>
       </li>
@@ -200,18 +208,33 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
+  <script src="{{asset('js/libs/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('js/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('js/libs/jquery-easing/jquery.easing.min.js')}}"></script>
   <script src="{{asset('js/libs/ruang-admin.min.js')}}"></script>
+  <!-- <script src="{{asset('js/libs/chart.js/Chart.min.js')}}"></script>
+  <script src="{{asset('js/libs/demo/chart-area-demo.js')}}"></script>  -->
   <script src="{{asset('css/ckeditor/ckeditor.js')}}"></script>
   <script src="{{asset('css/ckeditor/ckfinder/ckfinder.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.23/datatables.min.js"></script>
 
-@if(Session::has('success'))
-    <script type="text/javascript">
-        toastr.success("{!!Session::get('success')!!}");
+
+  <script type="text/javascript">
+        @if(session('success'))
+        toastr.success('{{ session('success') }}');
+        @endif
+        @if(session('error'))
+        toastr.error('{{ session('error') }}');
+        @endif
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
     </script>
-@endif
+
 @yield('script')
 </body>
 

@@ -96,19 +96,19 @@ class ServiceController extends Controller
         }
     }
 
-    public function SaveConfig(Request $request)
-    {
-        //dd($request->all());
-        $fields = new Fields();
-        $fields->service_id = $request->id;
-        $fields->name = $request->name;
-        $fields->type = $request->type;
-        if ($request->createGroup != null)
-            $fields->group = $request->createGroup;
-        else
-            $fields->group = $request->group;
-        $fields->save();
-    }
+//    public function SaveConfig(Request $request)
+//    {
+//        //dd($request->all());
+//        $fields = new Fields();
+//        $fields->service_id = $request->id;
+//        $fields->name = $request->name;
+//        $fields->type = $request->type;
+//        if ($request->createGroup != null)
+//            $fields->group = $request->createGroup;
+//        else
+//            $fields->group = $request->group;
+//        $fields->save();
+//    }
 
     public function lisRegister()
     {

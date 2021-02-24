@@ -70,12 +70,14 @@ Route::prefix('student')->middleware('CheckLogin')->group(function (){
 Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')->middleware('CheckLogin')->middleware('auth:admin')->group(function () {
     Route::prefix('question')->name('question.')->group(function () {
         Route::get('','QuestionController@index')->name('index');
+        Route::get('data','QuestionController@getQuestions')->name('data');
         Route::post('reply/{id}','QuestionController@reply')->name('reply');
         Route::get('reply/{id}','QuestionController@getQuestionReply');
         Route::get('create','QuestionController@create')->name('create');
         Route::post('save','QuestionController@save')->name('save');
-        Route::get('change/type/{id}','QuestionController@changeType')->name('change.type');
+        Route::post('change/type/{id}','QuestionController@changeType')->name('change.type');
         Route::post('edit/{id}','QuestionController@edit')->name('edit');
+        Route::post('delete','QuestionController@delete')->name('delete');
         Route::post('search','QuestionController@search')->name('search');
     });
     Route::prefix('messengers')->name('messengers.')->group(function () {

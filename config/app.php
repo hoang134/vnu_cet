@@ -177,6 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Bmatovu\MultiAuth\MultiAuthServiceProvider::class,
 
+        Yajra\DataTables\DataTablesServiceProvider::class,
     ],
 
     /*
@@ -230,7 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Checkuser' => App\Helpers\Checkuser::class,
 
-
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ],
 
 ];

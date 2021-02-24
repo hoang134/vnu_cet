@@ -21,8 +21,7 @@
         <div class="form-group row">
             <label for="code" class="col-sm-2 col-form-label">Câu hỏi</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="question" name="question"
-                       value="{{ old('question', isset($question) ? $question->content : '') }}">
+                <textarea  class="form-control" id="question" name="question"></textarea>
                 @if ($errors->has('question'))
                     <small class="form-text text-danger">{{ $errors->first('question') }}</small>
                 @endif
@@ -32,8 +31,7 @@
         <div class="form-group row">
             <label for="quantity" class="col-sm-2 col-form-label">Trả lời</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="questionReply" name="questionReply"
-                       value="{{ old('questionReply', isset($questionRely) ? $questionRely->content: '') }}">
+                <textarea type="text" class="form-control" id="questionReply" name="questionReply"></textarea>
                 @if ($errors->has('questionReply'))
                     <small class="form-text text-danger">{{ $errors->first('questionReply') }}</small>
                 @endif
