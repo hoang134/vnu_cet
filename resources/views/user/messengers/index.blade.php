@@ -1,6 +1,6 @@
 <style type="text/css">
     body{
-    background:#eee;    
+    background: white;
 }
 .chat-list {
     padding: 0;
@@ -10,7 +10,7 @@
 .chat-list li {
     margin-bottom: 10px;
     overflow: auto;
-    color: #ffffff;
+    color: black;
 }
 
 .chat-list .chat-img {
@@ -21,15 +21,15 @@
 .chat-list .chat-img img {
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
-    border-radius: 50px;
+    border-radius: 20px;
     width: 100%;
 }
 
 .chat-list .chat-message {
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
-    border-radius: 50px;
-    background: #0084FF;
+    border-radius: 20px;
+    background: #E4E6EB;
     display: inline-block;
     padding: 10px 20px;
     position: relative;
@@ -59,13 +59,13 @@
 .chat-list .chat-body {
     margin-left: 20px;
     float: left;
-    width: 70%;
+    width: 60%;
 }
 
 .chat-list .in .chat-message:before {
     left: -12px;
     border-bottom: 20px solid transparent;
-    border-right: 20px solid #0084FF;
+    border-right: 20px solid #E4E6EB;
 }
 
 .chat-list .out .chat-img {
@@ -79,13 +79,13 @@
 }
 
 .chat-list .out .chat-message {
-    background: #666b6f;
+    background: #E4E6EB;
 }
 
 .chat-list .out .chat-message:before {
     right: -12px;
     border-bottom: 20px solid transparent;
-    border-left: 20px solid #666b6f;
+    border-left: 20px solid #E4E6EB;
 }
 
 .card .card-header:first-child {
@@ -100,14 +100,15 @@
     padding: .65rem 1rem;
     position: relative;
     font-weight: 600;
-    color: #ffffff;
+    color: black;
 }
 
 .content{
-    margin-top:40px;    
+    margin-top:40px;
 }
 </style>
-    <div class="card-body height3">
+
+    <div class="card-body height3" style="overflow: auto;height: 231px;border-radius: 20px;">
         <ul class="chat-list">
             @foreach($messengers as $messenger)
             @if($messenger->belong == \App\Models\Messenger::BELONG_ADMIN)
@@ -144,10 +145,14 @@
 <form id="Form-data">
     @csrf
     <div class="chat-input" style="width: 100%;position: relative;margin-bottom: -5px;">
-        <input type="text" id="messenger" name="messenger" placeholder="Type a message..." style="width: 100%;background: #ffffff;padding: 15px 70px 15px 15px;border-radius: 0 0 15px 15px;resize: none;border-width: 1px 0 0 0;border-style: solid;border-color: #f8f8f8;color: #7a7a7a;font-weight: normal;font-size: 13px;transition: border-color 0.5s ease;">
-        <div class="input-action-icon" style="width: 61px;white-space: nowrap;position: absolute;z-index: 1;top: 15px;right: 15px;text-align: right;">
-            <a style="display: inline-block;margin-left: 5px;cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-paperclip"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg></a>
-            <button id="submit" type="submit" style="display: inline-block;margin-left: 5px;cursor: pointer;border: none;background: white;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></button>
+        <input type="" id="messenger" name="messenger" placeholder="Nhập tin nhắn..." style="width: 100%;background: #ddd;padding: 15px 70px 15px 15px;border-radius: 0 0 15px 15px;resize: none;border-width: 1px 0 0 0;border-style: solid;border-color: #f8f8f8;color: #7a7a7a;font-weight: normal;font-size: 13px;transition: border-color 0.5s ease;">
+        <div class="input-action-icon" style="width: 61px;white-space: nowrap;position: absolute;z-index: 1;top: 12px;right: 4px;text-align: right;">
+            <button id="submit" type="submit" style="display: inline-block;margin-left: 5px;cursor: pointer;border: none;background: #ddd;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"class="feather feather-send">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
         </div>
     </div>
 </form>

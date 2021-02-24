@@ -25,12 +25,6 @@ class ServiceController extends Controller
         ]);
     }
 
-//    public function printFields(Request $request)
-//    {
-//        $service = Service::find($request->id);
-//        $listFields = $service->fields;
-//    }
-
     public function createRequiteService(Request $request, $id)
     {
         DB::beginTransaction();
