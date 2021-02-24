@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <link href="img/logo/logo.png" rel="icon">
   <title>@yield('title')</title>
   <link href="{{asset('css/libs/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -14,6 +15,9 @@
   <link rel="stylesheet" type="text/css" href="{{asset('js/libs/jquery/jquery.nicescroll.min.js')}}">
   <link href="{{asset('css/libs/ruang-admin.min.css')}}" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.23/datatables.min.css"/>
+
 
     {{--    PDF--}}
     <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
@@ -213,14 +217,22 @@
   <script src="{{asset('css/ckeditor/ckeditor.js')}}"></script>
   <script src="{{asset('css/ckeditor/ckfinder/ckfinder.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.23/datatables.min.js"></script>
 
-    <script type="text/javascript">
+
+  <script type="text/javascript">
         @if(session('success'))
         toastr.success('{{ session('success') }}');
         @endif
         @if(session('error'))
         toastr.error('{{ session('error') }}');
         @endif
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
     </script>
 
 @yield('script')

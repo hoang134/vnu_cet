@@ -1,178 +1,285 @@
 @extends('admin.layout')
 @section('title', 'Thêm câu hỏi')
-@section('content')
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0">Cập nhật thông tin trung tâm</h1>
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
-      <li class="breadcrumb-item" aria-current="page">Quản lý câu hỏi</li>
-      <li class="breadcrumb-item" aria-current="page">Quản lý câu hỏi</li>
-    </ol>
-</div>
-<hr class="sidebar-divider badge-light">
-<div class="col-lg-12 mb-4">
-  <!-- Simple Tables -->
-  <div class="card">
-    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-      <h4 class="m-0 font-weight-bold">Trả lời câu hỏi</h4>
-    </div>
-    <header class="panel-heading wht-bg">
-        <h4 class="gen-case">
-            <form action="{{ route('admin.question.search') }}" class="pull-right mail-src-position" method="post">
-                @csrf
-                <div class="input-append">
-                    <input type="text" name ="keySearch"class="form-control " placeholder="Tìm câu hỏi">
-                    <button type="submit" class="btn-success">Tìm kiếm</button>
-                </div>
-            </form>
-        </h4>
-    </header>
-    <div class="table-responsive">
-      <table class="table align-items-center table-flush">
-        <thead class="thead-light">
-          <tr>
-            <th><i class="fa fa-star"></i></th>
-            <th>Người gửi</th>
-            <th>Nội dung</th>
-            <th>Loại câu hỏi</th>
-            <th>Trả lời</th>
-            <th>Thực hiện</th>
-          </tr>
-        </thead>
-        <tbody>
-            @foreach($questions as $question)
-            <span style="display: none">{{$question = \App\Models\Question::find($question->id)}}</span>
-          <tr class="question-{{$question->id}}">
-            <td style="width: 100px;">
-                <i class="fa fa-star" style="{{$question->questionReply == null? "color:blue":""}}"></i>
-            </td>
-            <td>{{$question->user->Hoten}}</td>
-            <td>
-                <a  class="content-question" data-id ="{{$question->id}}" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-                    <p style="width: 35vh;color: blue;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;height: 5vh;">
-                        {{$question->content}}
-                    </p>
-                </a>
-            </td>
-            <td>
-                <span class="badge badge-success">{{$question->type}}</span>
-            </td>
-            <td>
-                <p style="width: 35vh;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;height:5vh;">{{$question->questionReply == null? "---": $question->questionReply->content}}
-                </p>
-            </td>
-            <td>
-                <button class="reply" data-id="{{ $question->id }}">Trả lời</button>
-                <button class="change-type" data-id="{{ $question->id }}">Loại câu hỏi</button>
-            </td>
-          </tr>
-          <tr id="{{$question->id}}" style="display: none;">
-            <form id="form-{{$question->id}}">
-                @csrf
-                <td colspan="6"><textarea cols="130" name="question" class="input-{{$question->id}}"></textarea>
-                    <button type="submit" class="submit"> Trả lời</button>
-                </td>
-            </form>
-        </tr>
-          @endforeach
-        </tbody>
-      </table>
-    </div>
-    <div class="card-footer"></div>
-  </div>
-</div>
+@section('style')
+    <style>
+        .btn {
+            margin: 5px;
+        }
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Câu hỏi</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+        .cursor-pointer {
+            cursor: pointer;
+        }
+    </style>
+@endsection
+
+@section('content')
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0">Cập nhật thông tin trung tâm</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
+            <li class="breadcrumb-item" aria-current="page">Quản lý câu hỏi</li>
+            <li class="breadcrumb-item" aria-current="page">Quản lý câu hỏi</li>
+        </ol>
+    </div>
+    <hr class="sidebar-divider badge-light">
+    <div class="col-lg-12 mb-4">
+        <!-- Simple Tables -->
+        <div class="card">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h4 class="m-0 font-weight-bold">Trả lời câu hỏi</h4>
             </div>
-            <div class="modal-body">
-                <form id="form-modal">
-                    @csrf
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Nhập nội dung:</label>
-                        <input type="text" class="form-control" id="recipient-name" name="question">
-                    </div>
-                </form>
+            <div class="table-responsive">
+                <table id="tableQuestion" class="table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th width="13%">Người gửi</th>
+                        <th width="30%">Nội dung</th>
+                        <th>Loại câu hỏi</th>
+                        <th>Trả lời</th>
+                        <th>Thực hiện</th>
+                    </tr>
+                    </thead>
+                </table>
+                <button class="btn btn-danger delete-list">Xóa câu hỏi đã chọn</button>
+                <button class="btn btn-primary list-question-type">Thay đổi loại câu hỏi đã chọn</button>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary save-data"  data-dismiss="modal">Lưu</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            <div class="card-footer"></div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Câu hỏi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-modal">
+                        @csrf
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Nhập nội dung:</label>
+                            <textarea class="form-control" id="recipient-name" name="question" rows="5"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary save-data" data-dismiss="modal">Lưu</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
+    <!-- Modal reply -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Trả lời</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-reply">
+                        @csrf
+                        <div class="form-group">
+                            <label for="contetn-reply" class="col-form-label">Nhập nội dung:</label>
+                            <textarea class="form-control" id="contetn-reply" name="reply" rows="5"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary submit-reply" data-dismiss="modal">Lưu</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection
 
 @section('script')
-<script>
-    var questionReplyUrl = '{{ route('admin.question.reply', ':id') }}'
-    var questionChangeTypeUrl = '{{ route('admin.question.change.type', ':id') }}'
-    var questionEditTypeUrl = '{{ route('admin.question.edit', ':id') }}'
+    <script>
+        var questionReplyUrl = '{{ route('admin.question.reply', ':id') }}'
+        var questionChangeTypeUrl = '{{ route('admin.question.change.type', ':id') }}'
+        var questionEditTypeUrl = '{{ route('admin.question.edit', ':id') }}'
+        var getQuestions = '{{ route('admin.question.data') }}'
 
-    function getData(id) {
-        $.ajax({
-            type:'GET',
-            url: questionReplyUrl.replace(':id', id),
-            success: function (data) {
-                $('.question-'+id).html(data);
-                $('.input-'+id).val('');
-            }
-        });
-    }
-    $(document).ready(function () {
-    let idQestion;
-    $(document).on('click',".reply",function() {
-        idQestion = $(this).data('id');
+        $(document).ready(function () {
+            var tableQuestion = $('#tableQuestion').DataTable({
+                ajax: getQuestions,
+                order: [],
+                responsive: false,
+                columnDefs: [
+                    {
+                        targets: [0, 1, 3, 4, 5],
+                        orderable: false
+                    }
+                ],
+                columns: [
+                    {
+                        data: null,
+                        render: function (question) {
+                            return `<input class="form-check-input checkboxes" type="checkbox" name="${question.id}">`
+                        }
+                    },
+                    {
+                        data: 'hoten'
+                    },
+                    {
+                        data: 'content'
+                    },
+                    {
+                        data: null,
+                        render: function (question) {
+                            return `<span class="badge badge-success question-type cursor-pointer" data-id="${question.id}">${question.type}</span>`
+                        }
+                    },
+                    {
+                        data: null,
+                        render: function (question) {
+                            return `<a class="reply" data-id="${question.id}" data-toggle="modal"
+                                                   data-target="#exampleModalCenter" data-whatever="Trả lời câu hỏi">
+                                                    <div class="w-100">
+                                                        <p class="text-primary text-break cursor-pointer">
+                                                            ${question.question_reply == null ? "---" : question.question_reply.content}
+                                                        </p>
+                                                    </div>
+                                    </a>`
+                        }
+                    },
+                    {
+                        data: null,
+                        render: function (question) {
+                            return `<button class="delete btn btn-danger" data-id="${question.id}"><i class="fa fa-trash"></button>`
+                        }
+                    },
+                ]
+            });
+            let idQestion;
+            $(document).on('click', '.reply', function () {
+                idQestion = $(this).data('id');
+                let text = $(this).text();
+                $('#contetn-reply').val(text);
+            });
 
-        $("#"+idQestion).toggle();
-    });
+            $('.submit-reply').click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: questionReplyUrl.replace(':id', idQestion),
+                    data: $("#form-reply").serialize(),
+                    success: function () {
+                        tableQuestion.ajax.reload();
+                    }
+                });
+            });
+            $(document).on('click', ".question-type", function () {
+                if (confirm("Bạn có muốn thay đổi!")) {
+                    idQestion = $(this).data('id');
+                    let listId = [];
+                    listId.push(idQestion);
+                    $.ajax({
+                        type: 'POST',
+                        url: questionChangeTypeUrl.replace(':id', idQestion),
+                        data: {
+                            listId: listId,
+                        },
+                        success: function () {
+                            tableQuestion.ajax.reload()
+                        },
+                        error: function (e) {
+                            toastr.error('error');
+                        }
+                    });
+                }
+            });
+            $(document).on('click', ".list-question-type", function () {
+                if (confirm("Bạn có muốn thay đổi!")) {
+                    let listId = [];
+                    $('input.checkboxes:checked').each(function () {
+                        listId.push($(this).attr('name'));
+                    });
+                    $.ajax({
+                        type: 'POST',
+                        url: questionChangeTypeUrl.replace(':id', idQestion),
+                        data: {
+                            listId: listId,
+                        },
+                        success: function () {
+                            tableQuestion.ajax.reload()
+                        },
+                        error: function (e) {
+                            toastr.error('error');
+                        }
+                    });
+                }
 
-    $('.submit').click(function (e) {
-        $('#'+idQestion).css('display','none' );
-        e.preventDefault();
+            });
+            $(document).on('click', '.content-question', function () {
+                idQestion = $(this).data('id');
+                let text = $(this).text()
+                $('#recipient-name').val(text)
+            });
 
-        $.ajax({
-            type:'POST',
-            url: questionReplyUrl.replace(':id', idQestion),
-            data: $("#form-"+idQestion).serialize(),
-            success: function () {
-                getData(idQestion);
-            }
-        });
-    });
-        $(document).on('click',".change-type",function() {
-            idQestion = $(this).data('id');
-            $.ajax({
-                type:'GET',
-                url: questionChangeTypeUrl.replace(':id', idQestion),
-                success:function () {
-                    getData(idQestion);
+            $('.save-data').click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: questionEditTypeUrl.replace(':id', idQestion),
+                    data: $('#form-modal').serialize(),
+                    success: function () {
+                        tableQuestion.ajax.reload()
+                    }
+                });
+            });
+
+            $(document).on('click', '.delete-list', function () {
+                if (confirm("Bạn có muốn xóa!")) {
+                    var listId = [];
+                    $('input.checkboxes:checked').each(function () {
+                        listId.push($(this).attr('name'));
+                    });
+                    $.ajax({
+                        type: 'POST',
+                        url: "/admin/question/delete",
+                        data: {
+                            listId: listId
+                        },
+                        success: function (res) {
+                            toastr.success('Success!')
+                            tableQuestion.ajax.reload()
+                        },
+                    });
+                }
+
+            });
+
+            $(document).on('click', '.delete', function () {
+                if (confirm("Bạn có muốn xóa!")) {
+                    var listId = [];
+                    listId.push($(this).data('id'));
+                    $.ajax({
+                        type: 'POST',
+                        url: "/admin/question/delete",
+                        data: {
+                            listId: listId
+                        },
+                        success: function (res) {
+                            toastr.success('Success!')
+                            tableQuestion.ajax.reload()
+                        },
+                        error: function (e) {
+                            toastr.error('error');
+                        }
+                    });
                 }
             });
         });
-        $(document).on('click', '.content-question',function () {
-            idQestion = $(this).data('id');
-        });
-
-    $('.save-data').click(function () {
-        $.ajax({
-            type:'POST',
-            url: questionEditTypeUrl.replace(':id', idQestion),
-            data:$('#form-modal').serialize(),
-            success:function () {
-                getData(idQestion);
-            }
-        });
-    });
-});
-</script>
+    </script>
 
 @endsection
