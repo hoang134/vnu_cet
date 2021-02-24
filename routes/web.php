@@ -118,6 +118,9 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')-
     Route::get('all-notification','NotificationController@index')->name('all.notification');
     Route::get('delete-notification/{id}','NotificationController@delete_event')->name('delete.notification');
 
+    Route::get('/edit-notification/{id}','NotificationController@edit_event')->name('edit.notification');
+    Route::post('/save-edit-notification','NotificationController@save_edit_event')->name('save.edit.notification');
+
 
 });
 Route::get('clear-cache-all', function() {

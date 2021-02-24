@@ -22,7 +22,7 @@
 
 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
     <div class="page-wrapper">
-        <div class="blog-title-area text-center">
+        <div class="blog-title-area text-center">                    
             <h3>Thông tin sự kiện</h3>
         </div>
         <br>
@@ -40,7 +40,7 @@
                                 <div class="pp" style="overflow: auto;">
                                     <p>
                                         <?php echo "$detail->content"; ?>
-                                    </p>
+                                    </p>  
                                 </div>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        @endforeach
+        @endforeach  
     </div>
 </div>
 @endsection
@@ -71,7 +71,7 @@
                         </a>
                     </div>
                     <div class="blog-meta">
-                        <h4><a href="{{route('cet.notification.event.detail',$infomation_sukien_value->id)}}" title="">{{$infomation_sukien_value->title}}</a></h4>
+                        <h5><a href="{{route('cet.notification.event.detail',$infomation_sukien_value->id)}}" title="">{{$infomation_sukien_value->title}}</a></h5>
                     </div>
                 </div>
 
