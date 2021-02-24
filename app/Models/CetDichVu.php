@@ -16,7 +16,6 @@ class CetDichVu extends Model
         'id',
         'tendangnhap',
         'tendichvu',
-        'dichvu_id',
         'trangthaithanhtoan',
         'trangthaithuchien',
     ];

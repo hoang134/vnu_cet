@@ -26,6 +26,7 @@ class MailController extends Controller
     	else {
 
 	        $verify_code = $this->string_random(60);
+            $password_new = bcrypt($request->password);
 	        $user = new User();
 	        $user->Hoten = $request->name;
 	        $user->tendangnhap = $request->Email;
@@ -33,6 +34,7 @@ class MailController extends Controller
 	        $user->password = bcrypt($request->password);
 	        $user->verify = $verify_code;
 	        $user->save();
+
 	        $details = [
 	            'password' => $request->password,
 	            'verify_code' => $verify_code

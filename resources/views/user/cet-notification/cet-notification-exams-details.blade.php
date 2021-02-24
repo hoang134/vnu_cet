@@ -1,71 +1,102 @@
 @extends('dashboard')
 @section('content')
-
+<style type="text/css">
+    .custombox {
+    position: relative;
+    padding: 20px 20px;
+    border: 1px dashed #dadada;
+}
+.small-title {
+    background: #edeff2 none repeat scroll 0 0;
+    font-size: 16px;
+    left: 5%;
+    line-height: 1;
+    margin: 0;
+    padding: 0.6rem 1.5rem;
+    position: absolute;
+    text-align: center;
+    top: -18px;
+}
+</style>
 
 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
     <div class="page-wrapper">
         <div class="blog-title-area text-center">                    
-            <h3>Kỳ thi @foreach($exam_detail as $detail)
-                    {{$detail->TenKythi}}
-                @endforeach
+            <h3>Chi tiết kỳ thi
             </h3>
         </div>
+        <hr class="invis">  
+        <br>          
+        <div class="custombox clearfix">
+            @foreach($exam_detail as $detail)
+            <h4 class="small-title">{{$detail->TenKythi}}</h4>
+            @endforeach
+            <br>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="comments-list">
+                        <div class="media">
+                            <div class="media-body">
+                                <p><strong>1.Thông tin chung</strong></p>
+                                <div class="ml-4">
+                                @foreach($exam_detail as $detail)
+                                <p>
+                                    Mã kỳ thi:{{$detail->MaKythi}}
+                                </p>
+                                <p>Hạn đăng ký:{{$detail->Handangky}}</p>
+                                <p>Ngày thi từ {{$detail->Tungay}} - {{$detail->Toingay}}</p>
+                                @endforeach
+                                
+                                <p>Thời gian ca thi:<br>
+                                    @foreach($exam_detail_cathi as $detail)
+                                    <div style="display: inline;font-size: 21px;">
+                                        Ca {{$detail->Cathi}}:{{$detail->Giothi}} ngày {{$detail->Ngaythi}}<br>
+                                        </div>
+                                    @endforeach
+                                </p>
 
-        <hr class="invis">            
+                                <p>Địa điểm:
+                                    @foreach($exam_detail_diadiem as $detail)
+                                        {{$detail->Madiadiem}}
+                                    @endforeach
+                                </p>
 
-        <div class="blog-content">  
-            <div class="pp" style="overflow: auto;">
-                
-                @foreach($exam_detail as $detail)
-                    <p>
-                        Số ca thi:{{$detail->Socathi}}
-                    </p>
-                    <p>Hạn đăng ký:{{$detail->Handangky}}</p>
-                    <p>Thời gian thi:từ ngày {{$detail->Tungay}} tới ngày {{$detail->Toingay}}</p>
-                @endforeach
-                
-                <p>Thời gian ca thi:<br>
-                    @foreach($exam_detail_cathi as $detail)
-                        Ca {{$detail->Cathi}}({{$detail->Giothi}}) ngày {{$detail->Ngaythi}}<br>
-                    @endforeach
-                </p>
-
-                <p>Địa điểm:
-                    @foreach($exam_detail_diadiem as $detail)
-                        {{$detail->Madiadiem}}
-                    @endforeach
-                </p>
-
-                <p>Mô tả:
-                    @foreach($exam_detail as $detail)
-                        {{$detail->Mota}}
-                    @endforeach
-                </p>
-
-                <p>
-                    <table class="table">
-                        <tr>
-                            <th>Mã môn thi</th>
-                            <th>Giờ thi</th>
-                            <th>Ngày thi</th>
-                            <th>Địa điểm thi</th>
-                            <th>Lệ phí thi</th>
-                            <th>Thời gian làm bài</th>
-                        </tr>
-                        @foreach($exam_detail_monthi as $detail)
-                            <tr>
-                                <td>{{$detail->MaMonthi}}</td>
-                                <td>{{$detail->Giothi}}</td>
-                                <td>{{$detail->Ngaythi}}</td>
-                                <td>{{$detail->Diaidiemthi}}</td>
-                                <td>{{$detail->Lephithi}}</td>
-                                <td>{{$detail->Thoigianlambai}}</td>
-                            </tr>
-                        @endforeach
-                    </table>
-                </p>                            
+                                <p>Mô tả kỳ thi:
+                                    @foreach($exam_detail as $detail)
+                                        {{$detail->Mota}}
+                                    @endforeach
+                                </p>
+                                </div>
+                                <br>
+                                <p><strong>2.Thông tin chi tiết</strong></p>
+                                <p>
+                                    <table class="table">
+                                        <tr>
+                                            <th>Mã môn thi</th>
+                                            <th>Giờ thi</th>
+                                            <th>Ngày thi</th>
+                                            <th>Địa điểm thi</th>
+                                            <th>Lệ phí thi</th>
+                                            <th>Thời gian làm bài</th>
+                                        </tr>
+                                        @foreach($exam_detail_monthi as $detail)
+                                            <tr>
+                                                <td>{{$detail->MaMonthi}}</td>
+                                                <td>{{$detail->Giothi}}</td>
+                                                <td>{{$detail->Ngaythi}}</td>
+                                                <td>{{$detail->Diaidiemthi}}</td>
+                                                <td>{{$detail->Lephithi}}</td>
+                                                <td>{{$detail->Thoigianlambai}}</td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
+                                </p>                      
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>   
+        </div>
     </div>
 </div>
 @endsection
@@ -74,7 +105,7 @@
     <div class="sidebar">
 
         <div class="widget">
-            <h2 class="widget-title" style="text-transform: uppercase;font-size: 30px;">Các kỳ thi khác</h2>
+            <h2 class="widget-title" style="text-transform: uppercase;">Các kỳ thi khác</h2>
             <br>
             <div class="blog-list-widget">
                 <div class="list-group">
@@ -94,7 +125,42 @@
         <br>
 
         <div class="widget">
-            <h2 class="widget-title" style="text-transform: uppercase;font-size: 30px;">Các trang liên quan</h2>
+            <h2 class="widget-title" style="text-transform: uppercase;">Các trang liên quan</h2>
+            <br>
+            <div class="blog-list-widget">
+                <div class="list-group">
+                    <a href="http://tracuu.dgnl.edu.vn/" class="l">
+                        <div class="w-100 justify-content-between">
+                            <img src="{{asset('images/cetdky/CET_KTHP chung.png')}}" alt="" class="img-fluid float-left">
+                        </div>
+                    </a>
+                    <a class="l">
+                        <div class="w-100 justify-content-between">
+                            <img src="{{asset('images/cetdky/CET_tracuuthongtin_0.png')}}" alt="" class="img-fluid float-left">
+                        </div>
+                    </a>
+                    <a class="l">
+                        <div class="w-100 justify-content-between">
+                            <img src="{{asset('images/cetdky/CET_DKDT_1.png')}}" alt="" class="img-fluid float-left">
+                        </div>
+                    </a>
+                    <a class="l">
+                        <div class="w-100 justify-content-between">
+                            <img src="{{asset('images/cetdky/CET_tracuudangkyduthi_0.png')}}" alt="" class="img-fluid float-left">
+                        </div>
+                    </a>
+                    <a href="http://diemthi.dgnl.edu.vn/" class="l">
+                        <div class="w-100 justify-content-between">
+                            <img src="{{asset('images/cetdky/CET_TracuuDiemthi_0.png')}}" alt="" class="img-fluid float-left">
+                        </div>
+                    </a>
+                    <a class="l">
+                        <div class="w-100 justify-content-between">
+                            <img src="{{asset('images/cetdky/khaosatykiensinhvien.png')}}" alt="" class="img-fluid float-left">
+                        </div>
+                    </a>
+                </div>
+            </div>
             <br>
             <div class="row text-center">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">

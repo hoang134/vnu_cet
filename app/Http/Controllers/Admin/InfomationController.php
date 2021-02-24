@@ -65,7 +65,7 @@ class InfomationController extends Controller
 	        if($imagelogo){
 	            $get_name_image = $imagelogo->getClientOriginalName();	
 	            $name_image = current(explode('.',$get_name_image));
-	            $new_image =  $name_image.'.'.$imagelogo->getClientOriginalExtension();
+	            $new_image =  'images/logo/'.$name_image.'.'.$imagelogo->getClientOriginalExtension();
 	            $imagelogo->move('images/logo',$new_image);
 	            DB::select("update cet_logo set imagelogo = '$new_image' where id=1");
             	return redirect()->route('admin.edit.logo')->with('success','Cập nhật thành công.');

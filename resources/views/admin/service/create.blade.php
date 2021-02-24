@@ -14,16 +14,16 @@
     <form class="mt-5" action="{{ route('admin.service.save') }}" method="post">
         @csrf
         <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label">Tên dịch vụ</label>
+            <label for="name" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-8 col-lg-6">
-                <input type="text" class="form-control" id="name" placeholder="Tên dịch vụ" name="name">
+                <input type="text" class="form-control" id="name" placeholder="Name" name="name">
             </div>
         </div>
 
         <div class="form-group row">
-            <label for="fee" class="col-sm-2 col-form-label">Chi phí</label>
+            <label for="fee" class="col-sm-2 col-form-label">Fee</label>
             <div class="col-sm-8 col-lg-6">
-                <input type="number" class="form-control" id="fee" placeholder="Chi phí" name="fee">
+                <input type="number" class="form-control" id="fee" placeholder="Fee" name="fee">
             </div>
         </div>
 
@@ -31,17 +31,17 @@
             <div class="field-item badge-dark mt-3" data-field-index="0">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h5 class="card-title">Trường</h5>
+                        <h5 class="card-title">Field</h5>
                         <i class="delete-field fa fa-trash-alt cursor-pointer"></i>
                     </div>
                     <div class="form-group row">
-                        <label for="name1" class="col-sm-2 col-form-label">Tên trường</label>
+                        <label for="name1" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-8 col-lg-6">
                             <input type="text" class="form-control" id="name1" placeholder="Name" name="fields[0][name]">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="type1" class="col-sm-2 col-form-label ">Kiểu dữ liệu</label>
+                        <label for="type1" class="col-sm-2 col-form-label ">Type</label>
                         <div class="col-sm-8 col-lg-6">
                             <select class="field-type form-control" id="type1" name="fields[0][type]">
                                 <option value="text">Text</option>
@@ -122,5 +122,5 @@
     </form>
 @endsection
 @section('script')
-    <script src="{{ asset("/js/admin/service/create.js") }}"></script>
+    <script src="/js/admin/service/create.js"></script>
 @endsection

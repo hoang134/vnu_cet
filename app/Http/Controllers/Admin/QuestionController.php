@@ -42,14 +42,16 @@ class QuestionController extends Controller
     public function reply(Request $request)
     {
         $question = Question::find($request->id);
-        if ($question->questionReply == null) {
+        if ($question->questionReply == null)
+        {
             $questionReply = new QuestionReply();
             $questionReply->question_id = $request->id;
-            $questionReply->content = $request->reply;
+            $questionReply->content = $request->question;
             $questionReply->save();
-        } else {
-            DB::table('question_replies')->where('question_id', $question->id)->update(['content' => "$request->reply
-            "]);
+        }
+        else
+        {
+            DB::table('question_replies')->where('question_id',$question->id)->update(['content'=>"$request->question"]);
 
         }
     }

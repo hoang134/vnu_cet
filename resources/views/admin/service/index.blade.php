@@ -15,9 +15,9 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Tên dịch vụ</th>
-            <th scope="col">Chi phí</th>
-            <th scope="col">Thực hiện</th>
+            <th scope="col">Name</th>
+            <th scope="col">Fee</th>
+            <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>

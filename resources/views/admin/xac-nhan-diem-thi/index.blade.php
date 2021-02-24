@@ -18,7 +18,7 @@
                         <td>{{$cet_dichvu->tendichvu}}</td>
                         <td>{{$cet_dichvu->trangthaithanhtoan}}</td>
                         <td>{{$cet_dichvu->trangthaithuchien}}</td>
-                        <td><a href="{{ route('admin.xacnhandiemthi.handle',['tendangnhap'=>$cet_dichvu->tendangnhap,'id'=>$cet_dichvu->dichvu_id]) }}">Sử lý</a></td>
+                        <td><a href="{{ route('admin.xacnhandiemthi.handle',$cet_dichvu->tendangnhap) }}">Sử lý</a></td>
                     </tr>
                 @endforeach
             </tbody>

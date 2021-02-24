@@ -106,17 +106,17 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')-
     Route::get('xacnhandiemthi','CetXacNhanDiemThiController@index');
     Route::get('xacnhandiemthi/handle/{tendangnhap}/{id}','CetXacNhanDiemThiController@handle')->name('xacnhandiemthi.handle');
 
-    Route::get('edit-infomation','InfomationController@edit_infomation')->name('edit.infomation');
-    Route::get('edit-infomation-cocau','InfomationController@edit_infomation_cocau')->name('edit.infomation.cocau');
-    Route::get('edit-infomation-chucnang','InfomationController@edit_infomation_chucnang')->name('edit.infomation.chucnang');
-    Route::get('edit-infomation-logo','InfomationController@edit_infomation_logo')->name('edit.logo');
-    Route::post('save-infomation','InfomationController@save_infomation')->name('save.infomation');
-    Route::post('save-logo','InfomationController@save_logo')->name('save.logo');
+    Route::get('/edit-infomation','InfomationController@edit_infomation')->name('edit.infomation');
+    Route::get('/edit-infomation-cocau','InfomationController@edit_infomation_cocau')->name('edit.infomation.cocau');
+    Route::get('/edit-infomation-chucnang','InfomationController@edit_infomation_chucnang')->name('edit.infomation.chucnang');
+    Route::get('/edit-infomation-logo','InfomationController@edit_infomation_logo')->name('edit.logo');
+    Route::post('/save-infomation','InfomationController@save_infomation')->name('save.infomation');
+    Route::post('/save-logo','InfomationController@save_logo')->name('save.logo');
 
-    Route::get('add-notification','NotificationController@add_event')->name('add.notification');
-    Route::post('save-notification','NotificationController@save_event')->name('save.notification');
-    Route::get('all-notification','NotificationController@index')->name('all.notification');
-    Route::get('delete-notification/{id}','NotificationController@delete_event')->name('delete.notification');
+    Route::get('/add-notification','NotificationController@add_event')->name('add.notification');
+    Route::post('/save-notification','NotificationController@save_event')->name('save.notification');
+    Route::get('/all-notification','NotificationController@index')->name('all.notification');
+    Route::get('/delete-notification/{id}','NotificationController@delete_event')->name('delete.notification');
 
 
 });

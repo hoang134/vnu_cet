@@ -10,8 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
-use Carbon\Carbon;
+
 
 class ServiceController extends Controller
 {
@@ -25,11 +24,11 @@ class ServiceController extends Controller
         ]);
     }
 
-//    public function printFields(Request $request)
-//    {
-//        $service = Service::find($request->id);
-//        $listFields = $service->fields;
-//    }
+    public function printFields(Request $request)
+    {
+        $service = Service::find($request->id);
+        $listFields = $service->fields;
+    }
 
     public function createRequiteService(Request $request, $id)
     {
@@ -57,11 +56,9 @@ class ServiceController extends Controller
         }
     }
 
-    public function handleFile($file)
+    private function handleFile($file)
     {
-        $nameFile = Carbon::now()->timestamp . $file->getClientOriginalName();
-
-        Storage::putFileAs('service/student',$file,"$nameFile");
-        return $url = 'service/student/' . $nameFile;
+        // todo file
+        return '';
     }
 }
