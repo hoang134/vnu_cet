@@ -47,7 +47,7 @@
                 <td><?php echo "$event->content" ?></td>
                 <td>
                     <div>
-                        <a href="">
+                        <a href="{{route('admin.edit.notification',$event->id)}}">
                             <i class="fa fa-edit"></i>Sửa
                         </a>
                         <a href="{{route('admin.delete.notification',$event->id)}}"><i class="fa fa-trash text-danger"></i>Xóa</a>

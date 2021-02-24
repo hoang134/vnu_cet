@@ -1,11 +1,6 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <!DOCTYPE html>
 <html>
-    
+
 <head>
     <title>Trang đăng ký</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -15,7 +10,7 @@
     <script type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
 </head>
-<!--Coded with love by Mutiullah Samim-->
+
 <body>
     <div class="container h-100">
         <div class="d-flex justify-content-center h-100">
@@ -42,27 +37,27 @@
                             <input type="text" name="name" class="form-control input_user" value="" placeholder="Tên của bạn">
                         </div>
                         <small><label id="name-error" class="error" for="name" style=""></label></small>
-                        <div class="input-group mb-2">
+                        <div class="input-group">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <input type="email" name="Email" class="form-control input_pass" value="" placeholder="Email">
                         </div>
-                        <small><label id="Email-error" class="error" for="Email"></label></small>   
-                        <div class="input-group mb-2">
+                        <small><label id="Email-error" class="error" for="Email"></label></small>
+                        <div class="input-group">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <input type="password" name="password" autocomplete="new-password" class="form-control input_pass" value="" placeholder="Mật khẩu">
                         </div>
                         <small><label id="password-error" class="error" for="password"></label></small>
-                        
+
                     <div class="d-flex justify-content-center mt-1 login_container">
                     <button type="submit" name="login" class="btn login_btn">Đăng ký</button>
                    </div>
                     </form>
                 </div>
-        
+
                 <div class="mt-1">
                     <div class="d-flex justify-content-center links">
                         Bạn đã có tài khoản? <a href="{{route('login')}}" class="ml-2">Đăng nhập</a>
