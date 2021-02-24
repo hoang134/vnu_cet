@@ -58,8 +58,14 @@ Route::prefix('student')->middleware('CheckLogin')->group(function (){
     Route::get('messengers','App\Http\Controllers\Student\MessengerController@messenger')->name('student.messengers');
     Route::post('messengers/reply','App\Http\Controllers\Student\MessengerController@reply')->name('student.messengers.reply');
 
-    Route::get('xacnhandiemthi','App\Http\Controllers\Student\CetXacNhanDiemThiController@index')->name('xacnhandiemthi');
-    Route::post('xacnhandiemthi/store','App\Http\Controllers\Student\CetXacNhanDiemThiController@store')->name('xacnhandiemthi.store');
+    Route::get('xacnhandiemthi','App\Http\Controllers\Student\CetXacNhanDiemThiController@index')->name('student.xacnhandiemthi');
+    Route::post('xacnhandiemthi/store','App\Http\Controllers\Student\CetXacNhanDiemThiController@store')->name('student.xacnhandiemthi.store');
+    Route::get('xacnhandiemthi/require','App\Http\Controllers\Student\CetXacNhanDiemThiController@createRequire')->name('student.xacnhandiemthi.require');
+
+    Route::get('list/register/exam','App\Http\Controllers\Student\StudentController@listExam')->name('student.list.exam');
+    Route::get('infor/register/exam/{id}','App\Http\Controllers\Student\StudentController@inforRegisterExam')->name('student.infor.exam');
+    Route::get('payment','App\Http\Controllers\Student\StudentController@payment')->name('student.payment');
+    Route::post('payment','App\Http\Controllers\Student\StudentController@paymentStore')->name('student.payment.store');
 
     Route::get('change-user-infomation','App\Http\Controllers\Home\LoginController@change_user_infomation')->name('change.infomation');
     Route::post('save-change-password','App\Http\Controllers\Home\LoginController@save_change_password')->name('change.password');
@@ -93,10 +99,12 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')-
         Route::put('{id}/update','ServiceController@update')->name('update');
         Route::get('list/register','ServiceController@lisRegister')->name('list.register');
         Route::get('handle/{id}','ServiceController@handle')->name('handle');
+        Route::get('download/file/{id}','ServiceController@downloadFile')->name('download.file');
+        Route::get('export/file/{id}','ServiceController@exportFile')->name('export.file');
     });
 
     Route::get('xacnhandiemthi','CetXacNhanDiemThiController@index');
-    Route::get('xacnhandiemthi/handle/{tendangnhap}','CetXacNhanDiemThiController@handle')->name('xacnhandiemthi.handle');
+    Route::get('xacnhandiemthi/handle/{tendangnhap}/{id}','CetXacNhanDiemThiController@handle')->name('xacnhandiemthi.handle');
 
     Route::get('/edit-infomation','InfomationController@edit_infomation')->name('edit.infomation');
     Route::get('/edit-infomation-cocau','InfomationController@edit_infomation_cocau')->name('edit.infomation.cocau');
@@ -109,8 +117,7 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')-
     Route::post('/save-notification','NotificationController@save_event')->name('save.notification');
     Route::get('/all-notification','NotificationController@index')->name('all.notification');
     Route::get('/delete-notification/{id}','NotificationController@delete_event')->name('delete.notification');
-    Route::get('/edit-notification/{id}','NotificationController@edit_event')->name('edit.notification');
-    Route::post('/save-edit-notification','NotificationController@save_edit_event')->name('save.edit.notification');
+
 
 });
 Route::get('clear-cache-all', function() {
