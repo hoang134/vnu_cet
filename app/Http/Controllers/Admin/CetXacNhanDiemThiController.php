@@ -21,7 +21,9 @@ class CetXacNhanDiemThiController extends Controller
 
     public function handle(Request $request)
     {
-        $xacnhandiemthi = DB::table('cet_xac_nhan_diem_thi')->where('tendangnhap',$request->tendangnhap)->first();
+
+
+        $xacnhandiemthi = DB::table('cet_xac_nhan_diem_thi')->where('id',$request->id)->first();
         $makythis = json_decode($xacnhandiemthi->makythi);
         $Hoten = DB::table('cet_student_acc')->where('tendangnhap',$request->tendangnhap)->first()->Hoten;
 

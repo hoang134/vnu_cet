@@ -54,17 +54,17 @@ $(function () {
         return `<div class="field-item badge-dark mt-3" data-field-index="${fieldIndex}">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h5 class="card-title text-white">Field</h5>
+                            <h5 class="card-title text-white">Trường</h5>
                             <i class="delete-field fa fa-trash-alt cursor-pointer"></i>
                         </div>
                         <div class="form-group row">
-                            <label for="name${fieldIndex}" class="col-sm-2 col-form-label text-white">Name</label>
+                            <label for="name${fieldIndex}" class="col-sm-2 col-form-label text-white">Tên trường</label>
                             <div class="col-sm-8 col-lg-6">
-                                <input type="text" class="form-control" id="name${fieldIndex}" placeholder="Name" name="fields[${fieldIndex}][name]">
+                                <input type="text" class="form-control" id="name${fieldIndex}" placeholder="Tên trường" name="fields[${fieldIndex}][name]">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="type${fieldIndex}" class="col-sm-2 col-form-label text-white">Type</label>
+                            <label for="type${fieldIndex}" class="col-sm-2 col-form-label text-white">Kiểu dữ liệu</label>
                             <div class="col-sm-8 col-lg-6">
                                 <select class="field-type form-control" id="type${fieldIndex}" name="fields[${fieldIndex}][type]">
                                     <option value="text">Text</option>

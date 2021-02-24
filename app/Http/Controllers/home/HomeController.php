@@ -18,12 +18,9 @@ class HomeController extends Controller
     public function question()
     {
         $questions = DB::table('questions')->where('type',Question::QUESTION_PUBLIC)->get();
-        $infomation_kythi = DB::table('cet_kythi')->orderBy('Handangky','desc')->limit(2)->get();
-        $infomation_sukien = DB::table('cet_event')->orderBy('id','desc')->limit(2)->get();
+
         return view('home.question.question',[
-            'questions'=> $questions,
-            'infomation_kythi' => $infomation_kythi,
-            'infomation_sukien' => $infomation_sukien
+            'questions'=> $questions
         ]);
     }
 

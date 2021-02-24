@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\Admin\ServiceRequest;
 use App\Models\Fields;
+use App\Models\ResultsFields;
 use App\Models\Service;
 use App\Models\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
@@ -128,5 +130,11 @@ class ServiceController extends Controller
             'student' => $student,
             'service' => $service,
         ]);
+    }
+
+    public function downloadFile($id)
+    {
+        $url = ResultsFields::find($id)->content;
+        return $contents = Storage::download($url);
     }
 }

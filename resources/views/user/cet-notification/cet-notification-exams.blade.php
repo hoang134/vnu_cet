@@ -1,6 +1,5 @@
 @extends('dashboard')
 @section('content')
-
 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
     <div class="page-wrapper">
         <div class="blog-top clearfix">
@@ -33,7 +32,13 @@
     </div>
 
     <div class="row">
-        {!! $exams->links('vendor.pagination.tailwind') !!}
+        <div class="col-md-12">
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-start">
+                    {!! $exams->links() !!}
+                </ul>
+            </nav>
+        </div>
     </div>
 </div>
 @endsection
@@ -41,14 +46,14 @@
 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
     <div class="sidebar">
         <div class="widget">
-            <h2 class="widget-title" style="text-transform: uppercase;">Sự kiện mới</h2>
+            <h2 class="widget-title" style="text-transform: uppercase;font-size: 30px;">Sự kiện mới</h2>
             <br>
             <div class="trend-videos">
                 @foreach($infomation_sukien as $infomation_sukien_value)
                 <div class="blog-box">
                     <div class="post-media">
                         <a href="{{route('cet.notification.event.detail',$infomation_sukien_value->id)}}" title="">
-                            <img src="{{asset($infomation_sukien_value->imagetitle)}}" alt="" class="img-fluid">
+                            <img src="{{asset('images/latest-1.jpg')}}" alt="" class="img-fluid">
                             <div class="hovereffect">
                                 <span class="videohover"></span>
                             </div>
@@ -67,7 +72,7 @@
         <br>
 
         <div class="widget">
-            <h2 class="widget-title" style="text-transform: uppercase;">Các kỳ thi mới</h2>
+            <h2 class="widget-title" style="text-transform: uppercase;font-size: 30px;">Các kỳ thi mới</h2>
             <br>
             <div class="blog-list-widget">
                 <div class="list-group">
@@ -87,42 +92,7 @@
         <br>
 
         <div class="widget">
-            <h2 class="widget-title" style="text-transform: uppercase;">Các trang liên quan</h2>
-            <br>
-            <div class="blog-list-widget">
-                <div class="list-group">
-                    <a href="http://tracuu.dgnl.edu.vn/" class="l">
-                        <div class="w-100 justify-content-between">
-                            <img src="{{asset('images/cetdky/CET_KTHP chung.png')}}" alt="" class="img-fluid float-left">
-                        </div>
-                    </a>
-                    <a class="l">
-                        <div class="w-100 justify-content-between">
-                            <img src="{{asset('images/cetdky/CET_tracuuthongtin_0.png')}}" alt="" class="img-fluid float-left">
-                        </div>
-                    </a>
-                    <a class="l">
-                        <div class="w-100 justify-content-between">
-                            <img src="{{asset('images/cetdky/CET_DKDT_1.png')}}" alt="" class="img-fluid float-left">
-                        </div>
-                    </a>
-                    <a class="l">
-                        <div class="w-100 justify-content-between">
-                            <img src="{{asset('images/cetdky/CET_tracuudangkyduthi_0.png')}}" alt="" class="img-fluid float-left">
-                        </div>
-                    </a>
-                    <a href="http://diemthi.dgnl.edu.vn/" class="l">
-                        <div class="w-100 justify-content-between">
-                            <img src="{{asset('images/cetdky/CET_TracuuDiemthi_0.png')}}" alt="" class="img-fluid float-left">
-                        </div>
-                    </a>
-                    <a class="l">
-                        <div class="w-100 justify-content-between">
-                            <img src="{{asset('images/cetdky/khaosatykiensinhvien.png')}}" alt="" class="img-fluid float-left">
-                        </div>
-                    </a>
-                </div>
-            </div>
+            <h2 class="widget-title" style="text-transform: uppercase;font-size: 30px;">Các trang liên quan</h2>
             <br>
             <div class="row text-center">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">

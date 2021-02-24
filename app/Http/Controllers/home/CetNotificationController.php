@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\DB;
 class CetNotificationController extends Controller
 {
     public function cet_notification_events() {
-        $events = DB::table('cet_event')->Paginate(5);
-        $infomation_kythi = DB::table('cet_kythi')->orderBy('Handangky','desc')->limit(2)->get();
-        $infomation_sukien = DB::table('cet_event')->orderBy('id','desc')->limit(2)->get();
+        $events = DB::table('cet_event')->simplePaginate(5);
+        $infomation_kythi = DB::table('cet_kythi')->orderBy('Handangky','desc')->limit(3)->get();
+        $infomation_sukien = DB::table('cet_event')->orderBy('id','desc')->limit(3)->get();
         return view('user.cet-notification.cet-notification-events',[
             'events' => $events,
             'infomation_kythi' => $infomation_kythi,
@@ -22,16 +22,16 @@ class CetNotificationController extends Controller
         $event_detail = DB::table('cet_event')
         ->where('id',$id)
         ->get();
-        $infomation_sukien = DB::table('cet_event')->where('id','!=',$id)->orderBy('id','desc')->limit(2)->get();
+        $infomation_sukien = DB::table('cet_event')->where('id','!=',$id)->orderBy('id','desc')->limit(3)->get();
         return view('user.cet-notification.cet-notification-events-details',[
             'event_detail' => $event_detail,
             'infomation_sukien' => $infomation_sukien]);
     }
 
     public function cet_notification_exams() {
-        $exams = DB::table('cet_kythi')->Paginate(8);
-        $infomation_kythi = DB::table('cet_kythi')->orderBy('Handangky','desc')->limit(2)->get();
-        $infomation_sukien = DB::table('cet_event')->orderBy('id','desc')->limit(2)->get();
+        $exams = DB::table('cet_kythi')->simplePaginate(5);
+        $infomation_kythi = DB::table('cet_kythi')->orderBy('Handangky','desc')->limit(3)->get();
+        $infomation_sukien = DB::table('cet_event')->orderBy('id','desc')->limit(3)->get();
         return view('user.cet-notification.cet-notification-exams',[
             'exams' => $exams,
             'infomation_kythi' => $infomation_kythi,
@@ -58,7 +58,7 @@ class CetNotificationController extends Controller
         ->where('cet_kythi.MaKythi',$Makythi)
         ->distinct()
         ->get();
-        $infomation_kythi = DB::table('cet_kythi')->orderBy('Handangky','desc')->limit(2)->get();
+        $infomation_kythi = DB::table('cet_kythi')->orderBy('Handangky','desc')->limit(3)->get();
         return view('user.cet-notification.cet-notification-exams-details',[
             'exam_detail' => $exam_detail,
             'exam_detail_cathi' => $exam_detail_cathi,

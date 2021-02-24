@@ -4,7 +4,7 @@
 	.custombox {
     position: relative;
     padding: 3rem 2rem;
-    border: 1px solid #dadada;
+    border: 1px dashed #dadada;
 }
 .small-title {
     background: #edeff2 none repeat scroll 0 0;

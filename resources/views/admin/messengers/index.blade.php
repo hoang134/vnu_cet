@@ -9,36 +9,45 @@
         </ol>
     </div>
     <hr class="sidebar-divider badge-light">
-
-    <div class="container py-5 px-4">
-
-  <div class="row rounded-lg overflow-hidden shadow">
-    <div class="col-12 px-0">
-      <div class="bg-white">
-
-        <div class="messages-box">
-          <div class="list-group rounded-0">
-            @foreach($listUserTos as $user)
-            <a href="{{ route('admin.messengers.detail', $user->user_to) }}" class="list-group-item list-group-item-action list-group-item-light rounded-0">
-              <div class="media"><img src="{{asset('images/1.png')}}" alt="user" width="50" class="rounded-circle">
-                <div class="media-body ml-4">
-                  <div class="d-flex align-items-center justify-content-between mb-1">
-                    <h6 class="mb-0">@php
-                                        $messenger = DB::table('messengers')->orderBy('created_at','desc')->where('user_from', $user->user_to)->first();
-                                    @endphp
-                                    {{$messenger->user_from}}
-                  </div>
-                  <p class="font-italic text-muted mb-0 text-small">{{$messenger->content}}</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-xl-12 chat-messenger">
+                <div class="card-messenger mb-sm-3 mb-md-0 contacts_card">
+                    <div class="card-header">
+                        <div class="input-group">
+                            <input type="text" placeholder="Search..." name="" class="form-control search-messenger">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body contacts_body">
+                        <ul class="contacts">
+                            @foreach($listUserTos as $user)
+                                <li class="active">
+                                    <a href="{{ route('admin.messengers.detail', $user->user_to) }}">
+                                        <div class="d-flex bd-highlight">
+                                            <div class="img_cont">
+                                                <img src="{{asset('images/1.png')}}">
+                                            </div>
+                                            <div class="user_info">
+                                                @php
+                                                    $messenger = DB::table('messengers')->orderBy('created_at','desc')->where('user_from', $user->user_to)->first();
+                                                @endphp
+                                                <span>{{$messenger->user_from}}</span>
+                                                <p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 30vh">{{$messenger->content}}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="card-footer"></div>
                 </div>
-              </div>
-            </a>
-            @endforeach
-          </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-</div>
 @endsection
 @section('script')
     <script>
