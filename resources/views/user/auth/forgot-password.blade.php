@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+    
 <head>
     <title>Trang đăng nhập</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -43,7 +43,7 @@
                        </div>
                     </form>
                 </div>
-
+        
                 <div class="mt-2">
                     <div class="d-flex justify-content-center links">
                         Bạn chưa có tài khoản? <a href="{{route('register')}}" class="ml-2">Đăng ký</a>
@@ -55,7 +55,7 @@
             </div>
         </div>
     </div>
-
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="{{asset('js/libs3/validate/validate_forgotpassword.js')}}">
     </script>

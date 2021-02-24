@@ -13,7 +13,7 @@
                 <div class="col-md-4">
                     <div class="post-media">
                         <a href="{{ route('cet.notification.exam.detail', $exam->MaKythi) }}" title="">
-                            <img src="{{asset('images/latest-1.jpg')}}" alt="" class="img-fluid">
+                            <img src="{{asset('Khaothi/Anhkythi'.$exam->Anhkythi)}}" alt="" class="img-fluid">
                             <div class="hovereffect"></div>
                         </a>
                     </div><!-- end media -->
@@ -55,7 +55,7 @@
                         </a>
                     </div>
                     <div class="blog-meta">
-                        <h4><a href="{{route('cet.notification.event.detail',$infomation_sukien_value->id)}}" title="">{{$infomation_sukien_value->title}}</a></h4>
+                        <h5><a href="{{route('cet.notification.event.detail',$infomation_sukien_value->id)}}" title="">{{$infomation_sukien_value->title}}</a></h5>
                     </div>
                 </div>
 
@@ -74,7 +74,7 @@
                     @foreach($infomation_kythi as $infomation_kythi_value)
                     <a href="{{ route('cet.notification.exam.detail', $infomation_kythi_value->MaKythi) }}" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="w-100 justify-content-between">
-                            <img src="{{asset('images/latest-1.jpg')}}" alt="" class="img-fluid float-left" style="margin-bottom: 5px;">
+                            <img src="{{asset('Khaothi/Anhkythi/'.$infomation_kythi_value->Anhkythi)}}" alt="" class="img-fluid float-left" style="margin-bottom: 5px;">
                             <h5 class="mb-1">{{$infomation_kythi_value->TenKythi}}</h5>
                             <small>Hạn đăng ký:{{$infomation_kythi_value->Handangky}}</small>
                         </div>

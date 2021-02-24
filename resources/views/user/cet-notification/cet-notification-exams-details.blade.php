@@ -21,12 +21,12 @@
 
 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
     <div class="page-wrapper">
-        <div class="blog-title-area text-center">
+        <div class="blog-title-area text-center">                    
             <h3>Chi tiết kỳ thi
             </h3>
         </div>
-        <hr class="invis">
-        <br>
+        <hr class="invis">  
+        <br>          
         <div class="custombox clearfix">
             @foreach($exam_detail as $detail)
             <h4 class="small-title">{{$detail->TenKythi}}</h4>
@@ -46,7 +46,7 @@
                                 <p>Hạn đăng ký:{{$detail->Handangky}}</p>
                                 <p>Ngày thi từ {{$detail->Tungay}} - {{$detail->Toingay}}</p>
                                 @endforeach
-
+                                
                                 <p>Thời gian ca thi:<br>
                                     @foreach($exam_detail_cathi as $detail)
                                     <div style="display: inline;font-size: 21px;">
@@ -90,7 +90,7 @@
                                             </tr>
                                         @endforeach
                                     </table>
-                                </p>
+                                </p>                      
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                     @foreach($infomation_kythi as $infomation_kythi_value)
                     <a href="{{ route('cet.notification.exam.detail', $infomation_kythi_value->MaKythi) }}" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="w-100 justify-content-between">
-                            <img src="{{asset('images/latest-1.jpg')}}" alt="" class="img-fluid float-left" style="margin-bottom: 5px;">
+                            <img src="{{asset('Khaothi/Anhkythi/'.$infomation_kythi_value->Anhkythi)}}" alt="" class="img-fluid float-left" style="margin-bottom: 5px;">
                             <h5 class="mb-1">{{$infomation_kythi_value->TenKythi}}</h5>
                             <small>Hạn đăng ký:{{$infomation_kythi_value->Handangky}}</small>
                         </div>

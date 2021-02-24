@@ -15,7 +15,7 @@ class InfomationController extends Controller
         return view('admin.layout');
     }
     public function edit_infomation()
-    {
+    {   
          $infomation = DB::table('cet_infomation')->where('id','1')->first();
        return view('admin.infomation.cet-infomation')->with('infomation',$infomation);
     }
@@ -44,7 +44,7 @@ class InfomationController extends Controller
             DB::select("update cet_infomation set content = '$request->noidung' where id=1");
             return redirect()->route('admin.edit.infomation')->with('success','Cập nhật thành công.');
         }
-        if(isset($request->noidung1)) {
+        if(isset($request->noidung1)) { 
             DB::select("update cet_infomation set content2 = '$request->noidung1' where id=1");
             return redirect()->route('admin.edit.infomation.cocau')->with('success','Cập nhật thành công.');
         }
@@ -61,9 +61,9 @@ class InfomationController extends Controller
         if(isset($request->imagelogo)) {
 
         	$imagelogo = $request->file('imagelogo');
-
+      
 	        if($imagelogo){
-	            $get_name_image = $imagelogo->getClientOriginalName();
+	            $get_name_image = $imagelogo->getClientOriginalName();	
 	            $name_image = current(explode('.',$get_name_image));
 	            $new_image =  'images/logo/'.$name_image.'.'.$imagelogo->getClientOriginalExtension();
 	            $imagelogo->move('images/logo',$new_image);
