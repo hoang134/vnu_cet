@@ -28,7 +28,7 @@ class LoginController extends Controller
         		session_start();
         		$_SESSION["tennguoithi"] = $request->Email;
         		$_SESSION["khoanguoithi"] = $request->password;
-                return redirect()->route('home')->with('success','Đăng nhập thành công.');
+                return redirect()->route('cet.home')->with('success','Đăng nhập thành công.');
             } else {
                 return redirect()->route('login')->with('error','Tài khoản chưa được xác nhận.');
             }
@@ -99,13 +99,13 @@ class LoginController extends Controller
         setcookie('username_cookie','',time()+1000);
         setcookie('password_cookie','',time()+1000);
         Auth::logout();
-        return redirect()->route('home');
+        return redirect()->route('cet.home');
     }
     public function logout_admin()
     {
         setcookie('username_cookie','',time()+1000);
         setcookie('password_cookie','',time()+1000);
         auth()->guard()->logout();
-        return redirect()->route('home');
+        return redirect()->route('cet.home');
     }
 }

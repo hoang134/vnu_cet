@@ -13,7 +13,7 @@
                 <div class="col-md-4">
                     <div class="post-media">
                         <a href="{{ route('cet.notification.exam.detail', $exam->MaKythi) }}" title="">
-                            <img src="{{asset('Khaothi/Anhkythi'.$exam->Anhkythi)}}" alt="" class="img-fluid">
+                            <img src="{{asset('Khaothi/Anhkythi/'.$exam->Anhkythi)}}" alt="" class="img-fluid">
                             <div class="hovereffect"></div>
                         </a>
                     </div><!-- end media -->

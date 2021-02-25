@@ -30,14 +30,13 @@ class MessengerController extends Controller
         $messenger->save();
 
         echo '<li class="out">
-                <div class="chat-img">
-                    <img alt="Avtar" src=' . asset('images/1.png') .'>
-                </div>
                 <div class="chat-body">
-                    <div class="chat-message"><h5>' .
-                    Auth::user()->Hoten . '</h5>' . '<p>'
-                    . $messenger->content .               
-                    '</p></div>
+                    <div class="chat-message">
+                        <h5>' .
+            Auth::user()->Hoten . '</h5>
+                        <p>' . $messenger->content .
+            '</p>
+                    </div>
                 </div>
             </li>';
     }

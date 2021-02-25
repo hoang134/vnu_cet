@@ -54,11 +54,9 @@ class MessengerController extends Controller
                   $messenger->content .
                   '</p>
                   </div>
-                  <p class="small text-muted">'
-                  . $messenger->created_at .
-                  '</p>
-                                </div>
-                              </div>';
+                  <p class="small text-muted">'.$messenger->created_at .'</p>
+                </div>
+              </div>';
     }
 
 

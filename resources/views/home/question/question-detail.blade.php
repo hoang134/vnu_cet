@@ -37,10 +37,15 @@
     <h4 class="small-title">Trả lời</h4>
     <div class="row">
         <div class="col-lg-12">
-            <form class="form-wrapper">
-                <textarea class="form-control" placeholder="Câu trả lời của bạn"></textarea>
-                <button type="submit" class="btn btn-primary">Trả lời</button>
-            </form>
+            <form class="w-100" method="post" style="border: 1px solid grey;">
+              @csrf
+              <div class="input-group">
+                <input type="text" name="question" placeholder="Nhập câu trả lời..." aria-describedby="button-addon2" class="form-control rounded-0 border-0 bg-light">
+                <div class="input-group-append">
+                  <button id="submit" type="submit" class="btn btn-link" style="background:  blue"> <i class="fa fa-paper-plane"></i></button>
+                </div>
+              </div>
+          </form>
         </div>
     </div>
 </div>
@@ -62,7 +67,7 @@
                         <!-- <a href="#" class="btn btn-primary btn-sm">Reply</a> -->
                     </div>
                 </div>
-                @endforeach
+                @endforeach  
             </div>
         </div>
     </div>
@@ -76,7 +81,7 @@
             <h2 class="widget-title" style="text-transform: uppercase;">Câu hỏi liên quan</h2>
             <br>
             <div class="trend-videos">
-
+                
             </div>
         </div>
 

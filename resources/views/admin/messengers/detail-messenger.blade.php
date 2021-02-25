@@ -116,6 +116,7 @@ input::placeholder {
                     success:function (data){
                         $('#newMessenger').append(data);
                         $('#messenger').val(' ');
+                        location.reload();
                     }
                 });
             });

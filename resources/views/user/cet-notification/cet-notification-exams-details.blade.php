@@ -49,7 +49,7 @@
                                 
                                 <p>Thời gian ca thi:<br>
                                     @foreach($exam_detail_cathi as $detail)
-                                    <div style="display: inline;font-size: 21px;">
+                                    <div style="display: inline;">
                                         Ca {{$detail->Cathi}}:{{$detail->Giothi}} ngày {{$detail->Ngaythi}}<br>
                                         </div>
                                     @endforeach
@@ -61,7 +61,7 @@
                                     @endforeach
                                 </p>
 
-                                <p>Mô tả kỳ thi:
+                                <p>Mô tả kỳ thi:<br>
                                     @foreach($exam_detail as $detail)
                                         {{$detail->Mota}}
                                     @endforeach
