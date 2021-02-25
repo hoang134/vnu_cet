@@ -74,6 +74,9 @@ Route::prefix('student')->middleware('CheckLogin')->group(function (){
 
 
 Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')->middleware('CheckLogin')->middleware('auth:admin')->group(function () {
+    Route::get('test',function () {
+       return view('admin.test');
+    });
     Route::prefix('question')->name('question.')->group(function () {
         Route::get('','QuestionController@index')->name('index');
         Route::get('data','QuestionController@getQuestions')->name('data');
