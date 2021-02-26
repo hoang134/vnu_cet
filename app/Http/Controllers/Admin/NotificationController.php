@@ -25,7 +25,7 @@ class NotificationController extends Controller
             $get_name_image = $imagetitle->getClientOriginalName();
             $name_image = current(explode('.',$get_name_image));
             $new_image =  'images/events/'.$name_image.'.'.$imagetitle->getClientOriginalExtension();
-            $imagetitle->move('/home/webapps/html/vnu_cet/public/images/events',$new_image);
+            $imagetitle->move('/images/events',$new_image);
             DB::select("insert into cet_event (title,content,timestart,timeend,imagetitle) values ('$title','$content','$timestart','$timeend','$new_image')");
             return redirect()->route('admin.add.notification')->with('success','Thêm thành công');
         }
@@ -62,7 +62,7 @@ class NotificationController extends Controller
             $get_name_image = $imagetitle->getClientOriginalName();
             $name_image = current(explode('.',$get_name_image));
             $new_image =  'images/events/'.$name_image.'.'.$imagetitle->getClientOriginalExtension();
-            $imagetitle->move('/home/webapps/html/vnu_cet/public/images/events',$new_image);
+            $imagetitle->move('/images/events',$new_image);
             DB::select("update cet_event set title='$title',content='$content',timestart='$timestart',timeend='$timeend',imagetitle='$new_image' where id='$request->event_id'");
             return redirect()->route('admin.edit.notification',$request->event_id)->with('success','Sửa thành công');
         }
