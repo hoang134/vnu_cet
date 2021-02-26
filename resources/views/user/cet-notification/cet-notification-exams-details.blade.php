@@ -21,12 +21,14 @@
 
 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
     <div class="page-wrapper">
-        <div class="blog-title-area text-center">                    
-            <h3>Chi tiết kỳ thi
-            </h3>
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{{ route('cet.home') }}"><i class="fa fa-home"></i> Trang chủ</a></li>
+              <li class="breadcrumb-item" aria-current="page">Chi tiết kỳ thi</li>
+            </ol>
         </div>
         <hr class="invis">  
-        <br>          
+        <br>        
         <div class="custombox clearfix">
             @foreach($exam_detail as $detail)
             <h4 class="small-title">{{$detail->TenKythi}}</h4>
@@ -37,17 +39,17 @@
                     <div class="comments-list">
                         <div class="media">
                             <div class="media-body">
-                                <p><strong>1.Thông tin chung</strong></p>
+                                <h4><strong>1.Thông tin chung</strong></h4>
                                 <div class="ml-4">
                                 @foreach($exam_detail as $detail)
                                 <p>
-                                    Mã kỳ thi:{{$detail->MaKythi}}
+                                    <strong>Mã kỳ thi</strong>:{{$detail->MaKythi}}
                                 </p>
-                                <p>Hạn đăng ký:{{$detail->Handangky}}</p>
-                                <p>Ngày thi từ {{$detail->Tungay}} - {{$detail->Toingay}}</p>
+                                <p><strong>Hạn đăng ký</strong>:{{$detail->Handangky}}</p>
+                                <p><strong>Ngày thi từ</strong>:{{$detail->Tungay}} - {{$detail->Toingay}}</p>
                                 @endforeach
                                 
-                                <p>Thời gian ca thi:<br>
+                                <p><strong>Thời gian ca thi</strong>:<br>
                                     @foreach($exam_detail_cathi as $detail)
                                     <div style="display: inline;">
                                         Ca {{$detail->Cathi}}:{{$detail->Giothi}} ngày {{$detail->Ngaythi}}<br>
@@ -55,20 +57,20 @@
                                     @endforeach
                                 </p>
 
-                                <p>Địa điểm:
+                                <p><strong>Địa điểm</strong>:
                                     @foreach($exam_detail_diadiem as $detail)
                                         {{$detail->Madiadiem}}
                                     @endforeach
                                 </p>
 
-                                <p>Mô tả kỳ thi:<br>
+                                <p><strong>Mô tả kỳ thi</strong>:<br>
                                     @foreach($exam_detail as $detail)
                                         {{$detail->Mota}}
                                     @endforeach
                                 </p>
                                 </div>
                                 <br>
-                                <p><strong>2.Thông tin chi tiết</strong></p>
+                                <h4><strong>2.Thông tin chi tiết</strong></h4>
                                 <p>
                                     <table class="table">
                                         <tr>

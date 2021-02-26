@@ -2,10 +2,13 @@
 @section('content')
 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
     <div class="page-wrapper">
-        <div class="blog-top clearfix">
-            <h4 class="pull-left" style="font-size: 30px;text-transform: uppercase;">Thông tin các sự kiện<a href="#"></a></h4>
-        </div><!-- end blog-top -->
-
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{{ route('cet.home') }}"><i class="fa fa-home"></i> Trang chủ</a></li>
+              <li class="breadcrumb-item" aria-current="page">Sự kiện</li>
+            </ol>
+        </div>
+        <hr class="invis">  
         <div class="blog-list clearfix">
             @foreach($events as $event)
             <div class="blog-box row">

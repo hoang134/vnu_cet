@@ -47,7 +47,6 @@
                     <li class="nav-item dropdown no-arrow" style="background-color: #fff;">
                       <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <img class="img-profile rounded-circle" src="{{ asset('images/1.png') }}" style="max-width: 60px">
                         <span class="ml-2 d-lg-inline" style="color: #007f49;">{{Auth::user()->Hoten}}</span>
                       </a>
                       <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -129,31 +128,31 @@
             </div>
         </div>
         @endif
-
         <div class="nav-item">
             <div class="container">
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li class=""><a href="{{route('cet.home')}}">Trang chủ</a>
+                        <li class=""><a href="{{route('cet.home')}}"><i class="fa fa-home"></i> Trang chủ</a>
                             <ul class="dropdown">
                                 <li><a href="{{route('cet.cocau')}}">Cơ cấu,tổ chức</a></li>
                                 <li><a href="{{route('cet.chucnang')}}">Chức năng,nhiệm vụ</a></li>
                             </ul>
                         </li>
-                        <li><a>Tin tức</a>
+                        <li><a><i class="fa fa-newspaper-o"></i> Tin tức</a>
                             <ul class="dropdown">
                                 <li><a href="{{route('cet.notification.event')}}">Các sự kiện</a></li>
                                 <li><a href="{{route('cet.notification.exam')}}">Các kỳ thi</a></li>
                             </ul>
                         </li>
                         @if(Auth::check())
-                        <li><a>Đăng ký thi</a>
+                        <li><a><i class="fa fa-registered"></i> Đăng ký thi</a>
                             <ul class="dropdown">
                                 <li><a target="_blank">Thi thử</a></li>
                                 @if(Checkuser::checkProfile())
 								@if(Checkuser::checkExam())
 									<li><a href="/Khaothi/cet_Dangkythi.php" target="_blank">Đăng ký thi</a></li>
-                                	<li><a href="/Khaothi/cet_SuaDangkythi.php" target="_blank">Sửa đăng ký thi</a></li>
+                                	<li><a href="/Khaothi/cet_SuaDangkythi.php" target="_blank">
+                                    Sửa đăng ký thi</a></li>
                             	@else
                                 	<li><a href="/Khaothi/cet_Dangkythi.php" target="_blank">Đăng ký thi</a></li>
                             	@endif
@@ -161,20 +160,26 @@
                             </ul>
                         </li>
                         @if(Checkuser::checkProfile())
-                            <li><a href="/Khaothi/cet_CapnhatHS.php" target="_blank">Cập nhật hồ sơ</a></li>
+                            <li><a href="/Khaothi/cet_CapnhatHS.php" target="_blank"><i class="fa fa-edit"></i> Cập nhật hồ sơ</a></li>
                         @else
                             <li><a href="/Khaothi/cet_DangkyHS.php" target="_blank">Nhập hồ sơ thi</a></li>
                         @endif
 
-                        <li><a>Diễn đàn trao đổi</a>
+                        <li><a><i class="fa fa-group"></i> Diễn đàn trao đổi</a>
                              <ul class="dropdown">
                                 <li><a href="{{route('home.question')}}">Trao đổi chung</a></li>
                                 <li><a href="{{route('student.my.question')}}">Trao đổi riêng</a></li>
                             </ul>
                         </li>
-                        <li><a>Dịch vụ</a>
+                        <li><a><i class="fa fa-wrench"></i> Dịch vụ</a>
                           <ul class="dropdown">
-                              <li><a>Thu phí</a></li>
+                              <li><a>Thu phí</a>
+                              <li><a href="{{route('student.service')}}">Dịch vụ khác</a>
+                          </ul>
+                        </li>
+                        <li><a><i class="fa fa-wrench"></i> Hỗ trợ</a>
+                          <ul class="dropdown">
+                              <li><a>Thu phí</a>
                               <li><a href="{{route('student.service')}}">Dịch vụ khác</a>
                           </ul>
                         </li>
@@ -208,7 +213,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2 style="color: white;">Các đối tác</h2>
+                        <h2>Các đối tác</h2>
                     </div>
                 </div>
             </div>
@@ -267,15 +272,15 @@
     <footer class="footer-section" id="footerid">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="footer-widget">
                         <h5>Thông tin liên hệ</h5>
                     </div>
                     <div class="footer-left">
                         <ul>
-                            <li>Địa chỉ:Tầng 8, Tòa nhà C1T, 144 Xuân Thủy, Cầu Giấy, Hà Nội.</li><br>
-                            <li>Số điện thoại:(+84)-24.66759.258 / (+84)-24.62532.740</li><br>
-                            <li>Email:trungtamkhaothi@vnu.edu.vn</li>
+                            <li><i class="fa fa-map-marker"></i> Địa chỉ:Tầng 8, Tòa nhà C1T, 144 Xuân Thủy, Cầu Giấy, Hà Nội.</li><br>
+                            <li><i class="fa fa-phone"></i> Số điện thoại:(+84)-24.66759.258 / (+84)-24.62532.740</li><br>
+                            <li><i class="fa fa-envelope"></i> Email:trungtamkhaothi@vnu.edu.vn</li>
                         </ul>
                     </div>
                 </div>
@@ -292,18 +297,18 @@
                 </div>
                 <div class="col-lg-2 col-md-6 col-sm-6">
                     <div class="footer-widget">
-                        <h5>Quy định</h5>
+                        <h5>Hỗ trợ</h5>
                         <ul>
-                            <li><a href="#">Quy định 1</a></li>
-                            <li><a href="#">Quy định 2</a></li>
-                            <li><a href="#">Quy định 3</a></li>
-                            <li><a href="#">Quy định 4</a></li>
+                            <li><a href="#">Hỗ trợ 1</a></li>
+                            <li><a href="#">Hỗ trợ 2</a></li>
+                            <li><a href="#">Hỗ trợ 3</a></li>
+                            <li><a href="#">Hỗ trợ 4</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="newslatter-item">
-                        <h5>Cần tư vấn</h5>
+                        <h5>Cần hỗ trợ</h5>
                         <p>Hãy để lại địa chỉ email của bạn</p>
                         <form action="#" class="subscribe-form">
                             <input type="text" placeholder="Nhập email của bạn.">

@@ -533,7 +533,7 @@ ol {
 }
 
 .section-title h2 {
-	color: #252525;
+	color: #007f49;
 	font-size: 36px;
 	font-weight: 700;
 	margin-bottom: 38px;
@@ -1054,7 +1054,7 @@ ol {
 }
 
 .nav-item {
-	background: #252525;
+	background: #9f224e;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -1165,22 +1165,22 @@ ol {
 	font-weight: 700;
 	display: block;
 	color: #ffffff;
-	border-right: 2px solid #3b3b3b;
+	border-right: 2px solid #9f224e;
 	text-transform: uppercase;
-	padding: 16px 42px 15px;
+	padding: 8px 15px 8px;
 	-webkit-transition: all 0.3s;
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
 }
 
 .nav-item .nav-menu li:hover>a {
-	background-color: #252525;
+	background-color: #a7335c;
 }
 
 .nav-item .nav-menu li:hover .dropdown {
 	opacity: 1;
 	visibility: visible;
-	top: 52px;
+	top: 37px;
 }
 
 .nav-item .nav-menu li .dropdown {
@@ -1189,12 +1189,13 @@ ol {
 	top: 82px;
 	width: 200px;
 	z-index: 99;
-	background: #252525;
+	background: #800d0d;
 	opacity: 0;
 	visibility: hidden;
 	-webkit-transition: all 0.3s;
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
+	border-top: 1px solid white;
 }
 
 .nav-item .nav-menu li .dropdown li {
@@ -1203,13 +1204,13 @@ ol {
 }
 
 .nav-item .nav-menu li .dropdown li:hover>a {
-	background-color: transparent;
+	background-color: #9f224e;
 	color: #fff;
 }
 
 .nav-item .nav-menu li .dropdown li a {
 	border-right: 0;
-	padding: 13px 20px 12px 30px;
+	padding: 8px 10px 8px 8px;
 	text-transform: inherit;
 }
 
@@ -1683,8 +1684,9 @@ ol {
 -----------------------*/
 
 .partner-logo {
-	background: #303030;
+	background: white;
 	padding: 15px 0;
+	border-top: 1px solid #888484; 
 }
 
 .logo-carousel .logo-item {
@@ -1708,7 +1710,7 @@ ol {
 -----------------------*/
 
 .footer-section {
-	background: #191919;
+	background: #199246;
 	padding-top: 40px;
 }
 
@@ -1726,7 +1728,7 @@ ol {
 
 .footer-left ul li {
 	list-style: none;
-	color: #b2b2b2;
+	color: white;
 	font-size: 16px;
 	line-height: 30px;
 }
@@ -1770,6 +1772,10 @@ ol {
 	z-index: -1;
 }
 
+.widget-title {
+	color: #007f49;
+}
+
 .footer-widget {
 	margin-bottom: 30px;
 }
@@ -1787,7 +1793,7 @@ ol {
 .footer-widget ul li a {
 	line-height: 36px;
 	font-size: 16px;
-	color: #b2b2b2;
+	color: white;
 }
 
 .newslatter-item h5 {
@@ -1797,7 +1803,7 @@ ol {
 }
 
 .newslatter-item p {
-	color: #b2b2b2;
+	color: white;
 	line-height: 26px;
 }
 
@@ -1806,8 +1812,8 @@ ol {
 }
 
 .newslatter-item .subscribe-form input {
-	color: #b2b2b2;
-	background: #303030;
+	color: black;
+	background: white;
 	width: 100%;
 	height: 46px;
 	font-size: 16px;
@@ -1851,7 +1857,7 @@ ol {
 }
 
 .copyright-reserved {
-	border-top: 1px solid #303030;
+	border-top: 1px solid white;
 	padding: 15px 0;
 	margin-top: 15px;
 }
@@ -1859,7 +1865,7 @@ ol {
 .copyright-reserved .copyright-text {
 	float: left;
 	font-size: 16px;
-	color: #b2b2b2;
+	color: white;
 }
 
 .copyright-reserved .copyright-text a {
@@ -1890,7 +1896,7 @@ ol {
 		padding: 16px 12px 12px 11px;
 	}
 	.nav-item .nav-menu li a {
-		padding: 16px 45px 15px;
+		padding: 8px 15px 8px;
 	}
 }
 
@@ -1904,7 +1910,7 @@ ol {
 		max-width: 64%;
 	}
 	.nav-item .nav-menu li a {
-		padding: 16px 26px 15px;
+		padding: 8px 15px 8px;
 	}
 	.hero-items .owl-nav button[type=button] {
 		left: 5px;
@@ -2019,7 +2025,7 @@ ol {
 		padding: 14px 40px 14px 18px;
 	}
 	.nav-item .nav-menu li a {
-		padding: 16px 10px 15px;
+		padding: 8px 15px 8px;
 	}
 	.instagram-photo .insta-item .inside-text h5 {
 		font-size: 14px;
@@ -2120,7 +2126,7 @@ ol {
     padding-left: 15px;
   }
 	.slicknav_nav {
-		background: #333;
+		background: #9f224e;
 	}
 	.slicknav_nav ul {
 		margin: 0;
@@ -2148,12 +2154,12 @@ ol {
 	}
 	.slicknav_nav a:hover {
 		border-radius: 0;
-		background-color: #252525;
+		background-color: #a7335c;
 		color: #fff;
 	}
 	.slicknav_nav .slicknav_row:hover {
 		border-radius: 0;
-		background-color: #252525;
+		background-color: #9f224e;
 		color: #fff;
 	}
 	.inner-header .nav-right li.cart-icon .cart-hover {

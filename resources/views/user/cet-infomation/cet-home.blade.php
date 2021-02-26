@@ -28,9 +28,9 @@
 @section('content')
 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
 <div class="page-wrapper">
-    <div class="blog-title-area text-center">
-        <h1 style="text-transform: uppercase;"><strong>Thông tin trung tâm</strong></h1>
-    </div><!-- end title -->
+    <div class="section-title text-center">
+        <h2>Thông tin trung tâm</h2>
+    </div>
 
     <div class="blog-content">  
         <div class="" style="overflow: auto;">

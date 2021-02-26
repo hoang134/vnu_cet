@@ -586,8 +586,6 @@ h6, .h6 {
 }
 
 hr {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
   border: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -4722,11 +4720,18 @@ tbody.collapse.show {
 }
 
 .breadcrumb {
-  padding: 0.75rem 1rem;
-  margin-bottom: 1rem;
+  padding: 0.75rem 0rem;
   list-style: none;
-  background-color: #eceeef;
   border-radius: 0.25rem;
+  font-size: 20px;
+}
+
+.breadcrumb a {
+  color: #007f49;
+}
+
+.breadcrumb:hover {
+  color: #007f49;
 }
 
 .breadcrumb::after {

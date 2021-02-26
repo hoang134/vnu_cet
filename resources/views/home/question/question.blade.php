@@ -1,12 +1,16 @@
 @extends('dashboard')
 @section('content')
 
-<section class="deal-of-week spad col-lg-8" style="background-color: white;">
+<section class="col-lg-9 col-md-12 col-sm-12 col-xs-12" style="background-color: white;">
     <div class="container">
         <div class="col-lg-12">
-            <div class="section-title text-center">
-                <h2>Diễn đàn trao đổi</h2>
-            </div>
+            <div class="d-sm-flex align-items-center justify-content-between">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{{ route('cet.home') }}"><i class="fa fa-home"></i> Trang chủ</a></li>
+              <li class="breadcrumb-item" aria-current="page">Câu hỏi</li>
+            </ol>
+        </div>
+        <hr class="invis">
             @if(Auth::check())
             <div class="custombox clearfix" style="width: 100%;border:none;">
                 <li class="dropdown no-arrow" style="list-style: none;">
@@ -18,12 +22,27 @@
                     aria-labelledby="searchDropdown" style="width: 400px;border: none;">
                         <form id="Form-data" class="w-100" action="{{ route('student.question.create') }}" method="post" style="border: 1px solid grey;">
                               @csrf
-                              <div class="input-group">
-                                <input type="text" name="question" placeholder="Nhập câu hỏi..." aria-describedby="button-addon2" class="form-control rounded-0 border-0 bg-light">
-                                <div class="input-group-append">
-                                  <button id="submit" type="submit" class="btn btn-link" style="background:  blue"> <i class="fa fa-paper-plane"></i></button>
+                              <div class="panel panel-primary" style="margin: 5px;padding: 5px;">
+                                <div class="panel-heading">
+                                    <h2 class="text-center">Đặt câu hỏi mới</h2>
                                 </div>
-                              </div>
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                      <label for="usr">Tiêu đề</label>
+                                      <input type="text" class="form-control" id="usr">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="email">Nội dung câu hỏi</label>
+                                      <div class="input-group">
+                                        <textarea required="true" class="form-control" name="question" placeholder="Nhập câu hỏi..." style="min-height: 80px;"></textarea>
+                                        <div class="input-group-append ml-2">
+                                          <button id="submit" type="submit" class="btn btn-link" style="background:  blue"> <i class="fa fa-paper-plane"></i></button>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                            </div>
                           </form>
                   </div>
                 </li>
@@ -51,7 +70,7 @@
                                                 <span class="color-orange" style="display: inline;"><a href="tech-category-01.html" title="">Câu hỏi chung</a></span>
                                                 @else
                                                 <span class="color-orange" style="display: inline;"><a href="tech-category-01.html" title="">Câu hỏi riêng</a></span>
-                                                @endif<a href="" title="">đăng vào:{{$question->created_at}}</a></small>
+                                                @endif</small>
                                             </div>
                                         </div>
                                     </div>
@@ -60,10 +79,8 @@
                         </div>
                     </td>
                     <td>
-                        <a class="media-left">
-                            <img src="{{asset('images/1.png')}}" style="width: 40px;height: 40px;" alt="" class="rounded-circle">
-                        </a>
-                        {{\App\Models\User::find($question->user_id)->Hoten}}
+                        {{\App\Models\User::find($question->user_id)->Hoten}}<br>
+                        <small>{{$question->created_at}}</small>
                     </td>
                 </tr>
                 @endforeach
