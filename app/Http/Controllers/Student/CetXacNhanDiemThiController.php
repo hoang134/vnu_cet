@@ -16,6 +16,7 @@ class CetXacNhanDiemThiController extends Controller
     public function index()
     {
         $cet_dichvus = CetDichVu::all();
+        //dd($cet_dichvus);
         return view('user.xac-nhan-diem-thi.index',[
             'cet_dichvus' => $cet_dichvus
         ]);

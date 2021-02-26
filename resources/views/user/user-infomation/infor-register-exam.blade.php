@@ -1,15 +1,22 @@
 @extends('dashboard')
-@section('content')
+@section('style')
+    <style>
+        .img {
+            background-size: contain;
+        }
+    </style>
+@endsection
 
+@section('content')
     <div id="printJS-form">
-        <h3>PHIẾU DỰ THI ĐÁNH GIÁ NĂNG LỰC HỌC SINH TRUNG HỌC PHỔ THÔNG</h3>
+        <h3>THÔNG TIN KỲ THI ĐÃ ĐĂNG KÝ</h3>
         <h4>Số báo danh của bạn là....</h4>
         <h3>A.Thông tin cá nhân</h3>
         <label>1.họ tên chữ đệm tên thí sinh : </label> <span>{{ $studentInfor->Hoten }}</span><br>
         <label>2.giới tính : </label> <span>{{ $studentInfor->Gioitinh }}</span>  <label>3.ngày sinh</label> <span>{{ $studentInfor->Ngaysinh }}</span><br>
         <label>4.số CMND/CCCD/Hộ chiếu : </label> <span>{{ $studentInfor->SoCMND }}</span><br>
         <div style = "float: right">
-           <label >Ảnh hồ sơ</label> <span> <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--1YjkUU2Q--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/a86595fypnp8bws7b3em.jpg" alt="Ảnh hồ sơ"></span>
+           <label >Ảnh hồ sơ</label> <span> <img class="img" src="https://res.cloudinary.com/practicaldev/image/fetch/s--1YjkUU2Q--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/a86595fypnp8bws7b3em.jpg" alt="Ảnh hồ sơ"></span>
             <br>
         </div>
 
