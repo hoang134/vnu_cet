@@ -22,12 +22,12 @@
 
             <label>5.Hộ khẩu thường trú</label><br>
             <h3>B.Thông tin dự thi</h3>
-                <div style="float:right">
+                <div style="float: right">
                     {{ $qrCode }}
                 </div>
                 <label>6.Địa điểm dự thi : </label> <span>{{ $diaDiemThi->Diachi }}</span> <br>
                 <label>Tên kỳ thi</label> <span>{{ $kythi->TenKythi }}</span> <br>
-                <label>7.Đợt thi</label> <span>{{ $kythi->Tungay . "-" . $kythi->Toingay }}</span><br>
+                <label>7.Đợt thi</label> <span>Từ ngày  {{ $kythi->Tungay . " Đến ngày " . $kythi->Toingay }}</span><br>
     {{--            <label>8.Ngày thi</label> <span>{{  }}</span> <br> <span>{{  }}</span>--}}
                 <label>9.Ca thi</label> <span>{{ $inforExam->Cathi }}</span> <br>
     {{--            <label>9.Môn thi</label> <span>{{ TenKythi }}</span> <br>--}}
