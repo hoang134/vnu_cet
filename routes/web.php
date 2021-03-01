@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 */
 
 Route::get('/', function () {
-   return redirect()->route('cet.home');
+   return redirect()->route('trangchu');
 });
 
 
@@ -25,32 +25,32 @@ Route::get('logout','App\Http\Controllers\Home\LoginController@logout')->name('l
 
 
 //Xử lý đăng ký tài khoản
-Route::get('register','App\Http\Controllers\Home\LoginController@register')->name('register');
+Route::get('dang-ky-tai-khoan','App\Http\Controllers\Home\LoginController@register')->name('register');
 Route::post('verify-register','App\Http\Controllers\Student\MailController@sendEmail')->name('register.verify');
 Route::get('/verify','App\Http\Controllers\Student\MailController@verifyUser')->name('register.verify.user');
 
-Route::get('/forgot-password','App\Http\Controllers\Home\LoginController@forgot_password')->name('forgotpassword');
+Route::get('/quen-mat-khau','App\Http\Controllers\Home\LoginController@forgot_password')->name('forgotpassword');
 Route::post('verify-forgot-password','App\Http\Controllers\Student\MailController@send_forgot_password')->name('send.forgotpassword');
 
 //Thông tin về trung tâm
-Route::get('cet-home','App\Http\Controllers\Home\CetInfomationController@cet_infomation_home')->name('cet.home');
-Route::get('cet-infomation-cocau','App\Http\Controllers\Home\CetInfomationController@cet_infomation_cocau')->name('cet.cocau');
-Route::get('cet-infomation-chucnang','App\Http\Controllers\Home\CetInfomationController@cet_infomation_chucnang')->name('cet.chucnang');
+Route::get('trangchu','App\Http\Controllers\Home\CetInfomationController@trangchu')->name('trangchu');
+Route::get('thong-tin-trung-tam','App\Http\Controllers\Home\CetInfomationController@cet_infomation_home')->name('cet.home');
+Route::get('co-cau-to-chuc','App\Http\Controllers\Home\CetInfomationController@cet_infomation_cocau')->name('cet.cocau');
+Route::get('chuc-nang-nhiem-vu','App\Http\Controllers\Home\CetInfomationController@cet_infomation_chucnang')->name('cet.chucnang');
 
 //Thông tin về các kỳ thi,sự kiện
-Route::get('cet-notification-events','App\Http\Controllers\Home\CetNotificationController@cet_notification_events')->name('cet.notification.event');
-Route::get('cet-notification-event-detail/su-kien-{id}','App\Http\Controllers\Home\CetNotificationController@cet_notification_event_detail')->name('cet.notification.event.detail');
-Route::get('cet-notification-exams','App\Http\Controllers\Home\CetNotificationController@cet_notification_exams')->name('cet.notification.exam');
-Route::get('cet-notification-exam-detail/ky-thi-{Makythi}','App\Http\Controllers\Home\CetNotificationController@cet_notification_exam_detail')->name('cet.notification.exam.detail');
+Route::get('su-kien','App\Http\Controllers\Home\CetNotificationController@cet_notification_events')->name('cet.notification.event');
+Route::get('chi-tiet-su-kien/su-kien-{id}','App\Http\Controllers\Home\CetNotificationController@cet_notification_event_detail')->name('cet.notification.event.detail');
+Route::get('ky-thi','App\Http\Controllers\Home\CetNotificationController@cet_notification_exams')->name('cet.notification.exam');
+Route::get('chi-tiet-ky-thi/ky-thi-{Makythi}','App\Http\Controllers\Home\CetNotificationController@cet_notification_exam_detail')->name('cet.notification.exam.detail');
 
-//
-Route::get('home','App\Http\Controllers\Home\HomeController@index')->name('home');
-Route::get('home/question','App\Http\Controllers\Home\HomeController@question')->name('home.question');
-Route::get('question-detail/{id}','App\Http\Controllers\Home\HomeController@question_detail')->name('question.detail');
+Route::get('/homeadmin','App\Http\Controllers\Admin\InfomationController@home')->name('admin.home');
+Route::get('cau-hoi','App\Http\Controllers\Home\HomeController@question')->name('home.question');
+Route::get('chi-tiet-cau-hoi/{id}','App\Http\Controllers\Home\HomeController@question_detail')->name('question.detail');
 
 Route::prefix('student')->middleware('CheckLogin')->group(function (){
-    Route::post('question/create','App\Http\Controllers\Student\StudentController@createQuestion')->name('student.question.create');
-    Route::get('my/question','App\Http\Controllers\Student\StudentController@myQuestion')->name('student.my.question');
+    Route::post('tao-cau-hoi','App\Http\Controllers\Student\StudentController@createQuestion')->name('student.question.create');
+    Route::get('cau-hoi-rieng','App\Http\Controllers\Student\StudentController@myQuestion')->name('student.my.question');
 
     Route::get('service','App\Http\Controllers\Student\ServiceController@index')->name('student.service');
     Route::post('create/requite/service/{id}','App\Http\Controllers\Student\ServiceController@createRequiteService')->name('student.requite.service');
@@ -58,16 +58,16 @@ Route::prefix('student')->middleware('CheckLogin')->group(function (){
     Route::get('messengers','App\Http\Controllers\Student\MessengerController@messenger')->name('student.messengers');
     Route::post('messengers/reply','App\Http\Controllers\Student\MessengerController@reply')->name('student.messengers.reply');
 
-    Route::get('xacnhandiemthi','App\Http\Controllers\Student\CetXacNhanDiemThiController@index')->name('student.xacnhandiemthi');
+    Route::get('xac-nhan-diem-thi','App\Http\Controllers\Student\CetXacNhanDiemThiController@index')->name('student.xacnhandiemthi');
     Route::post('xacnhandiemthi/store','App\Http\Controllers\Student\CetXacNhanDiemThiController@store')->name('student.xacnhandiemthi.store');
-    Route::get('xacnhandiemthi/require','App\Http\Controllers\Student\CetXacNhanDiemThiController@createRequire')->name('student.xacnhandiemthi.require');
+    Route::get('xac-nhan-diem-thi/require','App\Http\Controllers\Student\CetXacNhanDiemThiController@createRequire')->name('student.xacnhandiemthi.require');
 
     Route::get('list/register/exam','App\Http\Controllers\Student\StudentController@listExam')->name('student.list.exam');
     Route::get('infor/register/exam/{id}','App\Http\Controllers\Student\StudentController@inforRegisterExam')->name('student.infor.exam');
     Route::get('payment','App\Http\Controllers\Student\StudentController@payment')->name('student.payment');
     Route::post('payment','App\Http\Controllers\Student\StudentController@paymentStore')->name('student.payment.store');
 
-    Route::get('change-user-infomation','App\Http\Controllers\Home\LoginController@change_user_infomation')->name('change.infomation');
+    Route::get('/thay-doi-thong-tin','App\Http\Controllers\Home\LoginController@change_user_infomation')->name('change.infomation');
     Route::post('save-change-password','App\Http\Controllers\Home\LoginController@save_change_password')->name('change.password');
     Route::post('save-change-user-infomation','App\Http\Controllers\Home\LoginController@save_change_user_infomation')->name('change.infomation.user');
 });

@@ -28,7 +28,7 @@ class LoginController extends Controller
         		session_start();
         		$_SESSION["tennguoithi"] = $request->Email;
         		$_SESSION["khoanguoithi"] = $request->password;
-                return redirect()->route('cet.home')->with('success','Đăng nhập thành công.');
+                return redirect()->route('trangchu')->with('success','Đăng nhập thành công.');
             } else {
                 return redirect()->route('login')->with('error','Tài khoản chưa được xác nhận.');
             }
@@ -62,9 +62,9 @@ class LoginController extends Controller
     public function save_change_password(Request $request) {
 
         $validatedData = $request->validate([
-            'password_old' => 'bail|required|min:6|max:10',
-            'password_new' => 'bail|required|min:6|max:10',
-            'password_check' => 'bail|required|min:6|max:10'
+            'password_old' => 'bail|required|min:8|max:10',
+            'password_new' => 'bail|required|min:8|max:10',
+            'password_check' => 'bail|required|min:8|max:10'
         ]);
 
         $Email = Auth::user()->Email;
@@ -96,16 +96,12 @@ class LoginController extends Controller
 
     public function logout()
     {
-        setcookie('username_cookie','',time()+1000);
-        setcookie('password_cookie','',time()+1000);
         Auth::logout();
-        return redirect()->route('cet.home');
+        return redirect()->route('trangchu');
     }
     public function logout_admin()
     {
-        setcookie('username_cookie','',time()+1000);
-        setcookie('password_cookie','',time()+1000);
         auth()->guard()->logout();
-        return redirect()->route('cet.home');
+        return redirect()->route('trangchu');
     }
 }

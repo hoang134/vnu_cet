@@ -175,27 +175,27 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-        var studentMessengersReply = '{{ route('student.messengers.reply') }}'
+    var studentMessengersReply = '{{ route('student.messengers.reply') }}'
 
-        $(document).ready(function () {
-            $('#submit').click(function (e) {
-                e.preventDefault();
-                let idUser =$(this).data('id');
-                $.ajax({
-                    type:"POST",
-                    url: studentMessengersReply,
-                    data:$('#Form-data').serialize(),
-                    success:function (data) {
-                        $('#newMessenger').append(data);
-                        $('#messenger').val(' ');
-                    }
-                });
+    $(document).ready(function () {
+        $('#submit').click(function (e) {
+            e.preventDefault();
+            let idUser =$(this).data('id');
+            $.ajax({
+                type:"POST",
+                url: studentMessengersReply,
+                data:$('#Form-data').serialize(),
+                success:function (data) {
+                    $('#newMessenger').append(data);
+                    $('#messenger').val(' ');
+                }
             });
         });
+    });
 
-        $(document).ready(function(){
-            $('#action_menu_btn').click(function(){
-                $('.action_menu').toggle();
-            });
+    $(document).ready(function(){
+        $('#action_menu_btn').click(function(){
+            $('.action_menu').toggle();
         });
-    </script>
+    });
+</script>

@@ -1,7 +1,7 @@
 @extends('dashboard')
 @section('content')
 <style type="text/css">
-	.custombox {
+    .custombox {
     position: relative;
     padding: 3rem 2rem;
     border: 1px solid #dadada;
@@ -43,42 +43,175 @@
     padding-top: 1rem
 }
 </style>
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="{{route('trangchu')}}"><i class="fa fa-home"></i> Trang chủ</a>
+                        <span>Thay đổi thông tin</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="blog-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="page-wrapper w-100">
+        <br>
+        <div class="custombox clearfix">
+            <h4 class="small-title">Đổi mật khẩu</h4>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form id="changepasswordform" action="{{route('change.password')}}" method="post" class="form-wrapper">
+                        @csrf
+                        <input type="password" required="true" class="form-control" name="password_old" placeholder="Mật khẩu cũ">
+                        <input type="password" required="true" class="form-control" name="password_new" placeholder="Mật khẩu mới">
+                        <input type="password" required="true" class="form-control" name="password_check" placeholder="Nhập lại mật khẩu">
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <hr class="invis">
+        <br>
+        <div class="custombox clearfix">
+            <h4 class="small-title">Đổi thông tin cá nhân</h4>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form id="changeinfomationuserform" action="{{route('change.infomation.user')}}" method="post" class="form-wrapper">
+                        @csrf
+                        <input type="text" required="true" class="form-control" name="Hoten" placeholder="Họ và tên" value="{{$infomation_user->Hoten}}">
+                        <input type="number" required="true" maxlength="10" name="Sodienthoai" class="form-control" placeholder="Số điện thoại" value="{{$infomation_user->Sodienthoai}}">
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="blog-sidebar">
+                        <div class="recent-post">
+                            <h4>Sự kiện mới</h4>
+                            <div class="recent-blog">
+                                @foreach($infomation_sukien as $infomation_sukien_value)
+                                <a href="{{route('cet.notification.event.detail',$infomation_sukien_value->id)}}" class="rb-item">
+                                    <div class="rb-pic">
+                                        <img src="{{asset($infomation_sukien_value->imagetitle)}}" alt="">
+                                    </div>
+                                    <div class="rb-text">
+                                        <h6>{{$infomation_sukien_value->title}}</h6>
+                                        <p>New <span>- May 19, 2019</span></p>
+                                    </div>
+                                </a>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="recent-post">
+                            <h4>Kỳ thi mới</h4>
+                            <div class="recent-blog">
+                                @foreach($infomation_kythi as $infomation_kythi_value)
+                                <a href="{{ route('cet.notification.exam.detail', $infomation_kythi_value->MaKythi) }}" class="rb-item">
+                                    <div class="rb-pic">
+                                        <img src="{{asset('Khaothi/Anhkythi/'.$infomation_kythi_value->Anhkythi)}}" alt="">
+                                    </div>
+                                    <div class="rb-text">
+                                        <h6>{{$infomation_kythi_value->TenKythi}}</h6>
+                                        <p>Hạn đăng ký<span>- {{$infomation_kythi_value->Handangky}}</span></p>
+                                    </div>
+                                </a>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="recent-post">
+                        <h4>Trang liên kết</h4>
+                            <br>
+                            <div class="blog-list-widget">
+                                <div class="list-group">
+                                    <a href="http://tracuu.dgnl.edu.vn/" class="l">
+                                        <div class="w-100 justify-content-between">
+                                            <img src="{{asset('images/cetdky/CET_KTHP chung.png')}}" alt="" class="img-fluid float-left">
+                                        </div>
+                                    </a>
+                                    <a class="l">
+                                        <div class="w-100 justify-content-between">
+                                            <img src="{{asset('images/cetdky/CET_tracuuthongtin_0.png')}}" alt="" class="img-fluid float-left">
+                                        </div>
+                                    </a>
+                                    <a class="l">
+                                        <div class="w-100 justify-content-between">
+                                            <img src="{{asset('images/cetdky/CET_DKDT_1.png')}}" alt="" class="img-fluid float-left">
+                                        </div>
+                                    </a>
+                                    <a class="l">
+                                        <div class="w-100 justify-content-between">
+                                            <img src="{{asset('images/cetdky/CET_tracuudangkyduthi_0.png')}}" alt="" class="img-fluid float-left">
+                                        </div>
+                                    </a>
+                                    <a href="http://diemthi.dgnl.edu.vn/" class="l">
+                                        <div class="w-100 justify-content-between">
+                                            <img src="{{asset('images/cetdky/CET_TracuuDiemthi_0.png')}}" alt="" class="img-fluid float-left">
+                                        </div>
+                                    </a>
+                                    <a class="l">
+                                        <div class="w-100 justify-content-between">
+                                            <img src="{{asset('images/cetdky/khaosatykiensinhvien.png')}}" alt="" class="img-fluid float-left">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row text-center">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                    <a href="http://facebook.com" class="social-button facebook-button">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </div>
 
-<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-    <div class="page-wrapper">
-    	<br>
-		<div class="custombox clearfix">
-		    <h4 class="small-title">Đổi mật khẩu</h4>
-		    <div class="row">
-		        <div class="col-lg-12">
-		            <form id="changepasswordform" action="{{route('change.password')}}" method="post" class="form-wrapper">
-		            	@csrf
-		                <input type="password" required="true" class="form-control" name="password_old" placeholder="Mật khẩu cũ">
-		                <input type="password" required="true" class="form-control" name="password_new" placeholder="Mật khẩu mới">
-		                <input type="password" required="true" class="form-control" name="password_check" placeholder="Nhập lại mật khẩu">
-		                <button type="submit" class="btn btn-primary">Cập nhật</button>
-		            </form>
-		        </div>
-		    </div>
-		</div>
-		<hr class="invis">
-		<br>
-		<div class="custombox clearfix">
-		    <h4 class="small-title">Đổi thông tin cá nhân</h4>
-		    <div class="row">
-		        <div class="col-lg-12">
-		            <form id="changeinfomationuserform" action="{{route('change.infomation.user')}}" method="post" class="form-wrapper">
-		            	@csrf
-		                <input type="text" required="true" class="form-control" name="Hoten" placeholder="Họ và tên" value="{{$infomation_user->Hoten}}">
-		                <input type="number" required="true" maxlength="10" name="Sodienthoai" class="form-control" placeholder="Số điện thoại" value="{{$infomation_user->Sodienthoai}}">
-		                <button type="submit" class="btn btn-primary">Cập nhật</button>
-		            </form>
-		        </div>
-		    </div>
-		</div>
-	</div>
-</div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                    <a href="#" class="social-button twitter-button">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </div>
+
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                    <a href="#" class="social-button google-button">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </div>
+
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                    <a href="#" class="social-button youtube-button">
+                                        <i class="fa fa-youtube"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="blog-tags">
+                            <h4>Các từ khóa</h4>
+                            <div class="tag-item">
+                                <a href="#">Towel</a>
+                                <a href="#">Shoes</a>
+                                <a href="#">Coat</a>
+                                <a href="#">Dresses</a>
+                                <a href="#">Trousers</a>
+                                <a href="#">Men's hats</a>
+                                <a href="#">Backpack</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection
+
 @section('script')
 <script type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
@@ -153,85 +286,4 @@
     });
 });
 </script>
-@endsection
-@section('content_extend')
-<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-    <div class="sidebar">
-        <div class="widget">
-            <h2 class="widget-title" style="text-transform: uppercase;font-size: 30px;">Sự kiện mới</h2>
-            <br>
-            <div class="trend-videos">
-                @foreach($infomation_sukien as $infomation_sukien_value)
-                <div class="blog-box">
-                    <div class="post-media">
-                        <a href="tech-single.html" title="">
-                            <img src="{{asset('images/latest-1.jpg')}}" alt="" class="img-fluid">
-                            <div class="hovereffect">
-                                <span class="videohover"></span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="blog-meta">
-                        <h4><a href="tech-single.html" title="">{{$infomation_sukien_value->title}}</a></h4>
-                    </div>
-                </div>
-
-                <hr class="invis">
-                @endforeach
-            </div>
-        </div>
-
-        <br>
-
-        <div class="widget">
-            <h2 class="widget-title" style="text-transform: uppercase;font-size: 30px;">Các kỳ thi mới</h2>
-            <br>
-            <div class="blog-list-widget">
-                <div class="list-group">
-                    @foreach($infomation_kythi as $infomation_kythi_value)
-                    <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="w-100 justify-content-between">
-                            <img src="{{asset('images/latest-1.jpg')}}" alt="" class="img-fluid float-left" style="margin-bottom: 5px;">
-                            <h5 class="mb-1">{{$infomation_kythi_value->TenKythi}}</h5>
-                            <small>Hạn đăng ký:{{$infomation_kythi_value->Handangky}}</small>
-                        </div>
-                    </a>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-
-        <br>
-
-        <div class="widget">
-            <h2 class="widget-title" style="text-transform: uppercase;font-size: 30px;">Các trang liên quan</h2>
-            <br>
-            <div class="row text-center">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <a href="http://facebook.com" class="social-button facebook-button">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <a href="#" class="social-button twitter-button">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <a href="#" class="social-button google-button">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <a href="#" class="social-button youtube-button">
-                        <i class="fa fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

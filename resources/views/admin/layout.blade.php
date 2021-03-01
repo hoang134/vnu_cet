@@ -39,7 +39,7 @@
   <div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.home') }}">
         <div class="sidebar-brand-icon">
           <img src="{{asset('images/logo.png')}}">
         </div>
@@ -47,7 +47,7 @@
       </a>
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">
-        <a class="nav-link" href="{{ route('home') }}">
+        <a class="nav-link" href="{{ route('admin.home') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Trang chủ</span></a>
       </li>
@@ -70,9 +70,16 @@
             <a class="collapse-item" href="{{ route('admin.edit.infomation.chucnang') }}">Chức năng,nhiệm vụ</a>
           </div>
         </div>
-        <div id="collapseForm1" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvent" aria-expanded="true"
+          aria-controls="collapseForm">
+          <i class="fab fa-fw fa-wpforms"></i>
+          <span>Quản lý sự kiện</span>
+        </a>
+        <div id="collapseEvent" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
           <div class="py-2 collapse-inner rounded">
-            <h4 class="collapse-header">Chỉnh sửa thông báo</h4>
+            <h4 class="collapse-header">Quản lý sự kiện</h4>
             <a class="collapse-item" href="{{ route('admin.add.notification') }}">Thêm sự kiện</a>
             <a class="collapse-item" href="{{ route('admin.all.notification') }}">Tất cả sự kiện</a>
           </div>
