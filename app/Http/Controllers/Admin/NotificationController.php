@@ -71,4 +71,8 @@ class NotificationController extends Controller
             return redirect()->route('admin.edit.notification',$request->event_id)->with('success','Sửa thành công');
         }
     }
+
+    public function ckfinder_view() {
+        return view('admin.ckfinder.ckfinder');
+    }
 }

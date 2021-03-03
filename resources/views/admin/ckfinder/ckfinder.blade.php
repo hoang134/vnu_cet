@@ -8,10 +8,11 @@ For licensing, see LICENSE.html or https://ckeditor.com/sales/license/ckfinder
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 	<title>CKFinder 3 - File Browser</title>
+	<base href="{{asset('')}}">
 </head>
 <body>
 
-<script src="ckfinder.js"></script>
+<script src="{{asset('css/ckeditor/ckfinder/ckfinder.js')}}"></script>
 <script>
 	CKFinder.start();
 </script>

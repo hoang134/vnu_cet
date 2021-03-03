@@ -123,7 +123,8 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')-
 
     Route::get('/edit-notification/{id}','NotificationController@edit_event')->name('edit.notification');
     Route::post('/save-edit-notification','NotificationController@save_edit_event')->name('save.edit.notification');
-
+    Route::get('/ckfinder','CkfinderController@ckfinder_view')->name('ckfinder.view');
+    Route::any('/connector','CkfinderController@connecttor')->name('ckfinder.connector');
 
 });
 Route::get('clear-cache-all', function() {

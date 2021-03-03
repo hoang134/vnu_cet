@@ -86,6 +86,12 @@
         </div>
       </li>
       <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('admin.ckfinder.view') }}">
+          <i class="fab fa-fw fa-wpforms"></i>
+          <span>Quản lý hình ảnh</span>
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
           aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="far fa-fw fa-window-maximize"></i>
