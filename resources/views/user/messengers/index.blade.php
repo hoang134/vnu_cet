@@ -179,14 +179,11 @@
                         $('.newMessenger').append(data);
                         $('#messenger').val(' ');
                         $("div").scrollTop(10000);
-
-
-                        //location.reload();
                     }
                 });
 
             });
-        });
+
     });
 
     $(document).ready(function(){
@@ -200,18 +197,18 @@
         var socket = io('http://localhost:6001');
         socket.on('laravel_database_chat:message',function (data) {
             console.log(data);
-            if(data.belong === 'admin') {
+            if (data.belong === 'admin') {
                 $('.newMessenger').append(
-                    '<li class="in">'+
-                        '<div class="chat-img">'+
-                            '<img alt="Avtar" src="'+urlImage+'">'+
-                        '</div>'+
-                        '<div class="chat-body">'+
-                            '<div class="chat-message">'+
-                                '<h5>Trung tâm khảo thí</h5>'+
-                               ' <p>'+data.content+'</p>'+
-                            '</div>'+
-                        '</div>'+
+                    '<li class="in">' +
+                    '<div class="chat-img">' +
+                    '<img alt="Avtar" src="' + urlImage + '">' +
+                    '</div>' +
+                    '<div class="chat-body">' +
+                    '<div class="chat-message">' +
+                    '<h5>Trung tâm khảo thí</h5>' +
+                    ' <p>' + data.content + '</p>' +
+                    '</div>' +
+                    '</div>' +
                     '</li>'
                 );
                 var x = document.getElementById("Audio");
@@ -220,6 +217,8 @@
                 $("div").scrollTop(10000);
 
             }
+        });
+
         });
     </script>
 
