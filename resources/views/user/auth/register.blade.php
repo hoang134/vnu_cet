@@ -14,7 +14,7 @@
 <body>
     <div class="container h-100">
         <div class="d-flex justify-content-center h-100">
-            <div class="user_card">
+            <div class="user_card" style="height: 480px;">
                 <div class="d-flex justify-content-center">
                     <div class="brand_logo_container">
                         <img src="{{asset('images/logo.png')}}" class="brand_logo" alt="Logo">
@@ -24,36 +24,43 @@
                     <form id="registerform" action="{{route('register.verify')}}"  method="post">
                         @csrf
                         <center>
-                          <div class="mb-3">
+                          <div class="mb-2">
                             <div class="">
                               <h2 style="font-size: 30px;color:#007f49; ">TRANG ĐĂNG KÝ</h2>
                             </div>
                           </div>
                         </center>
-                        <div class="input-group mb-2">
+                        <div class="input-group mb-1">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
                             <input type="text" name="name" class="form-control input_user" value="" placeholder="Tên của bạn">
                         </div>
-                        <small><label id="name-error" class="error" for="name" style=""></label></small>
-                        <div class="input-group">
+                        <small><label id="name-error" class="error mb-0" for="name" style=""></label></small>
+                        <div class="input-group mb-1">
                             <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                             </div>
                             <input type="email" name="Email" class="form-control input_pass" value="" placeholder="Email">
                         </div>
-                        <small><label id="Email-error" class="error" for="Email"></label></small>   
-                        <div class="input-group">
+                        <small><label id="Email-error" class="error mb-0" for="Email"></label></small>   
+                        <div class="input-group mb-1">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" name="password" autocomplete="new-password" class="form-control input_pass" value="" placeholder="Mật khẩu">
+                            <input type="password" name="password" id="password" autocomplete="new-password" class="form-control input_pass" value="" placeholder="Mật khẩu">
                         </div>
-                        <small><label id="password-error" class="error" for="password"></label></small>
+                        <small><label id="password-error" class="error mb-0" for="password"></label></small>
+                        <div class="input-group mb-1">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" name="repassword" id="repassword" autocomplete="new-password" class="form-control input_pass" value="" placeholder="Nhập lại mật khẩu">
+                        </div>
+                        <small><label id="repassword-error" class="error mb-0" for="repassword"></label></small>
                         
                     <div class="d-flex justify-content-center mt-1 login_container">
-                    <button type="submit" name="login" class="btn login_btn">Đăng ký</button>
+                    <button type="submit" name="register" id="register" onclick="checkpass()" class="btn login_btn">Đăng ký</button>
                    </div>
                     </form>
                 </div>
@@ -78,5 +85,13 @@
             toastr.error("{!!Session::get('error')!!}");
         </script>
     @endif
+    <script type="text/javascript">
+        function checkpass() {
+            if(document.getElementById('password').value != document.getElementById('repassword'))
+            {
+                document.getElementById('password-error').innerHTML = "Sai mật khẩu";
+            }
+        }
+    </script>
 </body>
 </html>

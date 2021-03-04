@@ -27,4 +27,17 @@ class Checkuser {
     		return false;
     	}
     }
+
+    public static function cetconnect() {
+        $tennguoithi = $_SESSION["tennguoithi"];
+        $khoanguoithi = $_SESSION["khoanguoithi"];
+        $link = mysqli_connect('localhost',$tennguoithi,$khoanguoithi,'cet_dkythi');
+        return $link;
+    }
+
+    public static function query_result($link,$sql) {
+        $query_result = array();
+        $query_result = mysqli_query($link,$sql);
+        return $query_result;
+    }
 }

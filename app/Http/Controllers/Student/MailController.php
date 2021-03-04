@@ -23,7 +23,14 @@ class MailController extends Controller
     	if($user_check) {
     		return redirect()->route('forgotpassword')->with('error','Email của bạn đã được đăng ký,hãy lấy lại mật khẩu.');
     	}
+
     	else {
+
+            $email_cre = $request->Email;
+            $password_cre = $request->password;
+            $sql = "CREATE USER '$email_cre'@'localhost' IDENTIFIED BY '$password_cre'";
+            DB::select($sql);
+            DB::select("GRANT select,update,insert,delete ON cet_dkythi.cet_student_acc TO '$email_cre'@'localhost'");
 
 	        $verify_code = $this->string_random(60);
 	        $user = new User();
