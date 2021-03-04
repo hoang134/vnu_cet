@@ -34,6 +34,7 @@ class HomeController extends Controller
         ->get();
         return view('home.question.question-detail',[
             'question' => $question,
-            'question_detail' => $question_detail]);
+            'question_detail' => $question_detail
+        ]);
     }
 }
