@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Session;
+use App\Helpers\Checkuser;
+
 class LoginController extends Controller
 {
 
@@ -28,6 +29,7 @@ class LoginController extends Controller
         		session_start();
         		$_SESSION["tennguoithi"] = $request->Email;
         		$_SESSION["khoanguoithi"] = $request->password;
+                Checkuser::cetconnect();
                 return redirect()->route('trangchu')->with('success','Đăng nhập thành công.');
             } else {
                 return redirect()->route('login')->with('error','Tài khoản chưa được xác nhận.');
@@ -61,12 +63,6 @@ class LoginController extends Controller
 
     public function save_change_password(Request $request) {
 
-        $validatedData = $request->validate([
-            'password_old' => 'bail|required|min:8|max:10',
-            'password_new' => 'bail|required|min:8|max:10',
-            'password_check' => 'bail|required|min:8|max:10'
-        ]);
-
         $Email = Auth::user()->Email;
         $user = DB::select("select * from cet_student_acc where Email = '$Email'");
         if(password_verify($request->password_old,Auth::user()->password)) {
@@ -81,7 +77,7 @@ class LoginController extends Controller
 
     public function save_change_user_infomation(Request $request) {
         $Email = Auth::user()->Email;
-        DB::select("update cet_student_acc set tendangnhap='$request->tendangnhap',Hoten='$request->Hoten',Sodienthoai='$request->Sodienthoai' where Email = '$Email'");
+        DB::select("update cet_student_acc set Hoten='$request->Hoten',Sodienthoai='$request->Sodienthoai' where Email = '$Email'");
         return redirect()->route('change.infomation')->with('success','Thay đổi thông tin thành công');
     }
 

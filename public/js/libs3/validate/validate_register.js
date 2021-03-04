@@ -15,6 +15,11 @@ $(document).ready(function () {
                 required: true,
                 minlength: 6,
                 maxlength: 15
+            },
+            repassword: {
+                required: true,
+                minlength: 6,
+                maxlength: 15
             }
         },
         messages: {
@@ -28,6 +33,11 @@ $(document).ready(function () {
                 maxlength: "Độ dài tối đa 30 ký tự"
             },
             password: {
+                required: "Vui lòng nhập mật khẩu!",
+                minlength: "Độ dài tối thiểu 6 kí tự",
+                maxlength: "Độ tài tối đa 15 kí tự"
+            },
+            repassword: {
                 required: "Vui lòng nhập mật khẩu!",
                 minlength: "Độ dài tối thiểu 6 kí tự",
                 maxlength: "Độ tài tối đa 15 kí tự"

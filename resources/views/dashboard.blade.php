@@ -27,7 +27,6 @@
     @yield('style')
 </head>
 <body>
-
     <!-- Header Section Begin -->
     <header class="header-section">
         <div class="header-top">
