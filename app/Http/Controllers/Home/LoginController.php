@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Helpers\Checkuser;
 
 class LoginController extends Controller
 {
@@ -28,7 +29,8 @@ class LoginController extends Controller
         		session_start();
         		$_SESSION["tennguoithi"] = $request->Email;
         		$_SESSION["khoanguoithi"] = $request->password;
-                return redirect()->route('home')->with('success','Đăng nhập thành công.');
+                Checkuser::cetconnect();
+                return redirect()->route('trangchu')->with('success','Đăng nhập thành công.');
             } else {
                 return redirect()->route('login')->with('error','Tài khoản chưa được xác nhận.');
             }
@@ -61,12 +63,6 @@ class LoginController extends Controller
 
     public function save_change_password(Request $request) {
 
-        $validatedData = $request->validate([
-            'password_old' => 'bail|required|min:6|max:10',
-            'password_new' => 'bail|required|min:6|max:10',
-            'password_check' => 'bail|required|min:6|max:10'
-        ]);
-
         $Email = Auth::user()->Email;
         $user = DB::select("select * from cet_student_acc where Email = '$Email'");
         if(password_verify($request->password_old,Auth::user()->password)) {
@@ -81,7 +77,7 @@ class LoginController extends Controller
 
     public function save_change_user_infomation(Request $request) {
         $Email = Auth::user()->Email;
-        DB::select("update cet_student_acc set tendangnhap='$request->tendangnhap',Hoten='$request->Hoten',Sodienthoai='$request->Sodienthoai' where Email = '$Email'");
+        DB::select("update cet_student_acc set Hoten='$request->Hoten',Sodienthoai='$request->Sodienthoai' where Email = '$Email'");
         return redirect()->route('change.infomation')->with('success','Thay đổi thông tin thành công');
     }
 
@@ -96,16 +92,12 @@ class LoginController extends Controller
 
     public function logout()
     {
-        setcookie('username_cookie','',time()+1000);
-        setcookie('password_cookie','',time()+1000);
         Auth::logout();
-        return redirect()->route('home');
+        return redirect()->route('trangchu');
     }
     public function logout_admin()
     {
-        setcookie('username_cookie','',time()+1000);
-        setcookie('password_cookie','',time()+1000);
         auth()->guard()->logout();
-        return redirect()->route('home');
+        return redirect()->route('trangchu');
     }
 }

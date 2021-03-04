@@ -4,10 +4,10 @@
  * Tích hợp và hướng dẫn bởi https://trungtrinh.com - Website chia sẻ bách khoa toàn thư */
 
 CKEDITOR.editorConfig = function( config ) {
-    config.filebrowserBrowseUrl = './ckeditor/ckfinder/ckfinder.html';
-    config.filebrowserImageBrowseUrl = './ckeditor/ckfinder/ckfinder.html?type=Images';
-    config.filebrowserFlashBrowseUrl = './ckeditor/ckfinder/ckfinder.html?type=Flash';
-    config.filebrowserUploadUrl = './ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
-    config.filebrowserImageUploadUrl = './ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
-    config.filebrowserFlashUploadUrl = './ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
+    config.filebrowserBrowseUrl = '/admin/ckfinder';
+    config.filebrowserImageBrowseUrl = '/admin/ckfinder?type=Images';
+    config.filebrowserFlashBrowseUrl = '/admin/ckfinder?type=Flash';
+    config.filebrowserUploadUrl = '/admin/connector?command=QuickUpload&type=Files';
+    config.filebrowserImageUploadUrl = '/admin/connector?command=QuickUpload&type=Images';
+    config.filebrowserFlashUploadUrl = '/admin/connector?command=QuickUpload&type=Flash';
 };

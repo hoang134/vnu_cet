@@ -29,6 +29,7 @@ class MessengerController extends Controller
         $messenger->content = $request->messenger;
         $messenger->belong = Messenger::BELONG_USER;
         $messenger->save();
+
         event(
             $e = new ChatEvent($messenger)
         );
@@ -51,6 +52,7 @@ class MessengerController extends Controller
                         <p>'.$messenger->content.'</p>
                     </div>
                 </div>
+
             </li>';
     }
 }
