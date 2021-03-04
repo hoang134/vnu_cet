@@ -24,7 +24,17 @@
 
     </style>
     <div>
-        <h2>Chọn phương thức thanh toán</h2>
+        <h2 >Chọn phương thức thanh toán</h2>
+        <div style="position: relative; right:100px">
+            <i class="fa fa-bell"></i>
+            <div style="position: absolute">
+
+            </div>
+        </div>
+
+        <div style="display: flex">
+            <h4 style="margin:auto">thông báo </h4>
+        </div>
         <form action="{{ route('student.payment.store') }}" method="post">
             @csrf
             <div>
@@ -36,5 +46,5 @@
             </div>
 
         </form>
-    </div>
+    </div>git
 @endsection
