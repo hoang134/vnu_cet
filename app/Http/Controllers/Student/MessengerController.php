@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Student;
 
+use App\Events\ChatEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Messenger;
 use Illuminate\Http\Request;
@@ -29,13 +30,18 @@ class MessengerController extends Controller
         $messenger->belong = Messenger::BELONG_USER;
         $messenger->save();
 
-        echo '<li class="out">
+        event(
+            $e = new ChatEvent($messenger)
+        );
+
+        echo ' <li class="out">
+                <div class="chat-img">
+                    <img alt="Avtar" src="'.asset('images/1.png').'">
+                </div>
                 <div class="chat-body">
                     <div class="chat-message">
-                        <h5>' .
-            Auth::user()->Hoten . '</h5>
-                        <p>' . $messenger->content .
-            '</p>
+                        <h5>'.Auth::user()->Hoten.'</h5>
+                        <p>'.$messenger->content.'</p>
                     </div>
                 </div>
             </li>';

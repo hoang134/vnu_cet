@@ -8,6 +8,7 @@
                 <th scope="col">Dịch vụ</th>
                 <th scope="col">Trạng thái thanh toán</th>
                 <th scope="col">Trạng thái thực hiện</th>
+                <th scope="col">Chi phí</th>
                 <th scope="col">Sử lý</th>
             </tr>
             </thead>
@@ -18,6 +19,7 @@
                         <td>{{$cet_dichvu->tendichvu}}</td>
                         <td>{{$cet_dichvu->trangthaithanhtoan}}</td>
                         <td>{{$cet_dichvu->trangthaithuchien}}</td>
+                        <td>{{\Illuminate\Support\Facades\DB::table('le_phi_dich_vus')->where('tendichvu',$cet_dichvu->tendichvu)->first()->phidichvu}}</td>
                         <td><a href="{{ route('admin.xacnhandiemthi.handle',['tendangnhap'=>$cet_dichvu->tendangnhap,'id'=>$cet_dichvu->dichvu_id]) }}">Sử lý</a></td>
                     </tr>
                 @endforeach
