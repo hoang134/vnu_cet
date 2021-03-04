@@ -29,14 +29,15 @@ class MessengerController extends Controller
         $messenger->belong = Messenger::BELONG_USER;
         $messenger->save();
 
-        echo '<div class="d-flex justify-content-end mb-4">
-                <div class="msg_cotainer_send">' .
-            $messenger->content .
-            '<!-- <span class="msg_time_send">{{$messenger->created_at}}</span> -->
+        echo '<li class="out">
+                <div class="chat-body">
+                    <div class="chat-message">
+                        <h5>' .
+            Auth::user()->Hoten . '</h5>
+                        <p>' . $messenger->content .
+            '</p>
+                    </div>
                 </div>
-                <div class="img_cont_msg">
-              <img src="' . asset('/images/1.png') . '" class="rounded-circle user_img_msg">
-                </div>
-              </div>';
+            </li>';
     }
 }

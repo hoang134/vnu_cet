@@ -9,26 +9,27 @@
     <meta name="author" content="">
     <title>Trang khảo thí</title>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+    <link href="{{asset('css/libs3/toastr.css')}}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{asset('css/libs3/slicknav.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/libs3/bootstrap.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/libs3/font-awesome.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/libs3/themify-icons.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/libs3/elegant-icons.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/libs3/owl.carousel.min.css')}}" type="text/css">
-
-    <link href="{{asset('css/libs3/bootstrap.css')}}" rel="stylesheet">
-    <link href="{{asset('css/libs3/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{asset('css/libs3/style.css')}}" rel="stylesheet">
-    <link href="{{asset('css/libs3/responsive.css')}}" rel="stylesheet">
-    <link href="{{asset('css/libs3/version/tech.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/libs3/nice-select.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/libs3/jquery-ui.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/libs3/slicknav.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/libs3/style.css')}}" type="text/css">
 {{--    PDF--}}
     <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
     <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     @yield('style')
 </head>
-<body style="background-color: #fff;" id="bodyid">
-    <div id="wrapper">
-        <header class="header-section">
+<body>
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
         <div class="header-top">
             <div class="container">
                 <div class="ht-left">
@@ -41,35 +42,38 @@
                         (+84) – 24.66759258  /  (+84) – 24.62532740
                     </div>
                 </div>
-
                 <div class="ht-right">
                     @if(Auth::check())
-                    <li class="nav-item dropdown no-arrow" style="background-color: #fff;">
-                      <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <img class="img-profile rounded-circle" src="{{ asset('images/1.png') }}" style="max-width: 60px">
-                        <span class="ml-2 d-lg-inline" style="color: #007f49;">{{Auth::user()->Hoten}}</span>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="{{route('change.infomation')}}">
-                          <i class="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                          Thông tin tài khoản
-                        </a>
-                          <a class="dropdown-item" href="{{route('student.list.exam')}}">
-                              <i class="fa fa-university fa-sm fa-fw mr-2 text-gray-400"></i>
-                              Kỳ thi đã đăng ký
+                    <nav class="navbar navbar-expand navbar-light bg-navbar topbar static-top">
+                      <ul class="navbar-nav ml-auto">
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <li class="nav-item dropdown no-arrow" style="background-color: #fff;">
+                          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <span class="ml-2 d-lg-inline" style="color: #007f49;">{{\Illuminate\Support\Facades\Auth::user()->Hoten}}</span>
                           </a>
-                          <a class="dropdown-item" href="{{route('student.xacnhandiemthi')}}">
-                              <i class="fa fa-pencil-square fa-sm fa-fw mr-2 text-gray-400"></i>
-                              Xác nhận điểm thi
-                          </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{route('logout')}}" onclick="return confirm('Bạn chắc chắn muốn đăng xuất?')">
-                          <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
-                          Đăng xuất
-                        </a>
-                      </div>
-                    </li>
+                          <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{{route('change.infomation')}}">
+                              <i class="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                              Thông tin tài khoản
+                            </a>
+                              <a class="dropdown-item" href="{{route('student.list.exam')}}">
+                                  <i class="fa fa-university fa-sm fa-fw mr-2 text-gray-400"></i>
+                                  Kỳ thi đã đăng ký
+                              </a>
+                              <a class="dropdown-item" href="{{route('student.xacnhandiemthi')}}">
+                                  <i class="fa fa-pencil-square fa-sm fa-fw mr-2 text-gray-400"></i>
+                                  Xác nhận điểm thi
+                              </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{route('logout')}}" onclick="return confirm('Bạn chắc chắn muốn đăng xuất?')">
+                              <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
+                              Đăng xuất
+                            </a>
+                          </div>
+                        </li>
+                      </ul>
+                    </nav>
                     @else
                     <a href="{{route('login')}}" class="login-panel"><i class="fa fa-user"></i>Đăng nhập  </a>
                     <a href="{{route('register')}}" class="login-panel" style="margin-right:10px;"><i class="fa fa-user"></i>Đăng ký </a>
@@ -83,12 +87,12 @@
                 <div class="row">
                     <div class="col-lg-2 col-md-2">
                         <a href="{{route('cet.home')}}">
-                        	@foreach(\Illuminate\Support\Facades\DB::table('cet_logo')->get() as $logo)
+                            @foreach(\Illuminate\Support\Facades\DB::table('cet_logo')->get() as $logo)
                             <img src="{{asset($logo->imagelogo)}}" alt="" width="100%" height="100%" style="max-height:109px;max-width:259px;">
                             @endforeach
                         </a>
                     </div>
-                    <div class="col-lg-7 col-md-7">
+                    <div class="col-lg-7 col-md-7 mt-3">
                         <div class="advanced-search">
                             <div class="input-group">
                                 <input type="text" placeholder="Từ khóa cần tìm" style="border:1px solid #f2f2f2;border-radius: 10px;">
@@ -109,7 +113,7 @@
             </div>
         </div>
         @else
-	<div class="container">
+       <div class="container">
             <div class="inner-header">
                 <div class="row">
                     <div class="col-lg-2 col-md-2">
@@ -117,7 +121,7 @@
                             <img src="{{asset($logo->imagelogo)}}" alt="" width="100%" height="100%" style="max-height:109px;max-width:259px;">
                             @endforeach
                     </div>
-                    <div class="col-lg-8 col-md-8">
+                    <div class="col-lg-8 col-md-8 mt-3">
                         <div class="advanced-search">
                             <div class="input-group">
                                 <input type="text" placeholder="Từ khóa cần tìm" style="border:1px solid #f2f2f2;border-radius: 10px;">
@@ -129,58 +133,66 @@
             </div>
         </div>
         @endif
-
         <div class="nav-item">
             <div class="container">
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li class=""><a href="{{route('cet.home')}}">Trang chủ</a>
+                        <li class=""><a href="{{route('trangchu')}}"><i class="fa fa-home"></i></a>
+                        <li class=""><a> Giới thiệu</a>
                             <ul class="dropdown">
+                                <li><a href="{{route('cet.home')}}"> Thông tin trung tâm</a>
                                 <li><a href="{{route('cet.cocau')}}">Cơ cấu,tổ chức</a></li>
                                 <li><a href="{{route('cet.chucnang')}}">Chức năng,nhiệm vụ</a></li>
                             </ul>
                         </li>
-                        <li><a>Tin tức</a>
+                        <li><a> Tin tức</a>
                             <ul class="dropdown">
                                 <li><a href="{{route('cet.notification.event')}}">Các sự kiện</a></li>
                                 <li><a href="{{route('cet.notification.exam')}}">Các kỳ thi</a></li>
                             </ul>
                         </li>
                         @if(Auth::check())
-                        <li><a>Đăng ký thi</a>
+                        <li><a> Đăng ký thi</a>
                             <ul class="dropdown">
                                 <li><a target="_blank">Thi thử</a></li>
                                 @if(Checkuser::checkProfile())
-								@if(Checkuser::checkExam())
-									<li><a href="/Khaothi/cet_Dangkythi.php" target="_blank">Đăng ký thi</a></li>
-                                	<li><a href="/Khaothi/cet_SuaDangkythi.php" target="_blank">Sửa đăng ký thi</a></li>
-                            	@else
-                                	<li><a href="/Khaothi/cet_Dangkythi.php" target="_blank">Đăng ký thi</a></li>
-                            	@endif
+                                @if(Checkuser::checkExam())
+                                    <li><a href="/Khaothi/cet_Dangkythi.php" target="_blank">Đăng ký thi</a></li>
+                                    <li><a href="/Khaothi/cet_SuaDangkythi.php" target="_blank">
+                                    Sửa đăng ký thi</a></li>
+                                @else
+                                    <li><a href="/Khaothi/cet_Dangkythi.php" target="_blank">Đăng ký thi</a></li>
+                                @endif
                                 @endif
                             </ul>
                         </li>
                         @if(Checkuser::checkProfile())
-                            <li><a href="/Khaothi/cet_CapnhatHS.php" target="_blank">Cập nhật hồ sơ</a></li>
+                            <li><a href="/Khaothi/cet_CapnhatHS.php" target="_blank"> Cập nhật hồ sơ</a></li>
                         @else
                             <li><a href="/Khaothi/cet_DangkyHS.php" target="_blank">Nhập hồ sơ thi</a></li>
                         @endif
 
-                        <li><a>Diễn đàn trao đổi</a>
+                        <li><a> Diễn đàn trao đổi</a>
                              <ul class="dropdown">
                                 <li><a href="{{route('home.question')}}">Trao đổi chung</a></li>
                                 <li><a href="{{route('student.my.question')}}">Trao đổi riêng</a></li>
                             </ul>
                         </li>
-                        <li><a>Dịch vụ</a>
+                        <li><a> Dịch vụ</a>
                           <ul class="dropdown">
-                              <li><a>Thu phí</a></li>
+                              <li><a>Thu phí</a>
+                              <li><a href="{{route('student.service')}}">Dịch vụ khác</a>
+                          </ul>
+                        </li>
+                        <li><a> Hỗ trợ</a>
+                          <ul class="dropdown">
+                              <li><a>Thu phí</a>
                               <li><a href="{{route('student.service')}}">Dịch vụ khác</a>
                           </ul>
                         </li>
                         @endif
                         @if(!Auth::check())
-                        <li><a href="{{route('home.question')}}">Diễn đàn trao đổi chung</a></li>
+                        <li><a href="{{route('home.question')}}"> Diễn đàn trao đổi chung</a></li>
                         @endif
                     </ul>
                 </nav>
@@ -188,27 +200,18 @@
             </div>
         </div>
     </header>
+    <!-- Header End -->
 
     @yield('banner')
-
-    <br>
-    <section class="section">
-        <div class="container">
-            <div class="row">
-                @yield('content')
-                @yield('content_extend')
-            </div>
-        </div>
-    </section>
-
-    <br>
+    @yield('content')
+    @yield('content_extend')
 
     <div class="partner-logo">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2 style="color: white;">Các đối tác</h2>
+                        <h2>Các đối tác</h2>
                     </div>
                 </div>
             </div>
@@ -267,15 +270,15 @@
     <footer class="footer-section" id="footerid">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="footer-widget">
                         <h5>Thông tin liên hệ</h5>
                     </div>
                     <div class="footer-left">
                         <ul>
-                            <li>Địa chỉ:Tầng 8, Tòa nhà C1T, 144 Xuân Thủy, Cầu Giấy, Hà Nội.</li><br>
-                            <li>Số điện thoại:(+84)-24.66759.258 / (+84)-24.62532.740</li><br>
-                            <li>Email:trungtamkhaothi@vnu.edu.vn</li>
+                            <li><i class="fa fa-map-marker"></i> Địa chỉ:Tầng 8, Tòa nhà C1T, 144 Xuân Thủy, Cầu Giấy, Hà Nội.</li><br>
+                            <li><i class="fa fa-phone"></i> Số điện thoại:(+84)-24.66759.258 / (+84)-24.62532.740</li><br>
+                            <li><i class="fa fa-envelope"></i> Email:trungtamkhaothi@vnu.edu.vn</li>
                         </ul>
                     </div>
                 </div>
@@ -292,18 +295,18 @@
                 </div>
                 <div class="col-lg-2 col-md-6 col-sm-6">
                     <div class="footer-widget">
-                        <h5>Quy định</h5>
+                        <h5>Hỗ trợ</h5>
                         <ul>
-                            <li><a href="#">Quy định 1</a></li>
-                            <li><a href="#">Quy định 2</a></li>
-                            <li><a href="#">Quy định 3</a></li>
-                            <li><a href="#">Quy định 4</a></li>
+                            <li><a href="#">Hỗ trợ 1</a></li>
+                            <li><a href="#">Hỗ trợ 2</a></li>
+                            <li><a href="#">Hỗ trợ 3</a></li>
+                            <li><a href="#">Hỗ trợ 4</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="newslatter-item">
-                        <h5>Cần tư vấn</h5>
+                        <h5>Cần hỗ trợ</h5>
                         <p>Hãy để lại địa chỉ email của bạn</p>
                         <form action="#" class="subscribe-form">
                             <input type="text" placeholder="Nhập email của bạn.">
@@ -343,9 +346,12 @@
 @endif
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{{asset('js/libs3/tether.min.js')}}"></script>
     <script src="{{asset('js/libs3/bootstrap.min.js')}}"></script>
-
+    <script src="{{asset('js/libs3/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('js/libs3/jquery.countdown.min.js')}}"></script>
+    <script src="{{asset('js/libs3/jquery.nice-select.min.js')}}"></script>
+    <script src="{{asset('js/libs3/jquery.zoom.min.js')}}"></script>
+    <script src="{{asset('js/libs3/jquery.dd.min.js')}}"></script>
     <script src="{{asset('js/libs3/jquery.slicknav.js')}}"></script>
     <script src="{{asset('js/libs3/owl.carousel.min.js')}}"></script>
     <script src="{{asset('js/libs3/main.js')}}"></script>
@@ -361,7 +367,6 @@
     </script>
     <script>
     $(document).ready(function () {
-
         $(".chat-bot-icon").click(function (e) {
             $(this).children('img').toggleClass('hide');
             $(this).children('svg').toggleClass('animate');
@@ -378,11 +383,5 @@
     });
 </script>
     @yield('script')
-<script>
-function abc() {
-confirm("123");
-}
-</script>
-
 </body>
 </html>

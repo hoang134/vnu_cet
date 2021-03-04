@@ -47,13 +47,14 @@ class MessengerController extends Controller
         $messenger ->belong = Messenger::BELONG_ADMIN;
         $messenger->save();
 
-        echo '<div class="d-flex justify-content-end mb-4">
-                <div class="msg_cotainer_send">' .
+        echo '<div class="media w-75 ml-auto mb-3" id="newMessenger">
+                <div class="media-body">
+                  <div class="bg-primary rounded py-2 px-3 mb-2">
+                    <p class="text-small mb-0 text-white">' .
                   $messenger->content .
-                  '<!-- <span class="msg_time_send">{{$messenger->created_at}}</span> -->
-                </div>
-                <div class="img_cont_msg">
-              <img src="' . asset('/images/1.png') . '" class="rounded-circle user_img_msg">
+                  '</p>
+                  </div>
+                  <p class="small text-muted">'.$messenger->created_at .'</p>
                 </div>
               </div>';
     }
