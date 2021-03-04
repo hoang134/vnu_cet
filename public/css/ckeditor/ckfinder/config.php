@@ -1,10 +1,9 @@
-﻿<?php
+<?php
 
 /*
  * CKFinder Configuration File
  *
  * For the official documentation visit https://ckeditor.com/docs/ckfinder/ckfinder3-php/
- * Tích hợp bởi https://trungtrinh.com
  */
 
 /*============================ PHP Error Reporting ====================================*/
@@ -32,10 +31,9 @@ $config['authentication'] = function () {
 
 /*============================ License Key ============================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_licenseKey
-//Link get License keygen miễn phí: https://ganlvtech.github.io/ckfinder_keygen/ckfinder_keygen.html
 
-$config['licenseName'] = '';
-$config['licenseKey']  = '';
+$config['licenseName'] = '112.137.129.235';
+$config['licenseKey']  = 'RBTBSQLY8TGKS9VE2AW3K9HK5AQKA';
 
 /*============================ CKFinder Internal Directory ============================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_privateDir
@@ -68,8 +66,8 @@ $config['images'] = array(
 $config['backends'][] = array(
     'name'         => 'default',
     'adapter'      => 'local',
-    'baseUrl'      => '/images/', //Thư mục chứa file upload
-    //  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
+    'baseUrl'      => '/images/',
+//  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
     'chmodFiles'   => 0777,
     'chmodFolders' => 0755,
     'filesystemEncoding' => 'UTF-8',

@@ -12,7 +12,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        return redirect()->route('cet.home');
+        return view('user.cet-infomation.trangchu');
     }
 
     public function question()
