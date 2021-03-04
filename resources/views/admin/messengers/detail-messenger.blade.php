@@ -70,7 +70,7 @@ input::placeholder {
                                 </div>
                               </div>
                           @else
-                              <div class="media w-75 ml-auto mb-3" id="newMessenger">
+                              <div class="media w-75 ml-auto mb-3" >
                                 <div class="media-body">
                                   <div class="bg-primary rounded py-2 px-3 mb-2">
                                     <p class="text-small mb-0 text-white">{{$messenger->content}}</p>
@@ -80,15 +80,15 @@ input::placeholder {
                               </div>
                           @endif
                       @endforeach
-                        <div id="newMessenger">
+                    </div>
+                    <div class="newMessenger">
 
-                        </div>
                     </div>
                     <div class="">
                         <form id="Form-data" class="bg-light w-100">
                           @csrf
                           <div class="input-group">
-                            <input type="text" id ="messenger" name="messenger" placeholder="Nhập tin nhắn..." aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light">
+                            <input type="text" autocomplete="off" id ="messenger" name="messenger" placeholder="Nhập tin nhắn..." aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light">
                             <div class="input-group-append">
                               <button id="submit" data-user ="{{$user_from}}" type="submit" class="btn btn-link"> <i class="fa fa-paper-plane"></i></button>
                             </div>
@@ -98,9 +98,13 @@ input::placeholder {
                 </div>
             </div>
         </div>
-    </div>
+        <audio id="Audio">
+            <source src="{{ asset('notification/notification.mp3') }}" type="audio/mpeg">
+        </audio>
+</div>
 @endsection
 @section('script')
+    <script src="https://cdn.socket.io/3.1.1/socket.io.min.js" integrity="sha384-gDaozqUvc4HTgo8iZjwth73C6dDDeOJsAgpxBcMpZYztUfjHXpzrpdrHRdVp8ySO" crossorigin="anonymous"></script>
     <script>
         var replyMessUrl = '{{ route('admin.messengers.reply', ':tendangnhap') }}'
 
@@ -114,9 +118,10 @@ input::placeholder {
                     url: url,
                     data:$('#Form-data').serialize(),
                     success:function (data){
-                        $('#newMessenger').append(data);
+                        $('.newMessenger').append(data);
                         $('#messenger').val(' ');
-                        location.reload();
+                        $('html,body').animate({ scrollTop: 9999 }, 'slow');
+                        //location.reload();
                     }
                 });
             });
@@ -126,6 +131,29 @@ input::placeholder {
             $('#action_menu_btn').click(function(){
                 $('.action_menu').toggle();
             });
+        });
+        //soket.io
+        var socket = io('http://localhost:6001');
+        var urlImage = '{{ asset('images/1.png') }}';
+        socket.on('laravel_database_chat:message',function (data) {
+           console.log(data);
+           if (data.belong === 'user') {
+               $('.newMessenger').append(
+               '<div class="media w-75 mb-3"><img src="'+urlImage+'" alt="user" width="50" class="rounded-circle">'+
+                  ' <div class="media-body ml-3">'+
+                       '<div class="bg-light rounded py-2 px-3 mb-2">'+
+                          '<p class="text-small mb-0 text-muted">'+ data.content + '</p>'+
+                       '</div>'+
+                       '<p class="small text-muted">'+ data.created_at +'</p>'+
+                   '</div>'+
+               '</div>'
+               );
+               var x = document.getElementById("Audio");
+               console.log(x)
+                   x.play();
+               $('html,body').animate({ scrollTop: 99999 }, 'slow');
+
+           }
         });
     </script>
 @endsection

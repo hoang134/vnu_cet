@@ -12,6 +12,7 @@
                     <th scope="col">Tên Học Sinh</th>
                     <th scope="col">Dịch vụ</th>
                     <th scope="col">kỳ thi</th>
+                    <th scope="col">Chi phí</th>
                     <th scope="col">Trạng thái thanh toán</th>
                     <th scope="col">Trạng thái thực hiện</th>
                 </tr>
@@ -30,6 +31,7 @@
                                 <span>kythi {{ \Illuminate\Support\Facades\DB::table('cet_kythi')->where('MaKythi',$makythi)->first()->TenKythi }}</span>
                             @endforeach
                         </td>
+                        <td>{{\Illuminate\Support\Facades\DB::table('le_phi_dich_vus')->where('tendichvu',$cet_dichvu->tendichvu)->first()->phidichvu}}</td>
                         <td>{{ $cet_dichvu->trangthaithanhtoan }}</td>
                         <td>{{ $cet_dichvu->trangthaithuchien }}</td>
                     </tr>
