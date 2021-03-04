@@ -9,6 +9,11 @@
         .cursor-pointer {
             cursor: pointer;
         }
+        label.error {
+            font-size: 1rem;
+            color: red;
+
+        }
     </style>
 @endsection
 
@@ -32,7 +37,11 @@
                 <table id="tableQuestion" class="table">
                     <thead>
                     <tr>
-                        <th></th>
+                        <th>
+                            <div class="d-flex align-items-center h-100 mb-2">
+                                <input id="checkAll" class="form-check-input" type="checkbox">
+                            </div>
+                        </th>
                         <th width="13%">Người gửi</th>
                         <th width="30%">Nội dung</th>
                         <th>Loại câu hỏi</th>
@@ -68,7 +77,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary save-data" data-dismiss="modal">Lưu</button>
+                    <button type="button" class="btn btn-primary save-data">Lưu</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                 </div>
             </div>
@@ -89,13 +98,13 @@
                     <form id="form-reply">
                         @csrf
                         <div class="form-group">
-                            <label for="contetn-reply" class="col-form-label">Nhập nội dung:</label>
-                            <textarea class="form-control" id="contetn-reply" name="reply" rows="5"></textarea>
+                            <label for="content-reply" class="col-form-label">Nhập nội dung:</label>
+                            <textarea class="form-control" id="content-reply" name="reply" rows="5"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary submit-reply" data-dismiss="modal">Lưu</button>
+                    <button type="button" class="btn btn-primary submit-reply">Lưu</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                 </div>
             </div>
@@ -105,13 +114,17 @@
 @endsection
 
 @section('script')
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
     <script>
         var questionReplyUrl = '{{ route('admin.question.reply', ':id') }}'
         var questionChangeTypeUrl = '{{ route('admin.question.change.type', ':id') }}'
         var questionEditTypeUrl = '{{ route('admin.question.edit', ':id') }}'
         var getQuestions = '{{ route('admin.question.data') }}'
-
         $(document).ready(function () {
+
+            $("#checkAll").click(function(){
+                $('input:checkbox').not(this).prop('checked', this.checked);
+            });
             var tableQuestion = $('#tableQuestion').DataTable({
                 ajax: getQuestions,
                 order: [],
@@ -147,9 +160,7 @@
                             return `<a class="reply" data-id="${question.id}" data-toggle="modal"
                                                    data-target="#exampleModalCenter" data-whatever="Trả lời câu hỏi">
                                                     <div class="w-100">
-                                                        <p class="text-primary text-break cursor-pointer">
-                                                            ${question.question_reply == null ? "---" : question.question_reply.content}
-                                                        </p>
+                                                        <p class="text-primary text-break cursor-pointer">${question.question_reply == null ? "---" : question.question_reply.content}</p>
                                                     </div>
                                     </a>`
                         }
@@ -166,18 +177,23 @@
             $(document).on('click', '.reply', function () {
                 idQestion = $(this).data('id');
                 let text = $(this).text();
-                $('#contetn-reply').val(text);
+                text = text.trim()
+                $('#content-reply').val(text);
             });
 
             $('.submit-reply').click(function () {
-                $.ajax({
+                if ($("#form-reply").valid()) {
+                    $.ajax({
                     type: 'POST',
                     url: questionReplyUrl.replace(':id', idQestion),
                     data: $("#form-reply").serialize(),
                     success: function () {
                         tableQuestion.ajax.reload();
+                        $('#exampleModalCenter').modal('hide');
                     }
                 });
+                }
+
             });
             $(document).on('click', ".question-type", function () {
                 if (confirm("Bạn có muốn thay đổi!")) {
@@ -228,14 +244,18 @@
             });
 
             $('.save-data').click(function () {
-                $.ajax({
-                    type: 'POST',
-                    url: questionEditTypeUrl.replace(':id', idQestion),
-                    data: $('#form-modal').serialize(),
-                    success: function () {
-                        tableQuestion.ajax.reload()
-                    }
-                });
+                if ($("#form-modal").valid()) {
+                    $.ajax({
+                        type: 'POST',
+                        url: questionEditTypeUrl.replace(':id', idQestion),
+                        data: $('#form-modal').serialize(),
+                        success: function () {
+                            tableQuestion.ajax.reload();
+                            $("#exampleModal").modal("hide");
+                        }
+                    });
+                }
+
             });
 
             $(document).on('click', '.delete-list', function () {
@@ -279,7 +299,41 @@
                     });
                 }
             });
+            //validate
+            $("#form-reply").validate({
+                onfocusout: false,
+                onkeyup: false,
+                onclick: false,
+                rules: {
+                    "reply": {
+                        required: true,
+                    }
+                },
+                messages: {
+                    "reply" : {
+                        required: "Bạn chưa nhập nội dung"
+                    }
+                }
+            });
+
+            $("#form-modal").validate({
+                onfocusout: false,
+                onkeyup: false,
+                onclick: false,
+                rules: {
+                    "question": {
+                        required: true,
+                    }
+                },
+                messages: {
+                    "question" : {
+                        required: "Bạn chưa nhập nội dung"
+                    }
+                }
+            });
+
         });
+
     </script>
 
 @endsection
