@@ -179,9 +179,6 @@
                         $('.newMessenger').append(data);
                         $('#messenger').val(' ');
                         $("div").scrollTop(10000);
-
-
-                        //location.reload();
                     }
                 });
             });
