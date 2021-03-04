@@ -12,7 +12,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        return redirect()->route('cet.home');
+        return view('user.cet-infomation.trangchu');
     }
 
     public function question()
@@ -34,6 +34,7 @@ class HomeController extends Controller
         ->get();
         return view('home.question.question-detail',[
             'question' => $question,
-            'question_detail' => $question_detail]);
+            'question_detail' => $question_detail
+        ]);
     }
 }

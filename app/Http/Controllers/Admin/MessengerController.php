@@ -57,6 +57,7 @@ class MessengerController extends Controller
 //                </div>
 //              </div>';
 
+
      echo  ' <div class="media w-75 ml-auto mb-3" >
                                 <div class="media-body">
                                   <div class="bg-primary rounded py-2 px-3 mb-2">
@@ -65,6 +66,7 @@ class MessengerController extends Controller
                                  <p class="small text-muted">'.$messenger->created_at.'</p>
                                 </div>
                               </div>';
+
     }
 
 

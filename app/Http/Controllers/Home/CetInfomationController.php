@@ -38,4 +38,12 @@ class CetInfomationController extends Controller
             'infomation_kythi' => $infomation_kythi,
             'infomation_sukien' => $infomation_sukien]);
     }
+
+    public function trangchu() {
+        $infomation_kythi = DB::table('cet_kythi')->orderBy('Handangky','desc')->limit(3)->get();
+        $infomation_sukien = DB::table('cet_event')->orderBy('id','desc')->limit(4)->get();
+        return view('user.cet-infomation.trangchu',[
+            'infomation_kythi' => $infomation_kythi,
+            'infomation_sukien' => $infomation_sukien]);
+    }
 }
