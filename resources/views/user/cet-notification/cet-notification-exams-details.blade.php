@@ -189,19 +189,6 @@
                             </div>
                         </div>
                     </div>
-                    <br>
-                    <div class="blog-tags">
-                        <h4>Các từ khóa</h4>
-                        <div class="tag-item">
-                            <a href="#">Kỳ thi</a>
-                            <a href="#">Sự kiện</a>
-                            <a href="#">Môn thi</a>
-                            <a href="#">Dresses</a>
-                            <a href="#">Trousers</a>
-                            <a href="#">Men's hats</a>
-                            <a href="#">Backpack</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

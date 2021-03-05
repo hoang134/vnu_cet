@@ -23,6 +23,11 @@ class LoginController extends Controller
     {
     
         $credentials = $request->only(['Email', 'password']);
+        $user_mysql = DB::select("select user from mysql.user where user = '$request->Email'");
+        if(!$user_mysql) {
+            return redirect()->route('login')
+                ->with('error','Tài khoản không tồn tại');
+        }
         if(auth()->attempt($credentials))
         {
             if(Auth::user()->Trangthai == 1) {

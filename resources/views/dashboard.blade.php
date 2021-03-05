@@ -312,6 +312,22 @@
                             <button type="button">Gửi</button>
                         </form>
                     </div>
+                    <section class="blog-section mt-lg-2">
+                        <div class="col-lg-12">
+                            <div class="blog-sidebar">
+                                <div class="blog-tags">
+                                    <div class="tag-item">
+                                        <a>Kỳ thi</a>
+                                        <a href="#">Môn thi</a>
+                                        <a href="#">Sự kiện</a>
+                                        <a href="#">Đánh giá</a>
+                                        <a href="#">Trousers</a>
+                                        <a href="#">Men's hats</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>

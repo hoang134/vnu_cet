@@ -42,7 +42,7 @@
                     <button class="btn-payment" type="submit" value="{{ $paymentMenthod->name }}"name="{{ $paymentMenthod->name }}">
                         {{ $paymentMenthod->name }}
                     </button>
-            @endforeach
+                @endforeach
             </div>
 
         </form>

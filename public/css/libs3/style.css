@@ -1514,7 +1514,7 @@ ol {
 
 .footer-section {
 	background: #199045;
-	padding-top: 75px;
+	padding-top: 25px;
 }
 
 .footer-left {
@@ -1595,6 +1595,10 @@ ol {
 	color: #ffffff;
 }
 
+.footer-widget ul li a:hover {
+	color: #000000;
+}
+
 .newslatter-item h5 {
 	color: #ffffff;
 	font-weight: 700;
@@ -1658,7 +1662,7 @@ ol {
 .copyright-reserved {
 	border-top: 1px solid #303030;
 	padding: 15px 0;
-	margin-top: 45px;
+	margin-top: 25px;
 }
 
 .copyright-reserved .copyright-text {
@@ -3082,8 +3086,8 @@ ol {
 -----------------------*/
 
 .blog-section {
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
 
 .blog-section .loading-more {
@@ -3215,7 +3219,7 @@ ol {
 .blog-sidebar .blog-tags .tag-item a {
 	display: inline-block;
 	font-size: 16px;
-	color: #636363;
+	color: #ffffff;
 	padding: 5px 15px;
 	border: 1px solid #ebebeb;
 	margin-right: 5px;
@@ -3995,7 +3999,7 @@ ol {
 		padding-top: 30px;
 	}
 	.blog-tags {
-		padding-bottom: 40px;
+		padding-bottom: 10px;
 	}
 	.blog-details-inner .blog-post .prev-blog {
 		margin-bottom: 40px;

@@ -22,6 +22,6 @@ class CheckLogin
         else if (Auth::guard('admin')->check())
             return $next($request);
         else
-            return redirect()->route('home');
+            return redirect()->route('trangchu');
     }
 }

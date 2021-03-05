@@ -68,7 +68,7 @@
                                                 <div class="col-md-12">
                                                     <div class="blog-box">
                                                         <div class="blog-meta big-meta">
-                                                            <p><a href="{{ route('question.detail', $question->id) }}" title="">{{$question->content}}</a></p>
+                                                            <p><a href="{{ route('question.detail', $question->id) }}" title="" style="display: -webkit-box;margin: 0 auto;line-height: 1.3;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">{{$question->content}}</a></p>
                                                             <small>@if($question->type == "public")
                                                             <span class="color-orange" style="display: inline;"><a title="">Câu hỏi chung</a></span>
                                                             @else
@@ -93,12 +93,7 @@
                 <div class="col-lg-3">
                     <div class="blog-sidebar">
                         <div class="recent-post">
-                            <h4>m</h4>
-                            
-                        </div>
-                        <div class="recent-post">
                         <h4>Trang liên kết</h4>
-                            <br>
                             <div class="blog-list-widget">
                                 <div class="list-group">
                                     <a href="http://tracuu.dgnl.edu.vn/" class="l">
@@ -158,19 +153,6 @@
                                         <i class="fa fa-youtube"></i>
                                     </a>
                                 </div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="blog-tags">
-                            <h4>Các từ khóa</h4>
-                            <div class="tag-item">
-                                <a href="#">Towel</a>
-                                <a href="#">Shoes</a>
-                                <a href="#">Coat</a>
-                                <a href="#">Dresses</a>
-                                <a href="#">Trousers</a>
-                                <a href="#">Men's hats</a>
-                                <a href="#">Backpack</a>
                             </div>
                         </div>
                     </div>
