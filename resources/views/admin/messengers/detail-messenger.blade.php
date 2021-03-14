@@ -80,10 +80,11 @@ input::placeholder {
                               </div>
                           @endif
                       @endforeach
-                    </div>
-                    <div class="newMessenger">
+                      <div class="newMessenger">
 
                     </div>
+                    </div>
+             
                     <div class="">
                         <form id="Form-data" class="bg-light w-100">
                           @csrf

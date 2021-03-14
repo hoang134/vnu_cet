@@ -22,7 +22,7 @@ class MailController extends Controller
 
     	$user_check = DB::select("select Email,tendangnhap from cet_student_acc where Email = '$request->Email'");
         $user_mysql = DB::select("select user from mysql.user where user = '$request->Email'");
-    	if($user_check or $user_mysql) {
+    	if($user_check) {
     		return redirect()->route('forgotpassword')->with('error','Email của bạn đã được đăng ký,hãy lấy lại mật khẩu.');
     	}
 

@@ -37,7 +37,6 @@ class MessengerController extends Controller
         echo ' <li class="out">
                 <div class="chat-body">
                     <div class="chat-message">
-                        <h5>'.Auth::user()->Hoten.'</h5>
                         <p>'.$messenger->content.'</p>
                     </div>
                 </div>

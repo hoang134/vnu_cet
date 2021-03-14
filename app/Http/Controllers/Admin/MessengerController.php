@@ -48,7 +48,7 @@ class MessengerController extends Controller
           $e = new ChatEvent($messenger)
       );
       
-      echo '<div class="media w-75 ml-auto mb-3" id="newMessenger">
+      echo '<div class="media w-75 ml-auto mb-3">
               <div class="media-body">
                 <div class="bg-primary rounded py-2 px-3 mb-2">
                   <p class="text-small mb-0 text-white">' .

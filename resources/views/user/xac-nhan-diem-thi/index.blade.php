@@ -26,7 +26,7 @@
                         <tr>
                             <th scope="col">Tên Học Sinh</th>
                             <th scope="col">Dịch vụ</th>
-                            <th scope="col">kỳ thi</th>
+                            <th scope="col">Đợt thi</th>
                             <th scope="col">Chi phí</th>
                             <th scope="col">Trạng thái thanh toán</th>
                             <th scope="col">Trạng thái thực hiện</th>

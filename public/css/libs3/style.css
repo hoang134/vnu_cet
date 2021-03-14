@@ -1596,7 +1596,7 @@ ol {
 }
 
 .footer-widget ul li a:hover {
-	color: #000000;
+	color: #a7335c;
 }
 
 .newslatter-item h5 {
@@ -1615,8 +1615,8 @@ ol {
 }
 
 .newslatter-item .subscribe-form input {
-	color: #ffffff;
-	background: #303030;
+	color: black;
+	background: #ffffff;
 	width: 100%;
 	height: 46px;
 	font-size: 16px;
@@ -1641,7 +1641,7 @@ ol {
 }
 
 .newslatter-item .subscribe-form input::placeholder {
-	color: #ffffff;
+	color: black;
 }
 
 .newslatter-item .subscribe-form button {
@@ -3220,11 +3220,12 @@ ol {
 	display: inline-block;
 	font-size: 16px;
 	color: #ffffff;
-	padding: 5px 15px;
+	padding: 1px 3px;
 	border: 1px solid #ebebeb;
 	margin-right: 5px;
 	margin-bottom: 9px;
 	border-radius: 2px;
+	background-color: #199045;
 }
 
 .blog-item {
@@ -3941,7 +3942,7 @@ ol {
 		max-width: 64%;
 	}
 	.nav-item .nav-menu li a {
-		padding: 16px 26px 15px;
+		padding: 10px 15px 10px;
 	}
 	.hero-items .owl-nav button[type=button] {
 		left: 5px;
@@ -4639,4 +4640,27 @@ ol {
     transform: rotate(360deg);
     opacity: 1;
     z-index: 1;
+}
+
+.collapsible-question {
+  background-color: #ffffff;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+.collapsible-question:hover {
+  background-color: #ccc;
+}
+
+.content-question {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  width: 100%;
 }

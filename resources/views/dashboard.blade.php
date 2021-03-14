@@ -9,25 +9,20 @@
     <meta name="author" content="">
     <title>Trang khảo thí</title>
 
-    <link href="{{asset('css/libs3/toastr.css')}}" rel="stylesheet">
-
     <link rel="stylesheet" href="{{asset('css/libs3/bootstrap.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/libs3/font-awesome.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('css/libs3/themify-icons.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('css/libs3/elegant-icons.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/libs3/owl.carousel.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('css/libs3/nice-select.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('css/libs3/jquery-ui.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/libs3/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/libs3/style.css')}}" type="text/css">
-{{--    PDF--}}
+    <link rel="stylesheet" href="{{asset('css/libs3/toastr.css')}}" type="text/css">
+    <!-- PDF -->
     <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
     <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     @yield('style')
 </head>
 <body>
-    <!-- Header Section Begin -->
+    
     <header class="header-section">
         <div class="header-top">
             <div class="container">
@@ -85,18 +80,18 @@
             <div class="inner-header">
                 <div class="row">
                     <div class="col-lg-2 col-md-2">
-                        <a href="{{route('cet.home')}}">
+                        <a href="{{route('trangchu')}}">
                             @foreach(\Illuminate\Support\Facades\DB::table('cet_logo')->get() as $logo)
                             <img src="{{asset($logo->imagelogo)}}" alt="" width="100%" height="100%" style="max-height:109px;max-width:259px;">
                             @endforeach
                         </a>
                     </div>
                     <div class="col-lg-7 col-md-7 mt-3">
-                        <div class="advanced-search">
-                            <div class="input-group">
-                                <input type="text" placeholder="Từ khóa cần tìm" style="border:1px solid #f2f2f2;border-radius: 10px;">
-                                <button type="button"><i class="ti-search"></i></button>
-                            </div>
+                        <div class="newslatter-item">
+                            <form action="#" class="subscribe-form">
+                                <input type="text" placeholder="Từ khóa cần tìm..." style="background-color: white;border: 1px solid #dee2e6;color: black;">
+                                <button type="button"><i class="fa fa-search"></i></button>
+                            </form>
                         </div>
                     </div>
                     <div class="col-lg-3 text-right col-md-3">
@@ -112,20 +107,22 @@
             </div>
         </div>
         @else
-       <div class="container">
+        <div class="container">
             <div class="inner-header">
                 <div class="row">
                     <div class="col-lg-2 col-md-2">
-                        @foreach(\Illuminate\Support\Facades\DB::table('cet_logo')->get() as $logo)
+                        <a href="{{route('trangchu')}}">
+                            @foreach(\Illuminate\Support\Facades\DB::table('cet_logo')->get() as $logo)
                             <img src="{{asset($logo->imagelogo)}}" alt="" width="100%" height="100%" style="max-height:109px;max-width:259px;">
                             @endforeach
+                        </a>
                     </div>
                     <div class="col-lg-8 col-md-8 mt-3">
-                        <div class="advanced-search">
-                            <div class="input-group">
-                                <input type="text" placeholder="Từ khóa cần tìm" style="border:1px solid #f2f2f2;border-radius: 10px;">
-                                <button type="button"><i class="ti-search"></i></button>
-                            </div>
+                        <div class="newslatter-item">
+                            <form action="#" class="subscribe-form">
+                                <input type="text" placeholder="Từ khóa cần tìm..." style="background-color: white;border: 1px solid #dee2e6;color: black;">
+                                <button type="button"><i class="fa fa-search"></i></button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -147,7 +144,7 @@
                         <li><a> Tin tức</a>
                             <ul class="dropdown">
                                 <li><a href="{{route('cet.notification.event')}}">Các sự kiện</a></li>
-                                <li><a href="{{route('cet.notification.exam')}}">Các kỳ thi</a></li>
+                                <li><a href="{{route('cet.notification.exam')}}">Các đợt thi</a></li>
                             </ul>
                         </li>
                         @if(Auth::check())
@@ -177,7 +174,7 @@
                                 <li><a href="{{route('student.my.question')}}">Trao đổi riêng</a></li>
                             </ul>
                         </li>
-                        <li><a> Dịch vụ</a>
+                        <li><a> Tra cứu</a>
                           <ul class="dropdown">
                               <li><a>Thu phí</a>
                               <li><a href="{{route('student.service')}}">Dịch vụ khác</a>
@@ -199,7 +196,6 @@
             </div>
         </div>
     </header>
-    <!-- Header End -->
 
     @yield('banner')
     @yield('content')
@@ -309,7 +305,7 @@
                         <p>Hãy để lại địa chỉ email của bạn</p>
                         <form action="#" class="subscribe-form">
                             <input type="text" placeholder="Nhập email của bạn.">
-                            <button type="button">Gửi</button>
+                            <button type="button"><i class="fa fa-send"></i></button>
                         </form>
                     </div>
                     <section class="blog-section mt-lg-2">
@@ -360,13 +356,8 @@
     </div>
 @endif
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{asset('js/libs3/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('js/libs3/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/libs3/jquery-ui.min.js')}}"></script>
-    <script src="{{asset('js/libs3/jquery.countdown.min.js')}}"></script>
-    <script src="{{asset('js/libs3/jquery.nice-select.min.js')}}"></script>
-    <script src="{{asset('js/libs3/jquery.zoom.min.js')}}"></script>
-    <script src="{{asset('js/libs3/jquery.dd.min.js')}}"></script>
     <script src="{{asset('js/libs3/jquery.slicknav.js')}}"></script>
     <script src="{{asset('js/libs3/owl.carousel.min.js')}}"></script>
     <script src="{{asset('js/libs3/main.js')}}"></script>

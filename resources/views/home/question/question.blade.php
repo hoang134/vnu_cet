@@ -17,25 +17,12 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="row">
-                        <div class="custombox clearfix" style="width: 100%;border:none;">
-                <li class="dropdown no-arrow" style="list-style: none;">
-                  <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Đặt câu hỏi
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                    aria-labelledby="searchDropdown" style="width: 400px;border: none;">
-                      <form id="Form-data" class="w-100" action="{{ route('student.question.create') }}" method="post" style="border: 1px solid grey;">
+                        <button type="button" class="collapsible-question">Đặt câu hỏi</button>
+                        <div class="content-question">
+                          <form id="Form-data" class="w-100" action="{{ route('student.question.create') }}" method="post">
                               @csrf
                               <div class="panel panel-primary" style="margin: 5px;padding: 5px;">
-                                <div class="panel-heading">
-                                    <h2 class="text-center">Đặt câu hỏi mới</h2>
-                                </div>
                                 <div class="panel-body">
-                                    <div class="form-group">
-                                      <label for="usr">Tiêu đề</label>
-                                      <input type="text" class="form-control" id="usr">
-                                    </div>
                                     <div class="form-group">
                                       <label for="email">Nội dung câu hỏi</label>
                                       <div class="input-group">
@@ -48,10 +35,8 @@
 
                                 </div>
                             </div>
-                          </form>  
-                  </div>
-                </li>
-            </div>
+                          </form>
+                        </div>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -160,4 +145,20 @@
             </div>
         </div>
     </section>
+    <script type="text/javascript">
+        var coll = document.getElementsByClassName("collapsible-question");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+    </script>
 @endsection

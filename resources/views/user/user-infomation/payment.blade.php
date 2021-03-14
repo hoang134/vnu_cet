@@ -33,7 +33,7 @@
         </div>
 
         <div style="display: flex">
-            <h4 style="margin:auto">thông báo </h4>
+            <h4 style="margin:auto">Thông báo </h4>
         </div>
         <form action="{{ route('student.payment.store') }}" method="post">
             @csrf

@@ -25,14 +25,14 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
                     <a href="{{route('trangchu')}}"><i class="fa fa-home"></i> Trang chủ</a>
-                    <a href=""> Sự kiện</a>
+                    <a href="{{route('cet.notification.event')}}"> Sự kiện</a>
                     <span>Chi tiết sự kiện</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<br>
 <section class="blog-section spad">
     <div class="container">
         <div class="row">

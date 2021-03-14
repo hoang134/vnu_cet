@@ -6,13 +6,13 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
                     <a href="{{route('trangchu')}}"><i class="fa fa-home"></i> Trang chủ</a>
-                    <span>Kỳ thi</span>
+                    <span>Đợt thi</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<br>
 <section class="blog-section spad">
     <div class="container">
         <div class="row">
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <div class="recent-post">
-                        <h4>Kỳ thi mới</h4>
+                        <h4>Đợt thi mới</h4>
                         <div class="recent-blog">
                             @foreach($infomation_kythi as $infomation_kythi_value)
                             <a href="{{ route('cet.notification.exam.detail', $infomation_kythi_value->MaKythi) }}" class="rb-item">

@@ -25,14 +25,14 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
                     <a href="{{route('trangchu')}}"><i class="fa fa-home"></i> Trang chủ</a>
-                    <a href=""> Kỳ thi</a>
-                    <span>Chi tiết kỳ thi</span>
+                    <a href="{{route('cet.notification.exam')}}"> Đợt thi</a>
+                    <span>Chi tiết đợt thi</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<br>
 <section class="blog-section spad">
     <div class="container">
         <div class="row">
@@ -51,7 +51,7 @@
                                         <div class="ml-4">
                                         @foreach($exam_detail as $detail)
                                         <p>
-                                            <strong>Mã kỳ thi</strong>:{{$detail->MaKythi}}
+                                            <strong>Mã đợt thi</strong>:{{$detail->MaKythi}}
                                         </p>
                                         <p><strong>Hạn đăng ký</strong>:{{$detail->Handangky}}</p>
                                         <p><strong>Ngày thi từ</strong>:{{$detail->Tungay}} - {{$detail->Toingay}}</p>
@@ -71,7 +71,7 @@
                                             @endforeach
                                         </p>
 
-                                        <p><strong>Mô tả kỳ thi</strong>:<br>
+                                        <p><strong>Mô tả đợt thi</strong>:<br>
                                             @foreach($exam_detail as $detail)
                                                 {{$detail->Mota}}
                                             @endforeach
@@ -82,7 +82,7 @@
                                         <p>
                                             <table class="table">
                                                 <tr>
-                                                    <th>Mã môn thi</th>
+                                                    <th>Mã bài thi</th>
                                                     <th>Giờ thi</th>
                                                     <th>Ngày thi</th>
                                                     <th>Địa điểm thi</th>
@@ -111,7 +111,7 @@
             <div class="col-lg-3">
                 <div class="blog-sidebar">
                     <div class="recent-post">
-                        <h4>Kỳ thi mới</h4>
+                        <h4>Đợt thi mới</h4>
                         <div class="recent-blog">
                             @foreach($infomation_kythi as $infomation_kythi_value)
                             <a href="{{ route('cet.notification.exam.detail', $infomation_kythi_value->MaKythi) }}" class="rb-item">

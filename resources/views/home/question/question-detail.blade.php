@@ -53,7 +53,7 @@
                                 <div class="custombox clearfix" style="width: 100%;border:none;">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <form class="w-100" method="post" style="border: 1px solid grey;">
+                                            <form class="w-100" method="post">
                                               @csrf
                                               <div class="input-group">
                                                 <input type="text" name="question" placeholder="Nhập câu trả lời..." aria-describedby="button-addon2" class="form-control rounded-0 border-0 bg-light">

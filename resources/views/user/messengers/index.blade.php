@@ -10,7 +10,6 @@
             </div>
             <div class="chat-body">
                 <div class="chat-message">
-                    <h5>Trung tâm khảo thí</h5>
                     <p>{{$messenger->content}}</p>
                 </div>
             </div>
@@ -19,7 +18,6 @@
         <li class="out">
             <div class="chat-body">
                 <div class="chat-message">
-                    <h5>{{Auth::user()->Hoten}}</h5>
                     <p>{{$messenger->content}}</p>
                 </div>
             </div>
@@ -34,7 +32,7 @@
 <form id="Form-data">
     @csrf
     <div class="chat-input" style="width: 100%;position: relative;margin-bottom: -5px;">
-        <input type="" id="messenger" name="messenger" placeholder="Nhập tin nhắn..." 
+        <input type="" autocomplete="off" id="messenger" name="messenger" placeholder="Nhập tin nhắn..." 
         style="width: 100%;
         background: #ddd;
         padding: 15px 70px 15px 15px;
@@ -62,28 +60,54 @@
         </div>
     </div>
 </form>
+<audio id="Audio">
+    <source src="{{ asset('notification/notification.mp3') }}" type="audio/mpeg">
+</audio>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.socket.io/3.1.1/socket.io.min.js" integrity="sha384-gDaozqUvc4HTgo8iZjwth73C6dDDeOJsAgpxBcMpZYztUfjHXpzrpdrHRdVp8ySO" crossorigin="anonymous"></script>
 <script>
-    var studentMessengersReply = '{{ route('student.messengers.reply') }}'
-    $(document).ready(function () {
-        $('#submit').click(function (e) {
-            e.preventDefault();
-            let idUser =$(this).data('id');
-            $.ajax({
-                type:"POST",
-                url: studentMessengersReply,
-                data:$('#Form-data').serialize(),
-                success:function (data) {
-                    $('#newMessenger').append(data);
-                    $('#messenger').val(' ');
-                }
+        var studentMessengersReply = '{{ route('student.messengers.reply') }}'
+        $(document).ready(function () {
+            $('#submit').click(function (e) {
+                e.preventDefault();
+                let idUser =$(this).data('id');
+                $.ajax({
+                    type:"POST",
+                    url: studentMessengersReply,
+                    data:$('#Form-data').serialize(),
+                    success:function (data) {
+                        $('.newMessenger').append(data);
+                        $('#messenger').val(' ');
+                        $("div").scrollTop(10000);
+                    }
+                });
             });
-        });
     });
     $(document).ready(function(){
         $('#action_menu_btn').click(function(){
             $('.action_menu').toggle();
         });
-    });
-</script>
+        //soket.io
+        var urlImage = '{{ asset('images/1.png') }}';
+        var socket = io('http://localhost:6001');
+        socket.on('laravel_database_chat:message',function (data) {
+            console.log(data);
+            if (data.belong === 'admin') {
+                $('.newMessenger').append(
+                    '<li class="in">' +
+                    '<div class="chat-body">' +
+                    '<div class="chat-message">' +
+                    ' <p>' + data.content + '</p>' +
+                    '</div>' +
+                    '</div>' +
+                    '</li>'
+                );
+                var x = document.getElementById("Audio");
+                console.log(x)
+                x.play();
+                $("div").scrollTop(10000);
+            }
+        });
+        });
+    </script>

@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="recent-post">
-                            <h4>Kỳ thi mới</h4>
+                            <h4>Đợt thi mới</h4>
                             <div class="recent-blog">
                                 @foreach($infomation_kythi as $infomation_kythi_value)
                                 <a href="{{ route('cet.notification.exam.detail', $infomation_kythi_value->MaKythi) }}" class="rb-item">

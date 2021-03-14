@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="mt-3">
-                    <p class="mb-1">Chọn kỳ thi</p>
+                    <p class="mb-1">Chọn đợt thi</p>
                     <div class="ml-4">
                         @foreach($kyThis as $key => $kythi)
                             <input class="{{ $loop->first ? '' : 'ml-3' }}" name="makythis[]" type="checkbox" id="makythi{{ $key }}" value="{{$kythi->Makythi}}">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <br>
-            <button type="submit" class="btn btn-success">gửi</button>
+            <button type="submit" class="btn btn-success">Gửi</button>
             </form>
             </div>
         </div>
