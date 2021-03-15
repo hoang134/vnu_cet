@@ -17,25 +17,12 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="row">
-                        <div class="custombox clearfix" style="width: 100%;border:none;">
-                <li class="dropdown no-arrow" style="list-style: none;">
-                  <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Đặt câu hỏi
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                    aria-labelledby="searchDropdown" style="width: 400px;border: none;">
-                      <form id="Form-data" class="w-100" action="{{ route('student.question.create') }}" method="post" style="border: 1px solid grey;">
+                        <button type="button" class="collapsible-question">Đặt câu hỏi</button>
+                        <div class="content-question">
+                          <form id="Form-data" class="w-100" action="{{ route('student.question.create') }}" method="post">
                               @csrf
                               <div class="panel panel-primary" style="margin: 5px;padding: 5px;">
-                                <div class="panel-heading">
-                                    <h2 class="text-center">Đặt câu hỏi mới</h2>
-                                </div>
                                 <div class="panel-body">
-                                    <div class="form-group">
-                                      <label for="usr">Tiêu đề</label>
-                                      <input type="text" class="form-control" id="usr">
-                                    </div>
                                     <div class="form-group">
                                       <label for="email">Nội dung câu hỏi</label>
                                       <div class="input-group">
@@ -48,10 +35,8 @@
 
                                 </div>
                             </div>
-                          </form>  
-                  </div>
-                </li>
-            </div>
+                          </form>
+                        </div>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -68,7 +53,7 @@
                                                 <div class="col-md-12">
                                                     <div class="blog-box">
                                                         <div class="blog-meta big-meta">
-                                                            <p><a href="{{ route('question.detail', $question->id) }}" title="">{{$question->content}}</a></p>
+                                                            <p><a href="{{ route('question.detail', $question->id) }}" title="" style="display: -webkit-box;margin: 0 auto;line-height: 1.3;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">{{$question->content}}</a></p>
                                                             <small>@if($question->type == "public")
                                                             <span class="color-orange" style="display: inline;"><a title="">Câu hỏi chung</a></span>
                                                             @else
@@ -93,12 +78,7 @@
                 <div class="col-lg-3">
                     <div class="blog-sidebar">
                         <div class="recent-post">
-                            <h4>m</h4>
-                            
-                        </div>
-                        <div class="recent-post">
                         <h4>Trang liên kết</h4>
-                            <br>
                             <div class="blog-list-widget">
                                 <div class="list-group">
                                     <a href="http://tracuu.dgnl.edu.vn/" class="l">
@@ -160,22 +140,25 @@
                                 </div>
                             </div>
                         </div>
-                        <br>
-                        <div class="blog-tags">
-                            <h4>Các từ khóa</h4>
-                            <div class="tag-item">
-                                <a href="#">Towel</a>
-                                <a href="#">Shoes</a>
-                                <a href="#">Coat</a>
-                                <a href="#">Dresses</a>
-                                <a href="#">Trousers</a>
-                                <a href="#">Men's hats</a>
-                                <a href="#">Backpack</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <script type="text/javascript">
+        var coll = document.getElementsByClassName("collapsible-question");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+    </script>
 @endsection

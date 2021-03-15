@@ -25,14 +25,14 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
                     <a href="{{route('trangchu')}}"><i class="fa fa-home"></i> Trang chủ</a>
-                    <a href=""> Sự kiện</a>
+                    <a href="{{route('cet.notification.event')}}"> Sự kiện</a>
                     <span>Chi tiết sự kiện</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<br>
 <section class="blog-section spad">
     <div class="container">
         <div class="row">
@@ -142,19 +142,6 @@
                                     <i class="fa fa-youtube"></i>
                                 </a>
                             </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="blog-tags">
-                        <h4>Các từ khóa</h4>
-                        <div class="tag-item">
-                            <a href="#">Towel</a>
-                            <a href="#">Shoes</a>
-                            <a href="#">Coat</a>
-                            <a href="#">Dresses</a>
-                            <a href="#">Trousers</a>
-                            <a href="#">Men's hats</a>
-                            <a href="#">Backpack</a>
                         </div>
                     </div>
                 </div>

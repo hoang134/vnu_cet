@@ -6,13 +6,13 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
                     <a href="{{route('trangchu')}}"><i class="fa fa-home"></i> Trang chủ</a>
-                    <span>Kỳ thi</span>
+                    <span>Đợt thi</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<br>
 <section class="blog-section spad">
     <div class="container">
         <div class="row">
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <div class="recent-post">
-                        <h4>Kỳ thi mới</h4>
+                        <h4>Đợt thi mới</h4>
                         <div class="recent-blog">
                             @foreach($infomation_kythi as $infomation_kythi_value)
                             <a href="{{ route('cet.notification.exam.detail', $infomation_kythi_value->MaKythi) }}" class="rb-item">
@@ -141,19 +141,6 @@
                                     <i class="fa fa-youtube"></i>
                                 </a>
                             </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="blog-tags">
-                        <h4>Các từ khóa</h4>
-                        <div class="tag-item">
-                            <a href="#">Kỳ thi</a>
-                            <a href="#">Sự kiện</a>
-                            <a href="#">Môn thi</a>
-                            <a href="#">Dresses</a>
-                            <a href="#">Trousers</a>
-                            <a href="#">Men's hats</a>
-                            <a href="#">Backpack</a>
                         </div>
                     </div>
                 </div>

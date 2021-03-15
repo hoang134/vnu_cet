@@ -6,7 +6,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
                         <a href="{{route('trangchu')}}"><i class="fa fa-home"></i> Trang chủ</a>
-                        <span>Kỳ thi đã đăng ký</span>
+                        <span>Đợt thi đã đăng ký</span>
                     </div>
                 </div>
             </div>
@@ -20,8 +20,8 @@
                         <table class="table table-striped">
                             <thead>
                                 <th scope="col">Tên thí sinh</th>
-                                <th scope="col">Tên kỳ thi</th>
-                                <th scope="col">Cathi</th>
+                                <th scope="col">Tên đợt thi</th>
+                                <th scope="col">Ca thi</th>
                                 <th scope="col">Thực hiện</th>
                             </thead>
                             <tbody>
@@ -100,19 +100,6 @@
                                         <i class="fa fa-youtube"></i>
                                     </a>
                                 </div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="blog-tags">
-                            <h4>Các từ khóa</h4>
-                            <div class="tag-item">
-                                <a href="#">Towel</a>
-                                <a href="#">Shoes</a>
-                                <a href="#">Coat</a>
-                                <a href="#">Dresses</a>
-                                <a href="#">Trousers</a>
-                                <a href="#">Men's hats</a>
-                                <a href="#">Backpack</a>
                             </div>
                         </div>
                     </div>
