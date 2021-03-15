@@ -21,7 +21,7 @@
                             <thead>
                                 <th scope="col">Tên thí sinh</th>
                                 <th scope="col">Tên kỳ thi</th>
-                                <th scope="col">Cathi</th>
+                                <th scope="col">Điểm</th>
                                 <th scope="col">Thực hiện</th>
                             </thead>
                             <tbody>
@@ -29,8 +29,15 @@
                                 <tr>
                                 <td>{{ \Illuminate\Support\Facades\Auth::user()->Hoten }}</td>
                                 <td>{{ \Illuminate\Support\Facades\DB::table('cet_kythi')->where('MaKythi',$exam->Makythi)->first()->TenKythi }}</td>
-                                <td>{{ $exam->Cathi }}</td>
-                                <td><a href="{{ route('student.infor.exam',$exam->id) }}">Thông tin chi tiết</a></td>
+                                    @php
+                                       $diemthi = \Illuminate\Support\Facades\DB::table('cet_kythi_students')->where('MaKythi',$exam->Makythi)->first();
+                                    @endphp
+                                <td>{{ $diemthi != null ? 'Đã có điểm' :'Chưa có điểm' }}</td>
+                                <td><a href="{{ route('student.infor.exam',$exam->Makythi) }}">Thông tin chi tiết</a>
+
+                                    @if($diemthi != null)
+                                        <a href="{{ route('student.print.grade',$exam->Makythi) }}">In bảng điểm</a></td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>

@@ -2,7 +2,7 @@
 @section('content')
     <div>
         <div id="printJS-form">
-        <h3>Xác nhận điểm thi</h3>
+        <h3>{{ $service->name }}</h3>
         <lable>Tên học sinh:</lable>{{ $student->Hoten }} <br>
         @foreach($service->fields as $field )
             @if($field->type == 'file')

@@ -14,4 +14,9 @@ class Service extends Model
     {
         return $this->hasMany(Fields::class,'service_id','id');
     }
+
+    public function userServices()
+    {
+        return $this->hasMany(UserService::class,'service_id','id');
+    }
 }

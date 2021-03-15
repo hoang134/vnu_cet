@@ -25,6 +25,14 @@ class ServiceController extends Controller
         ]);
     }
 
+    public function listRequite()
+    {
+        $listStudentServices = UserService::orderBy('created_at', 'DESC')->get();
+        return view('user.service.list-service', [
+            'listStudentServices' => $listStudentServices
+        ]);
+    }
+
     public function createRequiteService(Request $request, $id)
     {
         DB::beginTransaction();
@@ -41,6 +49,8 @@ class ServiceController extends Controller
             $user_service = new UserService();
             $user_service->user_id = Auth::id();
             $user_service->service_id = $id;
+            $user_service->status = UserService::STATUS_INCOMPLETE;
+            $user_service->payment_status = UserService::FEE_UNPAID;
             $user_service->save();
 
             DB::commit();

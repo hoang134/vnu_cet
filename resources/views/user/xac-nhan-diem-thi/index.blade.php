@@ -1,12 +1,12 @@
 @extends('dashboard')
 @section('content')
     <div>
-        <div>
-            <h2><a href="{{ route('student.xacnhandiemthi.require') }}">Tạo yêu cầu</a></h2>
+        <div style="display: flex;flex-direction: column">
+            <h2 style="margin: 10px auto"><a href="{{ route('student.xacnhandiemthi.require') }}">Tạo yêu cầu</a></h2>
+            <h2 style="margin: auto">Danh sác yêu cầu xác nhận điểm</h2>
         </div>
-        <div>
-            <h2>Danh sác yêu cầu xác nhận điểm</h2>
-            <table class="table table-striped table-dark">
+        <div class="container">
+            <table class="table table-striped" >
                 <thead>
                 <tr>
                     <th scope="col">Tên Học Sinh</th>
