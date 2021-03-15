@@ -30,6 +30,7 @@ class MessengerController extends Controller
 
         $messengers = DB::table('messengers')->where('user_from',Auth::user()->tendangnhap)->where('user_to',$request->tendangnhap)
             ->orWhere('user_to',Auth::user()->tendangnhap)->where('user_from',$request->tendangnhap)->get();
+
         return view('admin.messengers.detail-messenger',[
             'messengers'=> $messengers,
             'user_from'=> $request->tendangnhap,
@@ -47,7 +48,7 @@ class MessengerController extends Controller
       event(
           $e = new ChatEvent($messenger)
       );
-      
+
       echo '<div class="media w-75 ml-auto mb-3">
               <div class="media-body">
                 <div class="bg-primary rounded py-2 px-3 mb-2">

@@ -84,7 +84,7 @@ input::placeholder {
 
                     </div>
                     </div>
-             
+
                     <div class="">
                         <form id="Form-data" class="bg-light w-100">
                           @csrf

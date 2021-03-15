@@ -46,5 +46,5 @@
             </div>
 
         </form>
-    </div>git
+    </div>
 @endsection

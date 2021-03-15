@@ -32,7 +32,7 @@
 <form id="Form-data">
     @csrf
     <div class="chat-input" style="width: 100%;position: relative;margin-bottom: -5px;">
-        <input type="" autocomplete="off" id="messenger" name="messenger" placeholder="Nhập tin nhắn..." 
+        <input type="" autocomplete="off" id="messenger" name="messenger" placeholder="Nhập tin nhắn..."
         style="width: 100%;
         background: #ddd;
         padding: 15px 70px 15px 15px;
@@ -43,7 +43,7 @@
         font-weight: normal;
         font-size: 13px;
         transition: border-color 0.5s ease;">
-        <div class="input-action-icon" 
+        <div class="input-action-icon"
         style="width: 61px;
         white-space: nowrap;
         position: absolute;
