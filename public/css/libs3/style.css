@@ -1514,7 +1514,7 @@ ol {
 
 .footer-section {
 	background: #199045;
-	padding-top: 75px;
+	padding-top: 25px;
 }
 
 .footer-left {
@@ -1595,6 +1595,10 @@ ol {
 	color: #ffffff;
 }
 
+.footer-widget ul li a:hover {
+	color: #a7335c;
+}
+
 .newslatter-item h5 {
 	color: #ffffff;
 	font-weight: 700;
@@ -1611,8 +1615,8 @@ ol {
 }
 
 .newslatter-item .subscribe-form input {
-	color: #ffffff;
-	background: #303030;
+	color: black;
+	background: #ffffff;
 	width: 100%;
 	height: 46px;
 	font-size: 16px;
@@ -1637,7 +1641,7 @@ ol {
 }
 
 .newslatter-item .subscribe-form input::placeholder {
-	color: #ffffff;
+	color: black;
 }
 
 .newslatter-item .subscribe-form button {
@@ -1658,7 +1662,7 @@ ol {
 .copyright-reserved {
 	border-top: 1px solid #303030;
 	padding: 15px 0;
-	margin-top: 45px;
+	margin-top: 25px;
 }
 
 .copyright-reserved .copyright-text {
@@ -3082,8 +3086,8 @@ ol {
 -----------------------*/
 
 .blog-section {
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
 
 .blog-section .loading-more {
@@ -3215,12 +3219,13 @@ ol {
 .blog-sidebar .blog-tags .tag-item a {
 	display: inline-block;
 	font-size: 16px;
-	color: #636363;
-	padding: 5px 15px;
+	color: #ffffff;
+	padding: 1px 3px;
 	border: 1px solid #ebebeb;
 	margin-right: 5px;
 	margin-bottom: 9px;
 	border-radius: 2px;
+	background-color: #199045;
 }
 
 .blog-item {
@@ -3937,7 +3942,7 @@ ol {
 		max-width: 64%;
 	}
 	.nav-item .nav-menu li a {
-		padding: 16px 26px 15px;
+		padding: 10px 15px 10px;
 	}
 	.hero-items .owl-nav button[type=button] {
 		left: 5px;
@@ -3995,7 +4000,7 @@ ol {
 		padding-top: 30px;
 	}
 	.blog-tags {
-		padding-bottom: 40px;
+		padding-bottom: 10px;
 	}
 	.blog-details-inner .blog-post .prev-blog {
 		margin-bottom: 40px;
@@ -4635,4 +4640,27 @@ ol {
     transform: rotate(360deg);
     opacity: 1;
     z-index: 1;
+}
+
+.collapsible-question {
+  background-color: #ffffff;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+.collapsible-question:hover {
+  background-color: #ccc;
+}
+
+.content-question {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  width: 100%;
 }

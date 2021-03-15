@@ -1,24 +1,21 @@
 @extends('admin.layout')
 
-@section('style')
-    <link rel="stylesheet" href="{{ asset('/css/admin/service/create.css') }}">
-@endsection
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-white">Thêm dịch vụ</h1>
+    <h1 class="h3 mb-0">Thêm dịch vụ</h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Trang chủ</a></li>
         <li class="breadcrumb-item" aria-current="page">Dịch vụ</li>
-        <li class="breadcrumb-item" aria-current="page">Thêm dịch vụ</li>
+        <li class="breadcrumb-item" aria-current="page">Quản lý dịch vụ</li>
+        <li class="breadcrumb-item" aria-current="page">Sửa dịch vụ</li>
     </ol>
 </div>
 <hr class="sidebar-divider badge-light">
-    <h3 class="card-title text-white">Tạo yêu cầu cho dịch vụ</h3>
     <form class="mt-5" action="{{ route('admin.service.update', $service->id) }}" method="post" >
         @csrf
         @method('PUT')
         <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label text-white">Tên dịch vụ</label>
+            <label for="name" class="col-sm-2 col-form-label">Tên dịch vụ</label>
             <div class="col-sm-8 col-lg-6">
                 <input type="text" class="form-control" id="name" placeholder="Tên dịch vụ" name="name" value="{{ $service->name }}">
                 @if ($errors->has('name'))
@@ -28,7 +25,7 @@
         </div>
 
         <div class="form-group row">
-            <label for="fee" class="col-sm-2 col-form-label text-white">Giá</label>
+            <label for="fee" class="col-sm-2 col-form-label">Giá</label>
             <div class="col-sm-8 col-lg-6">
                 <input type="number" class="form-control" id="fee" placeholder="Giá" name="fee" value="{{ $service->fee }}">
             </div>
@@ -36,20 +33,20 @@
 
         <div class="field-list">
             @foreach($service->fields as $key => $field)
-            <div class="field-item card mt-3" data-field-index="{{ $key }}">
+            <div class="field-item badge-dark mt-3" data-field-index="{{ $key }}">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h5 class="card-title text-white">Trường</h5>
+                        <h5 class="card-title">Trường</h5>
                         <i class="delete-field fa fa-trash-alt cursor-pointer"></i>
                     </div>
                     <div class="form-group row">
-                        <label for="name1" class="col-sm-2 col-form-label text-white">Tên</label>
+                        <label for="name1" class="col-sm-2 col-form-label">Tên trường</label>
                         <div class="col-sm-8 col-lg-6">
                             <input type="text" class="form-control" id="name1" placeholder="Tên" name="fields[{{ $key }}][name]" value="{{ $field->name }}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="type1" class="col-sm-2 col-form-label text-white">Type</label>
+                        <label for="type1" class="col-sm-2 col-form-label">Kiểu dữ liệu</label>
                         <div class="col-sm-8 col-lg-6">
                             <select class="field-type form-control" id="type1" name="fields[{{ $key }}][type]">
                                 <option {{ $field->type == 'text' ? 'selected' : '' }} value="text">Text</option>
@@ -64,17 +61,17 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label text-white">Validate</label>
+                        <label for="name" class="col-sm-2 col-form-label">Validate</label>
                         <div class="col-sm-8 col-lg-6">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="fields[{{ $key }}][validate]" id="validate1" value="required" {{ $field->validate == 'required' ? 'checked' : '' }}>
-                                <label class="form-check-label text-white" for="validate1">
+                                <label class="form-check-label" for="validate1">
                                     Required
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="fields[{{ $key }}][validate]" id="validate2" value="option" {{ $field->validate == 'option' ? 'checked' : '' }}>
-                                <label class="form-check-label text-white" for="validate2">
+                                <label class="form-check-label" for="validate2">
                                     Option
                                 </label>
                             </div>
@@ -87,11 +84,11 @@
                                 $values = json_decode($field->value);
                             @endphp
                             <div class="card-body">
-                                <h6 class="card-title text-white">Values</h6>
+                                <h6 class="card-title">Values</h6>
                                 <div class="list-value">
                                     @foreach($values as $vKey => $value)
                                         <div class="value-item form-group row" data-value-index="{{ $vKey }}">
-                                            <label for="value{{ $vKey }}0" class="col-sm-2 col-form-label text-white">Value</label>
+                                            <label for="value{{ $vKey }}0" class="col-sm-2 col-form-label">Value</label>
                                             <div class="col-sm-8 col-lg-6">
                                                 <input type="text" class="form-control" id="value{{ $vKey }}0" placeholder="Value" name="fields[{{ $vKey }}][values][]" value="{{ $value }}">
                                             </div>

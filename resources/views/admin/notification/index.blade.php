@@ -50,7 +50,7 @@
                         <a href="{{route('admin.edit.notification',$event->id)}}">
                             <i class="fa fa-edit"></i>Sửa
                         </a>
-                        <a href="{{route('admin.delete.notification',$event->id)}}"><i class="fa fa-trash text-danger"></i>Xóa</a>
+                        <a href="{{route('admin.delete.notification',$event->id)}}" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"><i class="fa fa-trash text-danger"></i>Xóa</a>
                     </div>
                 </td>
             </tr>

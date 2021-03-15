@@ -12,7 +12,7 @@
         </div>
     </div>
 </div>
-
+<br>
 <section class="blog-section spad">
     <div class="container">
         <div class="row">
@@ -24,7 +24,7 @@
                             <div class="col-md-4">
                                 <div class="post-media">
                                     <a href="{{route('cet.notification.event.detail',$event->id)}}" title="">
-                                        <img src="{{asset('$event->imagetitle')}}" alt="" class="img-fluid">
+                                        <img src="{{asset($event->imagetitle)}}" alt="" class="img-fluid">
                                         <div class="hovereffect"></div>
                                     </a>
                                 </div><!-- end media -->
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <div class="recent-post">
-                        <h4>Kỳ thi mới</h4>
+                        <h4>Đợt thi mới</h4>
                         <div class="recent-blog">
                             @foreach($infomation_kythi as $infomation_kythi_value)
                             <a href="{{ route('cet.notification.exam.detail', $infomation_kythi_value->MaKythi) }}" class="rb-item">
@@ -141,19 +141,6 @@
                                     <i class="fa fa-youtube"></i>
                                 </a>
                             </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="blog-tags">
-                        <h4>Các từ khóa</h4>
-                        <div class="tag-item">
-                            <a href="#">Towel</a>
-                            <a href="#">Shoes</a>
-                            <a href="#">Coat</a>
-                            <a href="#">Dresses</a>
-                            <a href="#">Trousers</a>
-                            <a href="#">Men's hats</a>
-                            <a href="#">Backpack</a>
                         </div>
                     </div>
                 </div>

@@ -11,30 +11,20 @@
   <link href="img/logo/logo.png" rel="icon">
   <title>@yield('title')</title>
 
-  <link rel="stylesheet" type="text/css" href="{{asset('js/libs/jquery/jquery.nicescroll.min.js')}}">
   <link href="{{asset('css/libs/ruang-admin.min.css')}}" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
-
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.23/datatables.min.css"/>
-
-
-  {{--    PDF--}}
-  <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
-  <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
-
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
+  
+  <link href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.23/datatables.min.css" rel="stylesheet" type="text/css"/>
+  <!-- PDF -->
+  <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
   @yield('style')
 
 </head>
 
 <body id="page-top">
   <div id="wrapper">
-    <!-- Sidebar -->
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.home') }}">
         <div class="sidebar-brand-icon">
@@ -133,10 +123,9 @@
       <hr class="sidebar-divider">
       <div class="version" id="version-ruangadmin"></div>
     </ul>
-    <!-- Sidebar -->
+  
     <div id="content-wrapper" class="d-flex flex-column" style="background-color: #f2f2f2;">
       <div id="content">
-        <!-- TopBar -->
         <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
           <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
             <i class="fa fa-bars"></i>
@@ -174,11 +163,7 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Thông tin tài khoản
                 </a>
-                <!-- <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
- -->                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Đổi mật khẩu<u></u>
                 </a>
@@ -191,17 +176,14 @@
             </li>
           </ul>
         </nav>
-        <!-- Topbar -->
-
-        <!-- Container Fluid-->
+        
         <div class="container-fluid" id="container-wrapper">
          <div style="margin:10px;padding: 10px;">
             @yield('content')
           </div>
         </div>
-        <!---Container Fluid-->
       </div>
-      <!-- Footer -->
+
       <footer class="sticky-footer" style="background-color: #343a40;">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
@@ -209,22 +191,17 @@
           </div>
         </div>
       </footer>
-      <!-- Footer -->
     </div>
   </div>
 
-  <!-- Scroll to top -->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <script src="{{asset('js/libs/ruang-admin.js')}}"></script>
   <script src="{{asset('css/ckeditor/ckeditor.js')}}"></script>
   <script src="{{asset('css/ckeditor/ckfinder/ckfinder.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.23/datatables.min.js"></script>
-
+  <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 
   <script type="text/javascript">
         @if(session('success'))

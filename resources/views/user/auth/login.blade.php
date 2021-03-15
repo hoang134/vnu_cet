@@ -5,8 +5,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
     <link rel="stylesheet" type="text/css" href="{{asset('css/libs3/login.css')}}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
-    
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
 </head>
 
 <body>
@@ -19,7 +17,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center form_container">
-                    <form id="loginform" action="{{route('login')}}"  method="post">
+                    <form id="loginform" method="post" action="{{route('login')}}">
                         @csrf
                         <center>
                           <div class="mb-3">
@@ -36,26 +34,26 @@
 				            <input type="text" name="Email" id="Email" autocomplete="Email" class="form-control input_user" value="" placeholder="Tên đăng nhập">
                         </div>
 
-                        <small><label id="Email-error" class="error" for="Email"></label></small>
+                        <small><span id="Email-error" class="error" for="Email"></span></small>
                         
                         <div class="input-group mb-2">
                             <div class=" input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
 
-				            <input type="password" name="password" id="password" autocomplete="current-password" class="form-control input_pass" value="" placeholder="Mật khẩu">
+				            <input type="password" name="password" id="password" autocomplete="current-password" class="form-control input_pass" value="" placeholder="Mật khẩu" minlength="6" maxlength="15" onkeyup="javascript:DoKeyup(event, this, 'login');">
                         </div>
 
-                        <small><label id="password-error" class="error" for="password"></label></small>
+                        <small><span id="password-error" class="error" for="password"></span></small>
                         
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customControlInline">
-                                <label class="custom-control-label" for="customControlInline">Nhớ mật khẩu</label>
+                                <input type="checkbox" class="custom-control-input" id="customControlInline" onclick="javascript:showhide();">
+                                <label class="custom-control-label" for="customControlInline">Hiện mật khẩu</label>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center mt-3 login_container">
-                            <button type="submit" name="login" class="btn login_btn">Đăng nhập</button>
+                            <input type="button" id="login" onclick = "javascript:Chapnhan();" class="btn login_btn" value="Đăng nhập"/>
                         </div>
                     </form>
                 </div>
@@ -83,8 +81,70 @@
         </script>
     @endif
 
-    <script type="text/javascript" src="{{asset('js/libs3/validate/validate_login.js')}}">
-      
-    </script>
+    <script type="text/javascript">
+        function Chapnhan() {
+        var okie = true; 
+
+        document.getElementById("Email-error").innerHTML = "  ";
+        document.getElementById("password-error").innerHTML = "  ";
+
+        if (document.getElementById("Email").value == "") {
+            document.getElementById("Email-error").innerHTML = "Bạn chưa nhập email.";
+            document.getElementById("Email").focus();
+            okie = false;
+        } else if (!checkEmail())                {
+            document.getElementById("Email-error").innerHTML = "Email không đúng định dạng.";
+            document.getElementById("Email").focus();
+            okie = false;
+        }
+
+        if (document.getElementById("password").value == "") {
+            document.getElementById("password-error").innerHTML = "Bạn chưa nhập mật khẩu.";
+            document.getElementById("password").focus();
+            okie = false;
+        }
+
+        if (document.getElementById("password").value.length < "6" && document.getElementById("password").value.length > "1") {
+            document.getElementById("password-error").innerHTML = "Mật khẩu có độ dài tối thiểu 6 ký tự.";
+            document.getElementById("password").focus();
+            okie = false;
+        }
+
+        if (document.getElementById("password").value.length > "15") {
+            document.getElementById("password-error").innerHTML = "Mật khẩu có độ dài tối đa 15 ký tự.";
+            document.getElementById("password").focus();
+            okie = false;
+        }
+
+        if (okie) document.getElementById("loginform").submit();
+    }
+
+    function checkEmail() {
+        var email = document.getElementById('Email');
+        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (!filter.test(email.value)) {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    function showhide() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+
+    function DoKeyup(e, myself, nextcontrolid) {
+        if (window.event) e = window.event;
+        if (e.keyCode == 13) {
+            document.getElementById(nextcontrolid).focus();
+        }
+    }
+</script>
 </body>
 </html>
