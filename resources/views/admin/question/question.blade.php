@@ -228,7 +228,9 @@
                             listId: listId,
                         },
                         success: function () {
-                            tableQuestion.ajax.reload()
+                            tableQuestion.ajax.reload();
+                            toastr.success('Thành công!')
+                            $("#checkAll").prop( "checked", false );
                         },
                         error: function (e) {
                             toastr.error('error');
@@ -271,8 +273,9 @@
                             listId: listId
                         },
                         success: function (res) {
-                            toastr.success('Success!')
-                            tableQuestion.ajax.reload()
+                            toastr.success('Xóa thành công!')
+                            tableQuestion.ajax.reload();
+                            $("#checkAll").prop( "checked", false );
                         },
                     });
                 }
