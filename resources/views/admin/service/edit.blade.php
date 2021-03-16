@@ -1,16 +1,19 @@
 @extends('admin.layout')
 
+@section('style')
+    <link rel="stylesheet" href="{{ asset('/css/admin/service/create.css') }}">
+@endsection
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0">Thêm dịch vụ</h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Trang chủ</a></li>
         <li class="breadcrumb-item" aria-current="page">Dịch vụ</li>
-        <li class="breadcrumb-item" aria-current="page">Quản lý dịch vụ</li>
-        <li class="breadcrumb-item" aria-current="page">Sửa dịch vụ</li>
+        <li class="breadcrumb-item" aria-current="page">Thêm dịch vụ</li>
     </ol>
 </div>
 <hr class="sidebar-divider badge-light">
+    <h3 class="card-title">Tạo yêu cầu cho dịch vụ</h3>
     <form class="mt-5" action="{{ route('admin.service.update', $service->id) }}" method="post" >
         @csrf
         @method('PUT')
@@ -33,20 +36,20 @@
 
         <div class="field-list">
             @foreach($service->fields as $key => $field)
-            <div class="field-item badge-dark mt-3" data-field-index="{{ $key }}">
+            <div class="field-item card mt-3" data-field-index="{{ $key }}">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <h5 class="card-title">Trường</h5>
                         <i class="delete-field fa fa-trash-alt cursor-pointer"></i>
                     </div>
                     <div class="form-group row">
-                        <label for="name1" class="col-sm-2 col-form-label">Tên trường</label>
+                        <label for="name1" class="col-sm-2 col-form-label">Tên</label>
                         <div class="col-sm-8 col-lg-6">
                             <input type="text" class="form-control" id="name1" placeholder="Tên" name="fields[{{ $key }}][name]" value="{{ $field->name }}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="type1" class="col-sm-2 col-form-label">Kiểu dữ liệu</label>
+                        <label for="type1" class="col-sm-2 col-form-label">Type</label>
                         <div class="col-sm-8 col-lg-6">
                             <select class="field-type form-control" id="type1" name="fields[{{ $key }}][type]">
                                 <option {{ $field->type == 'text' ? 'selected' : '' }} value="text">Text</option>

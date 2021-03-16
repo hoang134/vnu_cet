@@ -12,6 +12,7 @@ use App\Models\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use mysql_xdevapi\Exception;
 
 class ServiceController extends Controller
 {
@@ -47,16 +48,16 @@ class ServiceController extends Controller
                 $field->service_id = $service->id;
                 $field->name = $item['name'];
                 $field->type = $item['type'];
-                $field->validate = $item['validate'];
+//                $field->validate = $item['validate'];
                 $field->value = array_key_exists('values', $item) ? json_encode($item['values']) : '';
                 $field->save();
             }
 
             DB::commit();
-            return redirect()->route('admin.service.index')->with('success', 'Success');
+            return redirect()->route('admin.service.index')->with('success', 'Thành công');
         } catch (\Exception $exception) {
             DB::rollBack();
-            return redirect()->route('admin.service.index')->with('error', 'Error');
+            return redirect()->route('admin.service.index')->with('error', 'Nhập thiếu dữ liệu');
         }
     }
 
@@ -98,19 +99,13 @@ class ServiceController extends Controller
         }
     }
 
-//    public function SaveConfig(Request $request)
-//    {
-//        //dd($request->all());
-//        $fields = new Fields();
-//        $fields->service_id = $request->id;
-//        $fields->name = $request->name;
-//        $fields->type = $request->type;
-//        if ($request->createGroup != null)
-//            $fields->group = $request->createGroup;
-//        else
-//            $fields->group = $request->group;
-//        $fields->save();
-//    }
+    public function saveEdit(Request $request)
+    {
+        $service = Service::find($request->id);
+        $service->name = $request->name;
+        $service->fee = $request->fee;
+        $service->save();
+    }
 
     public function lisRegister()
     {
@@ -136,5 +131,38 @@ class ServiceController extends Controller
     {
         $url = ResultsFields::find($id)->content;
         return $contents = Storage::download($url);
+    }
+
+    public function detailService($id)
+    {
+        $service = Service::find($id);
+
+        return view('admin.service.detail',[
+            'service' => $service
+        ]);
+    }
+
+    public function delete($id)
+    {
+
+        DB::beginTransaction();
+        try {
+            $service = Service::find($id);
+            $fields = $service->fields;
+            foreach ($fields as $field)
+            {
+                $field->resultsFeld ? $field->resultsFeld->delete() :'';
+            }
+
+            $service->userServices()->delete();
+            $service->fields()->delete();
+            $service->delete();
+            DB::commit();
+            return redirect()->route('admin.service.index')->with('success','Xóa thành công');
+        }catch (\Exception $exception)
+        {
+            DB::rollBack();
+            return redirect()->route('admin.service.index')->with('error',$exception);
+        }
     }
 }

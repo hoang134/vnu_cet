@@ -51,20 +51,20 @@ $(function () {
     })
 
     var fieldItemHtml = (fieldIndex) => {
-        return `<div class="field-item badge-dark mt-3" data-field-index="${fieldIndex}">
+        return `<div class="field-item mt-3" data-field-index="${fieldIndex}">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h5 class="card-title text-white">Trường</h5>
+                            <h5 class="card-title">Trường</h5>
                             <i class="delete-field fa fa-trash-alt cursor-pointer"></i>
                         </div>
                         <div class="form-group row">
-                            <label for="name${fieldIndex}" class="col-sm-2 col-form-label text-white">Tên trường</label>
+                            <label for="name${fieldIndex}" class="col-sm-2 col-form-label">Tên trường</label>
                             <div class="col-sm-8 col-lg-6">
                                 <input type="text" class="form-control" id="name${fieldIndex}" placeholder="Tên trường" name="fields[${fieldIndex}][name]">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="type${fieldIndex}" class="col-sm-2 col-form-label text-white">Kiểu dữ liệu</label>
+                            <label for="type${fieldIndex}" class="col-sm-2 col-form-label">Kiểu dữ liệu</label>
                             <div class="col-sm-8 col-lg-6">
                                 <select class="field-type form-control" id="type${fieldIndex}" name="fields[${fieldIndex}][type]">
                                     <option value="text">Text</option>
@@ -78,23 +78,7 @@ $(function () {
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label text-white">Validate</label>
-                            <div class="col-sm-8 col-lg-6">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="fields[${fieldIndex}][validate]" id="validate1${fieldIndex}" value="required">
-                                    <label class="form-check-label text-white" for="validate1${fieldIndex}">
-                                        Required
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="fields[${fieldIndex}][validate]" id="validate2${fieldIndex}" value="option">
-                                    <label class="form-check-label text-white" for="validate2${fieldIndex}">
-                                        Option
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+
 
                         <div class="show-value"></div>
 
@@ -104,10 +88,10 @@ $(function () {
 
     var valueFrameHtml = (fieldIndex) => {
         return `<div class="card-body">
-                    <h6 class="card-title text-white">Values</h6>
+                    <h6 class="card-title">Values</h6>
                     <div class="list-value">
                         <div class="value-item form-group row" data-value-index="0">
-                            <label for="value${fieldIndex}0" class="col-sm-2 col-form-label text-white">Value</label>
+                            <label for="value${fieldIndex}0" class="col-sm-2 col-form-label">Value</label>
                             <div class="col-sm-8 col-lg-6">
                                 <input type="text" class="form-control" id="value${fieldIndex}0" placeholder="Value" name="fields[${fieldIndex}][values][]">
                             </div>
@@ -126,7 +110,7 @@ $(function () {
 
     var valueItemHtml = (fieldIndex, valueIndex) => {
         return `<div class="value-item form-group row" data-value-index="${valueIndex}">
-                    <label for="value${fieldIndex}${valueIndex}" class="col-sm-2 col-form-label text-white">Value</label>
+                    <label for="value${fieldIndex}${valueIndex}" class="col-sm-2 col-form-label">Value</label>
                     <div class="col-sm-8 col-lg-6">
                         <input type="text" class="form-control" id="value${fieldIndex}${valueIndex}" placeholder="Value" name="fields[${fieldIndex}][values][]">
                     </div>

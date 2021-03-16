@@ -18,8 +18,12 @@ class UserService extends Model
         return $this->belongsTo(User::class,'user_id','id');
     }
 
-    public function services()
+//    public function services()
+//    {
+//        return $this->belongsToMany(Service::class,'user_services','user_id','service_id');
+//    }
+    public function service()
     {
-        return $this->belongsToMany(Service::class,'user_services','user_id','service_id');
+        return $this->belongsTo(Service::class,'service_id','id');
     }
 }

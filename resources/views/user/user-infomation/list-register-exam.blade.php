@@ -21,7 +21,7 @@
                             <thead>
                                 <th scope="col">Tên thí sinh</th>
                                 <th scope="col">Tên đợt thi</th>
-                                <th scope="col">Ca thi</th>
+                                <th scope="col">Điểm</th>
                                 <th scope="col">Thực hiện</th>
                             </thead>
                             <tbody>
@@ -29,8 +29,15 @@
                                 <tr>
                                 <td>{{ \Illuminate\Support\Facades\Auth::user()->Hoten }}</td>
                                 <td>{{ \Illuminate\Support\Facades\DB::table('cet_kythi')->where('MaKythi',$exam->Makythi)->first()->TenKythi }}</td>
-                                <td>{{ $exam->Cathi }}</td>
-                                <td><a href="{{ route('student.infor.exam',$exam->id) }}">Thông tin chi tiết</a></td>
+                                    @php
+                                       $diemthi = \Illuminate\Support\Facades\DB::table('cet_kythi_students')->where('MaKythi',$exam->Makythi)->first();
+                                    @endphp
+                                <td>{{ $diemthi != null ? 'Đã có điểm' :'Chưa có điểm' }}</td>
+                                <td><a href="{{ route('student.infor.exam',$exam->Makythi) }}">Thông tin chi tiết</a>
+
+                                    @if($diemthi != null)
+                                        <a href="{{ route('student.print.grade',$exam->Makythi) }}">In bảng điểm</a></td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>
@@ -100,6 +107,19 @@
                                         <i class="fa fa-youtube"></i>
                                     </a>
                                 </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="blog-tags">
+                            <h4>Các từ khóa</h4>
+                            <div class="tag-item">
+                                <a href="#">Towel</a>
+                                <a href="#">Shoes</a>
+                                <a href="#">Coat</a>
+                                <a href="#">Dresses</a>
+                                <a href="#">Trousers</a>
+                                <a href="#">Men's hats</a>
+                                <a href="#">Backpack</a>
                             </div>
                         </div>
                     </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CetDichVu;
 use App\Models\CetStudentKyThi;
 use App\Models\CetXacNhanDiemThi;
+use App\Models\lePhiDichVu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

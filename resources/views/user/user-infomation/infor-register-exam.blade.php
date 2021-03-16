@@ -47,24 +47,31 @@
                     <div style="float: right">
                         {{ $qrCode }}
                     </div>
-                    <label class="headline"><strong>Số báo danh</strong> : </label><br>
-                    <label class="headline"><strong>Địa điểm dự thi</strong> : </label> <span>{{ $diaDiemThi->Diachi }}</span> <br>
-                    <label class="headline"><strong>Tên đợt thi</strong> : </label> <span>{{ $kythi->TenKythi }}</span> <br>
-                    <label class="headline"><strong>Thời gian</strong> : </label> <span>{{ $kythi->Tungay . " đến " . $kythi->Toingay }}</span><br>
-            {{--            <label class="headline"><strong>Ngày thi</strong> : </label> <span>{{  }}</span> <br> <span>{{  }}</span>--}}
-                    <label class="headline"><strong>Ca thi</strong> : </label> <span>{{ $inforExam->Cathi }}</span> <br>
-            {{--            <label class="headline"><strong>Bài thi</strong> : </label> <span>{{ TenKythi }}</span> <br>--}}
-
-                    <label class="headline"><strong>Phòng thi</strong> : </label> <span>{{ $diaDiemThi->Sophong . " - " .$diaDiemThi->TenDiadiem  }}</span>
+                    <label><strong>Số báo danh</strong> :{{ $kythiStudents->first() != null ? $kythiStudents->first()->Sobaodanh :'' }} </label><br>
+                    <label><strong>Địa điểm dự thi</strong> : </label> <span>{{ $diaDiemThi->Diachi }}</span> <br>
+                    <label><strong>Tên kỳ thi</strong> : </label> <span>{{ $kythi->TenKythi }}</span> <br>
+                    <label><strong>Thời gian</strong> : </label> <span>{{ $kythi->Tungay . " đến " . $kythi->Toingay }}</span><br>
+            {{--            <label><strong>Ngày thi</strong> : </label> <span>{{  }}</span> <br> <span>{{  }}</span>--}}
+                    @foreach($inforExams as $inforExam)
+                        @php
+                            $monthi = DB::table('cet_monthi')
+                        ->where('MaMonthi',$inforExam->Mamonthi)->first();
+                        @endphp
+                        <label><strong>Môn thi</strong> : </label> <span>{{ $monthi->TenMonThi }}</span>
+                        <label><strong> Ca thi</strong> : </label> <span>{{ $inforExam->Cathi }}</span> <br>
+                    @endforeach
+                    <label><strong>Phòng thi</strong> : </label> <span>{{ $diaDiemThi->Sophong . " - " .$diaDiemThi->TenDiadiem  }}</span>
                     <br>
-                    </div>
                 </div>
-                <button class="btn-success" type="button" onclick="printJS('printJS-form', 'html')">
-                    Xuất file
-                </button>
             </div>
+            </div>
+{{--        <button class="btn-success" type="button" onclick="printJS('printJS-form', 'html')">--}}
+{{--            Xuất file--}}
+{{--        </button>--}}
+        <button class="btn btn-primary" style="background-color: #428bca" onclick="printJS('printJS-form', 'html')">
+            <i class="fa fa-print fa-10 fa-3x"></i>
+        </button>
         </div>
-    </div>
 </section>
 
 @endsection

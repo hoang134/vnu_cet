@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\CetDichVu;
+use App\Models\lePhiDichVu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -29,5 +30,14 @@ class CetXacNhanDiemThiController extends Controller
             'Hoten' => $Hoten,
             'makythis' => $makythis
         ]);
+    }
+
+
+    public function editFee(Request $request)
+    {
+        $xacnhandiemthi = lePhiDichVu::where('tendichvu','=','xacnhandiemthi')->first();
+        $xacnhandiemthi->phidichvu = $request->fee;
+        $xacnhandiemthi->save();
+        return redirect()->route('admin.xacnhandiemthi.index')->with('success','Sửa thành công');
     }
 }

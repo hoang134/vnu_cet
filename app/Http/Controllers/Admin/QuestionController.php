@@ -23,7 +23,7 @@ class QuestionController extends Controller
         $questions = Question::with('questionReply')->orderBy('created_at', 'desc')->get();
         return DataTables::of($questions)
             ->addColumn('hoten', function ($question) {
-                return $question->user->Hoten;
+                return $question->user ? $question->user->Hoten : '';
             })
             ->addColumn('content', function ($question) {
                 return '<a class="content-question" data-id="' . $question->id . '" data-toggle="modal" ' .

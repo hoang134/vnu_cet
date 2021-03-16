@@ -28,7 +28,7 @@
         </div>
 
         <div class="field-list mt-5">
-            <div class="field-item badge-dark mt-3" data-field-index="0">
+            <div class="field-item mt-3" data-field-index="0">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <h5 class="card-title">Trường</h5>
@@ -37,7 +37,7 @@
                     <div class="form-group row">
                         <label for="name1" class="col-sm-2 col-form-label">Tên trường</label>
                         <div class="col-sm-8 col-lg-6">
-                            <input type="text" class="form-control" id="name1" placeholder="Name" name="fields[0][name]">
+                            <input type="text" class="form-control" id="name1" placeholder="Tên" name="fields[0][name]">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -55,23 +55,23 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label ">Validate</label>
-                        <div class="col-sm-8 col-lg-6">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="fields[0][validate]" id="validate1" value="required">
-                                <label class="form-check-label " for="validate1">
-                                    Required
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="fields[0][validate]" id="validate2" value="option">
-                                <label class="form-check-label " for="validate2">
-                                    Option
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+{{--                    <div class="form-group row">--}}
+{{--                        <label for="name" class="col-sm-2 col-form-label ">Validate</label>--}}
+{{--                        <div class="col-sm-8 col-lg-6">--}}
+{{--                            <div class="form-check">--}}
+{{--                                <input class="form-check-input" type="radio" name="fields[0][validate]" id="validate1" value="required">--}}
+{{--                                <label class="form-check-label " for="validate1">--}}
+{{--                                    Required--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
+{{--                            <div class="form-check">--}}
+{{--                                <input class="form-check-input" type="radio" name="fields[0][validate]" id="validate2" value="option">--}}
+{{--                                <label class="form-check-label " for="validate2">--}}
+{{--                                    Option--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <div class="show-value"> <!-- card -->
                         {{--                    <div class="card-body">--}}

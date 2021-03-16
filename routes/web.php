@@ -54,6 +54,7 @@ Route::prefix('student')->middleware('CheckLogin')->group(function (){
 
     Route::get('service','App\Http\Controllers\Student\ServiceController@index')->name('student.service');
     Route::post('create/requite/service/{id}','App\Http\Controllers\Student\ServiceController@createRequiteService')->name('student.requite.service');
+    Route::get('service/list/requite','App\Http\Controllers\Student\ServiceController@listRequite');
 
     Route::get('messengers','App\Http\Controllers\Student\MessengerController@messenger')->name('student.messengers');
     Route::post('messengers/reply','App\Http\Controllers\Student\MessengerController@reply')->name('student.messengers.reply');
@@ -63,7 +64,8 @@ Route::prefix('student')->middleware('CheckLogin')->group(function (){
     Route::get('xac-nhan-diem-thi/require','App\Http\Controllers\Student\CetXacNhanDiemThiController@createRequire')->name('student.xacnhandiemthi.require');
 
     Route::get('list/register/exam','App\Http\Controllers\Student\StudentController@listExam')->name('student.list.exam');
-    Route::get('infor/register/exam/{id}','App\Http\Controllers\Student\StudentController@inforRegisterExam')->name('student.infor.exam');
+    Route::get('infor/register/exam/{makythi}','App\Http\Controllers\Student\StudentController@inforRegisterExam')->name('student.infor.exam');
+    Route::get('print/grade/{makythi}','App\Http\Controllers\Student\StudentController@printGrade')->name('student.print.grade');
     Route::get('payment','App\Http\Controllers\Student\StudentController@payment')->name('student.payment');
     Route::post('payment','App\Http\Controllers\Student\StudentController@paymentStore')->name('student.payment.store');
 
@@ -74,9 +76,6 @@ Route::prefix('student')->middleware('CheckLogin')->group(function (){
 
 
 Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')->middleware('CheckLogin')->middleware('auth:admin')->group(function () {
-    Route::get('test',function () {
-       return view('admin.test');
-    });
     Route::prefix('question')->name('question.')->group(function () {
         Route::get('','QuestionController@index')->name('index');
         Route::get('data','QuestionController@getQuestions')->name('data');
@@ -98,7 +97,10 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')-
         Route::get('','ServiceController@index')->name('index');
         Route::get('create','ServiceController@create')->name('create');
         Route::post('save','ServiceController@save')->name('save');
-        Route::get('{id}/edit','ServiceController@edit')->name('edit');
+        Route::post('save/edit/{id}','ServiceController@saveEdit')->name('save.edit');
+        //Route::get('{id}/edit','ServiceController@edit')->name('edit');
+        Route::get('delete/{id}','ServiceController@delete')->name('delete');
+        Route::get('detail/{id}','ServiceController@detailService')->name('detail');
         Route::put('{id}/update','ServiceController@update')->name('update');
         Route::get('list/register','ServiceController@lisRegister')->name('list.register');
         Route::get('handle/{id}','ServiceController@handle')->name('handle');
@@ -106,8 +108,9 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')-
         Route::get('export/file/{id}','ServiceController@exportFile')->name('export.file');
     });
 
-    Route::get('xacnhandiemthi','CetXacNhanDiemThiController@index');
+    Route::get('xacnhandiemthi','CetXacNhanDiemThiController@index')->name('xacnhandiemthi.index');
     Route::get('xacnhandiemthi/handle/{tendangnhap}/{id}','CetXacNhanDiemThiController@handle')->name('xacnhandiemthi.handle');
+    Route::post('xac-nhan-diem-thi/edit/fee','CetXacNhanDiemThiController@editFee')->name('xacnhandiemthi.fee');
 
     Route::get('edit-infomation','InfomationController@edit_infomation')->name('edit.infomation');
     Route::get('edit-infomation-cocau','InfomationController@edit_infomation_cocau')->name('edit.infomation.cocau');
