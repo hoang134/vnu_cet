@@ -6,7 +6,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
                         <a href="{{route('trangchu')}}"><i class="fa fa-home"></i> Trang chủ</a>
-                        <span>Kỳ thi đã đăng ký</span>
+                        <span>Đợt thi đã đăng ký</span>
                     </div>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                         <table class="table table-striped">
                             <thead>
                                 <th scope="col">Tên thí sinh</th>
-                                <th scope="col">Tên kỳ thi</th>
+                                <th scope="col">Tên đợt thi</th>
                                 <th scope="col">Điểm</th>
                                 <th scope="col">Thực hiện</th>
                             </thead>

@@ -17,12 +17,12 @@ class MessengerController extends Controller
     public function index()
     {
 
-       //$messengers = DB::table('messengers')->where('user_to',Auth::user()->tendangnhap)->orderBy('created_at','desc')->get();
-       $listUserTos = DB::table('messengers')->select('user_from')->where('user_from','!=',Auth::user()->tendangnhap)
+        //$messengers = DB::table('messengers')->where('user_to',Auth::user()->tendangnhap)->orderBy('created_at','desc')->get();
+        $listUserTos = DB::table('messengers')->select('user_from')->where('user_from','!=',Auth::user()->tendangnhap)
             ->groupBy('user_from')->get();
-      return view('admin.messengers.index',[
-          'listUserTos'=>$listUserTos
-      ]);
+        return view('admin.messengers.index',[
+            'listUserTos'=>$listUserTos
+        ]);
     }
 
     public function detail( Request $request)
@@ -58,7 +58,7 @@ class MessengerController extends Controller
 //              </div>';
 
 
-     echo  ' <div class="media w-75 ml-auto mb-3" >
+        echo  ' <div class="media w-75 ml-auto mb-3" >
                                 <div class="media-body">
                                   <div class="bg-primary rounded py-2 px-3 mb-2">
                                     <p class="text-small mb-0 text-white">'.$messenger->content.'</p>

@@ -4,6 +4,9 @@
         .img {
             background-size: contain;
         }
+        .headline {
+        	margin-left: 25px;
+        }
     </style>
 @endsection
 
@@ -14,7 +17,7 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
                     <a href="{{route('trangchu')}}"><i class="fa fa-home"></i> Trang chủ</a>
-                    <a href="{{route('student.list.exam')}}"> Kỳ thi đã đăng ký</a>
+                    <a href="{{route('student.list.exam')}}"> Đợt thi đã đăng ký</a>
                     <span>Chi tiết</span>
                 </div>
             </div>
@@ -34,12 +37,12 @@
                        </span>
                     <br>
                     </div>
-                    <label><strong>Họ tên thí sinh</strong> : </label> <span>{{ $studentInfor->Hoten }}</span><br>
-                    <label><strong>Giới tính</strong> : </label> <span>{{ $studentInfor->Gioitinh == 0 ? 'Nam':'Nữ' }}</span> <br>
-                    <label><strong>Ngày sinh</strong> : </label> <span>{{ $studentInfor->Ngaysinh }}</span><br>
-                    <label><strong>Số CMND/CCCD/Hộ chiếu</strong> : </label> <span>{{ $studentInfor->SoCMND }}</span><br>
+                    <label class="headline"><strong>Họ tên thí sinh</strong> : </label> <span>{{ $studentInfor->Hoten }}</span><br>
+                    <label class="headline"><strong>Giới tính</strong> : </label> <span>{{ $studentInfor->Gioitinh }}</span> <br>
+                    <label class="headline"><strong>Ngày sinh</strong> : </label> <span>{{ $studentInfor->Ngaysinh }}</span><br>
+                    <label class="headline"><strong>Số CMND/CCCD/Hộ chiếu</strong> : </label> <span>{{ $studentInfor->SoCMND }}</span><br>
 
-                    <label><strong>Hộ khẩu thường trú</strong> : </label><br>
+                    <label class="headline"><strong>Hộ khẩu thường trú</strong> : </label><br>
                     <h3 class="mb-2">II.Thông tin dự thi</h3>
                     <div style="float: right">
                         {{ $qrCode }}

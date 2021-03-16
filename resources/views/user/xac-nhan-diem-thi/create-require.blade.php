@@ -1,9 +1,24 @@
 @extends('dashboard')
 @section('content')
-    <div style="margin-left: 100px">
-       <h3>Xác nhận điểm thi</h3>
-        <div class="col-12">
-            <form action="{{route('student.xacnhandiemthi.store')}}" method="post">
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <a href="{{route('trangchu')}}"><i class="fa fa-home"></i> Trang chủ</a>
+                    <a href="{{route('trangchu')}}"><i class="fa fa-home"></i> Xác nhận điểm thi</a>
+                    <span>Tạo yêu cầu</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="blog-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <form action="{{route('student.xacnhandiemthi.store')}}" method="post">
                 @csrf
                 <div class="mt-3">
                     <p class="mb-1">Lý do</p>
@@ -35,7 +50,7 @@
                 </div>
 
                 <div class="mt-3">
-                    <p class="mb-1">Chọn kỳ thi</p>
+                    <p class="mb-1">Chọn đợt thi</p>
                     <div class="ml-4">
                         @foreach($kyThis as $key => $kythi)
                             <input class="{{ $loop->first ? '' : 'ml-3' }}" name="makythis[]" type="checkbox" id="makythi{{ $key }}" value="{{$kythi->Makythi}}">
@@ -44,10 +59,12 @@
                     </div>
                 </div>
                 <br>
-            <button type="submit">gửi</button>
+            <button type="submit" class="btn btn-success">Gửi</button>
             </form>
+            </div>
         </div>
     </div>
+</section>
 @endsection
 @section('script')
     <script>

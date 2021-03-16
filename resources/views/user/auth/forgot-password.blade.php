@@ -8,8 +8,6 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/libs3/login.css')}}">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
-    <script type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
 </head>
 
 <body>
@@ -27,20 +25,23 @@
                         <center>
                           <div class="mb-3">
                             <div class="">
-                              <h2 style="font-size: 30px;color:#007f49; ">Lấy lại mật khẩu</h2>
+                              <h2 style="font-size: 30px;color:#007f49; ">LẤY LẠI MẬT KHẨU</h2>
                             </div>
                           </div>
                         </center>
-                        <div class="input-group mb-3">
-                            <div class="input-group-append">
+                        <div class="input-group mb-2">
+                            <div class=" input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" name="Email" class="form-control input_user" value="" placeholder="Nhập email">
+
+                            <input type="text" name="Email" id="Email" autocomplete="Email" class="form-control input_user" value="" placeholder="Tên đăng nhập" onkeyup="javascript:DoKeyup(event, this, 'forgotpassword');">
                         </div>
-                        <small><label id="Email-error" class="error" for="Email"></label></small>
+
+                        <small><span id="Email-error" class="error" for="Email"></span></small>
+                        
                         <div class="d-flex justify-content-center mt-3 login_container">
-                            <button type="submit" name="login" class="btn login_btn">Gửi</button>
-                       </div>
+                            <input type="button" id="forgotpassword" onclick = "javascript:Chapnhan();" class="btn login_btn" value="Đăng nhập"/>
+                        </div>
                     </form>
                 </div>
         
@@ -55,10 +56,7 @@
             </div>
         </div>
     </div>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script src="{{asset('js/libs3/validate/validate_forgotpassword.js')}}">
-    </script>
     @if(Session::has('success'))
         <script type="text/javascript">
             toastr.success("{!!Session::get('success')!!}");
@@ -69,5 +67,44 @@
             toastr.error("{!!Session::get('error')!!}");
         </script>
     @endif
+
+    <script type="text/javascript">
+        function Chapnhan() {
+        var okie = true; 
+
+        document.getElementById("Email-error").innerHTML = "  ";
+
+        if (document.getElementById("Email").value == "") {
+            document.getElementById("Email-error").innerHTML = "Bạn chưa nhập email.";
+            document.getElementById("Email").focus();
+            okie = false;
+        } else if (!checkEmail())                {
+            document.getElementById("Email-error").innerHTML = "Email không đúng định dạng.";
+            document.getElementById("Email").focus();
+            okie = false;
+        }
+
+        if (okie) document.getElementById("forgotpasswordform").submit();
+    }
+
+    function checkEmail() {
+        var email = document.getElementById('Email');
+        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (!filter.test(email.value)) {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    function DoKeyup(e, myself, nextcontrolid) {
+        if (window.event) e = window.event;
+        if (e.keyCode == 13) {
+            document.getElementById(nextcontrolid).focus();
+        }
+    }
+</script>
 </body>
 </html>

@@ -52,7 +52,6 @@ class MessengerController extends Controller
                         <p>'.$messenger->content.'</p>
                     </div>
                 </div>
-
             </li>';
     }
 }

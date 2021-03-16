@@ -9,6 +9,7 @@ use App\Mail\SendEmail;
 use App\Mail\ForgotPassword;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use App\Helpers\Checkuser;
 
 class MailController extends Controller
 {
@@ -20,6 +21,7 @@ class MailController extends Controller
     public function sendEmail(Request $request) {
 
     	$user_check = DB::select("select Email,tendangnhap from cet_student_acc where Email = '$request->Email'");
+        $user_mysql = DB::select("select user from mysql.user where user = '$request->Email'");
     	if($user_check) {
     		return redirect()->route('forgotpassword')->with('error','Email của bạn đã được đăng ký,hãy lấy lại mật khẩu.');
     	}
@@ -76,6 +78,7 @@ class MailController extends Controller
             $details = [
                 'password' => $password
             ];
+            DB::select("alter user '$request->Email'@'localhost' IDENTIFIED BY '$password'");
             DB::select("update cet_student_acc set password='$password_bcrypt' where Email='$request->Email'");
             Mail::to($request->Email)->send(new ForgotPassword($details));
             return redirect()->route('login')->with('success','Lấy mật khẩu thành công,hãy kiểm tra email của bạn');

@@ -50,7 +50,7 @@
                         @foreach($infomation_sukien as $infomation_sukien_value)
                         <div class="product-item">
                             <div class="pi-pic">
-                                <img src="{{asset('images/latest-1.jpg')}}" alt="">
+                                <img src="{{asset($infomation_sukien_value->imagetitle)}}" alt="">
                                 <div class="sale">New</div>
                                 <div class="icon">
                                     <i class="fa fa-info-circle"></i>
@@ -78,7 +78,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>Các kỳ thi mới</h2>
+                        <h2>Các đợt thi mới</h2>
                     </div>
                 </div>
             </div>
@@ -144,28 +144,5 @@
             </div>
         </div>
     </div>
-
-    <section class="blog-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="blog-sidebar">
-                        <div class="blog-tags">
-                            <h4>Các từ khóa</h4>
-                            <div class="tag-item">
-                                <a href="#">Kỳ thi</a>
-                                <a href="#">Môn thi</a>
-                                <a href="#">Sự kiện</a>
-                                <a href="#">Đánh giá</a>
-                                <a href="#">Trousers</a>
-                                <a href="#">Men's hats</a>
-                                <a href="#">Backpack</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
 @endsection
