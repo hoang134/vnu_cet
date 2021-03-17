@@ -3,6 +3,8 @@ namespace App\Helpers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use Illuminate\Support\Facades\Cache;
 
 class Checkuser {
     public static function checkProfile()    
@@ -38,7 +40,44 @@ class Checkuser {
         return $query_result;
     }
 
-    public function checkLoginFail() {
+    public static function checkLoginFail() {
     	
+    }
+
+    public static function isOnline($id) {
+        return Cache::has('user-is-online-' . $id);
+    }
+
+    public static function online() {
+        $dem = 0;
+        $users = DB::select("select id from cet_student_acc");
+        foreach ($users as $key => $value) {
+            if(Checkuser::isOnline($value->id)) {
+                $dem++;
+            }
+        }
+        return $dem;
+    }
+
+    public static function access_total() {
+        $cookie = 'nei';
+        $tid = 36288000;
+        $file = public_path('count.txt');//file lưu lại số lầi truy cập
+        if($cookie != "ja") {
+        }
+        else {
+            if(file_exists($file)) {
+                $fil = fopen($file, "r");
+                $count = fread($fil, 8);
+                fclose($fil);
+            }
+            else {
+                $count=0;
+            }
+            $count++;
+            $fil = fopen($file, "w");
+            fwrite($fil, $count);
+            fclose($fil);
+        }
     }
 }

@@ -22,7 +22,10 @@
     @yield('style')
 </head>
 <body>
-    
+    <div class="badge-success p-2 h3 text-center font-weight-bold text-uppercase">
+        Hệ thống sẽ được mở và ghi nhận đăng ký, đăng nhập từ 01.04.2021
+    </div>
+
     <header class="header-section">
         <div class="header-top">
             <div class="container">
@@ -330,11 +333,18 @@
         <div class="copyright-reserved">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-9">
                         <div class="copyright-text">
                             Copyright @2020
                         </div>
-
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="copyright-text" style="float: right;">
+                            Đang online <span style="color: red;">{{Checkuser::online()}}</span>
+                        </div><br>
+                        <div class="copyright-text" style="float: right;">
+                            Tổng số lượt truy cập <span style="color: red;">{{Checkuser::access_total()}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
