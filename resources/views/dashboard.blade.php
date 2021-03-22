@@ -7,6 +7,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Trang khảo thí</title>
 
     <link rel="stylesheet" href="{{asset('css/libs3/bootstrap.min.css')}}" type="text/css">
@@ -22,7 +23,7 @@
     @yield('style')
 </head>
 <body>
-    
+
     <header class="header-section">
         <div class="header-top">
             <div class="container">
@@ -51,14 +52,6 @@
                               <i class="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                               Thông tin tài khoản
                             </a>
-                              <a class="dropdown-item" href="{{route('student.list.exam')}}">
-                                  <i class="fa fa-university fa-sm fa-fw mr-2 text-gray-400"></i>
-                                  Kỳ thi đã đăng ký
-                              </a>
-                              <a class="dropdown-item" href="{{route('student.xacnhandiemthi')}}">
-                                  <i class="fa fa-pencil-square fa-sm fa-fw mr-2 text-gray-400"></i>
-                                  Xác nhận điểm thi
-                              </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{route('logout')}}" onclick="return confirm('Bạn chắc chắn muốn đăng xuất?')">
                               <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -176,14 +169,16 @@
                         </li>
                         <li><a> Tra cứu</a>
                           <ul class="dropdown">
-                              <li><a>Thu phí</a>
-                              <li><a href="{{route('student.service')}}">Dịch vụ khác</a>
+                              <li><a>Thu phí</a></li>
+                              <li><a href="{{route('student.service')}}">Dịch vụ khác</a></li>
+                              <li><a href="{{route('student.list.exam')}}">Kỳ thi đã đăng ký</a></li>
+                              <li><a href="{{route('student.xacnhandiemthi')}}">Xác nhận điểm thi</a></li>
                           </ul>
                         </li>
                         <li><a> Hỗ trợ</a>
                           <ul class="dropdown">
                               <li><a>Thu phí</a>
-                              <li><a href="{{route('student.service')}}">Dịch vụ khác</a>
+                              <li><a href="{{route('student.service')}}">Dịch vụ khác</a></li>
                           </ul>
                         </li>
                         @endif
@@ -370,6 +365,11 @@
         @if(session('error'))
         toastr.error('{{ session('error') }}');
         @endif
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
     </script>
     <script>
     $(document).ready(function () {

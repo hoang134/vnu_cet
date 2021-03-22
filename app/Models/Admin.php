@@ -46,6 +46,11 @@ class Admin extends Authenticatable
         'password'
     ];
 
+    public function getRoleAttribute($value)
+    {
+        return json_decode($value);
+    }
+
     /**
      * Send the password reset notification.
      *

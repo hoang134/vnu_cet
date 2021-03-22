@@ -15,7 +15,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-  
+
   <link href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.23/datatables.min.css" rel="stylesheet" type="text/css"/>
   <!-- PDF -->
   <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
@@ -123,7 +123,7 @@
       <hr class="sidebar-divider">
       <div class="version" id="version-ruangadmin"></div>
     </ul>
-  
+
     <div id="content-wrapper" class="d-flex flex-column" style="background-color: #f2f2f2;">
       <div id="content">
         <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
@@ -176,7 +176,7 @@
             </li>
           </ul>
         </nav>
-        
+
         <div class="container-fluid" id="container-wrapper">
          <div style="margin:10px;padding: 10px;">
             @yield('content')

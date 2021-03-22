@@ -58,6 +58,7 @@ Route::prefix('student')->middleware('CheckLogin')->group(function (){
 
     Route::get('messengers','App\Http\Controllers\Student\MessengerController@messenger')->name('student.messengers');
     Route::post('messengers/reply','App\Http\Controllers\Student\MessengerController@reply')->name('student.messengers.reply');
+    Route::put('messengers/view/seen/{id}','App\Http\Controllers\Student\MessengerController@viewSeen')->name('student.messengers.view.seen');
 
     Route::get('xac-nhan-diem-thi','App\Http\Controllers\Student\CetXacNhanDiemThiController@index')->name('student.xacnhandiemthi');
     Route::post('xacnhandiemthi/store','App\Http\Controllers\Student\CetXacNhanDiemThiController@store')->name('student.xacnhandiemthi.store');
@@ -92,6 +93,7 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')-
         Route::get('','MessengerController@index')->name('index');
         Route::get('/{tendangnhap}','MessengerController@detail')->name('detail');
         Route::post('reply/{tendangnhap}','MessengerController@reply')->name('reply');
+        Route::put('view/seen/{id}','MessengerController@viewSeen')->name('view.seen');
     });
     Route::prefix('service')->name('service.')->group(function () {
         Route::get('','ServiceController@index')->name('index');

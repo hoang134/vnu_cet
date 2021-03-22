@@ -99,6 +99,7 @@
     <script src="https://cdn.socket.io/3.1.1/socket.io.min.js" integrity="sha384-gDaozqUvc4HTgo8iZjwth73C6dDDeOJsAgpxBcMpZYztUfjHXpzrpdrHRdVp8ySO" crossorigin="anonymous"></script>
     <script>
         var replyMessUrl = '{{ route('admin.messengers.reply', ':tendangnhap') }}'
+        var urlViewSeen = '{{ route('admin.messengers.view.seen',':id') }}'
         $(document).ready(function () {
             $('#submit').click(function (e) {
                 e.preventDefault();
@@ -138,6 +139,10 @@
                     '</div>'+
                     '</div>'
                 );
+                $.ajax({
+                   method: 'PUT',
+                   url: urlViewSeen.replace(':id',data.id),
+                });
                 var x = document.getElementById("Audio");
                 console.log(x)
                 x.play();

@@ -16,7 +16,8 @@ class MessengerController extends Controller
 
     public function index()
     {
-
+//        dd(auth()->user()->role);
+//        $this->authorize('viewAny',Messenger::class);
         //$messengers = DB::table('messengers')->where('user_to',Auth::user()->tendangnhap)->orderBy('created_at','desc')->get();
         $listUserTos = DB::table('messengers')->select('user_from')->where('user_from','!=',Auth::user()->tendangnhap)
             ->groupBy('user_from')->get();
@@ -27,7 +28,7 @@ class MessengerController extends Controller
 
     public function detail( Request $request)
     {
-
+        Messenger::where('user_from',$request->tendangnhap)->update(array('viewed' => Messenger::SEEN));
         $messengers = DB::table('messengers')->where('user_from',Auth::user()->tendangnhap)->where('user_to',$request->tendangnhap)
             ->orWhere('user_to',Auth::user()->tendangnhap)->where('user_from',$request->tendangnhap)->get();
         return view('admin.messengers.detail-messenger',[
@@ -69,5 +70,11 @@ class MessengerController extends Controller
 
     }
 
+    public function viewSeen($id)
+    {
+        $messenger = Messenger::find($id);
+        $messenger->viewed = Messenger::SEEN;
+        $messenger->save();
+    }
 
 }

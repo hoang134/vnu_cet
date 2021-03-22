@@ -30,7 +30,7 @@
                                 <td>{{ \Illuminate\Support\Facades\Auth::user()->Hoten }}</td>
                                 <td>{{ \Illuminate\Support\Facades\DB::table('cet_kythi')->where('MaKythi',$exam->Makythi)->first()->TenKythi }}</td>
                                     @php
-                                       $diemthi = \Illuminate\Support\Facades\DB::table('cet_kythi_students')->where('MaKythi',$exam->Makythi)->first();
+                                       $diemthi = \Illuminate\Support\Facades\DB::table('cet_kythi_students')->where('username',\Illuminate\Support\Facades\Auth::user()->tendangnhap)->where('MaKythi',$exam->Makythi)->first();
                                     @endphp
                                 <td>{{ $diemthi != null ? 'Đã có điểm' :'Chưa có điểm' }}</td>
                                 <td><a href="{{ route('student.infor.exam',$exam->Makythi) }}">Thông tin chi tiết</a>

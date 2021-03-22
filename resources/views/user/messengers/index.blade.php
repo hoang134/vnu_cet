@@ -92,6 +92,7 @@
         margin-top:40px;
     }
 </style>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <div id="main">
     <div class="card-body height3" style="overflow: auto;height: 231px;border-radius: 20px;">
         <ul class="chat-list">
@@ -110,10 +111,13 @@
                     </li>
                 @else
                     <li class="out">
+                        <div class="chat-img">
+                            <img alt="Avtar" src="{{ asset('images/1.png') }}">
+                        </div>
                         <div class="chat-body">
                             <div class="chat-message">
-                                <h5>{{Auth::user()->Hoten}}</h5>
-                                <p>{{$messenger->content}}</p>
+                                <h5>{{ Auth::user()->Hoten }}</h5>
+                                <p>{{ $messenger->content }}</p>
                             </div>
                         </div>
                     </li>
@@ -150,7 +154,9 @@
 <script src="https://cdn.socket.io/3.1.1/socket.io.min.js" integrity="sha384-gDaozqUvc4HTgo8iZjwth73C6dDDeOJsAgpxBcMpZYztUfjHXpzrpdrHRdVp8ySO" crossorigin="anonymous"></script>
 <script>
     var studentMessengersReply = '{{ route('student.messengers.reply') }}'
+    var urlViewSeen = '{{ route('student.messengers.view.seen',':id') }}'
     $(document).ready(function () {
+
         $('#submit').click(function (e) {
             e.preventDefault();
             let idUser =$(this).data('id');
@@ -193,6 +199,16 @@
                 console.log(x)
                 x.play();
                 $("div").scrollTop(10000);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+
+                   method:'PUT',
+                   url:urlViewSeen.replace(':id',data.id),
+                });
             }
         });
     });

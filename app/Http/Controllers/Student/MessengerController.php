@@ -54,4 +54,11 @@ class MessengerController extends Controller
                 </div>
             </li>';
     }
+
+    public function viewSeen($id)
+    {
+        $messenger = Messenger::find($id);
+        $messenger->viewed = Messenger::SEEN;
+        $messenger->save();
+    }
 }
