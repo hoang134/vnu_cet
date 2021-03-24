@@ -25,7 +25,7 @@ class MessengerController extends Controller
     {
         $messenger = new Messenger();
         $messenger->user_from = Auth::user()->tendangnhap;
-        $messenger->user_to = 'admin';
+        $messenger->user_to = Messenger::TO_ADMIN;
         $messenger->content = $request->messenger;
         $messenger->belong = Messenger::BELONG_USER;
         $messenger->save();

@@ -15,12 +15,9 @@
 
         <div class="messages-box">
           <div class="list-group rounded-0">
-          @foreach($listUserTos as $user)
-                  @php
-                      $messenger = DB::table('messengers')->orderBy('created_at','desc')->where('user_from', $user->user_from)->first();
-                  @endphp
+          @foreach($messengers as $messenger)
               @if($messenger->viewed == \App\Models\Messenger::NOT_SEEN)
-                <a href="{{ route('admin.messengers.detail', $user->user_from) }}" class="list-group-item list-group-item-action list-group-item-light rounded-0">
+                <a href="{{ route('admin.messengers.detail', $messenger->user_from) }}" class="list-group-item list-group-item-action list-group-item-light rounded-0">
                   <div class="media"><img src="{{asset('images/1.png')}}" alt="user" width="50" class="rounded-circle">
                     <div class="media-body ml-4">
                       <div class="d-flex align-items-center justify-content-between mb-1">
@@ -30,39 +27,27 @@
                     </div>
                   </div>
                 </a>
+              @else
+                  <a href="{{ route('admin.messengers.detail', $messenger->user_from) }}" style="opacity: 0.5" class="list-group-item list-group-item-action list-group-item-light rounded-0">
+                      <div class="media"><img src="{{asset('images/1.png')}}" alt="user" width="50" class="rounded-circle">
+                          <div class="media-body ml-4">
+                              <div class="d-flex align-items-center justify-content-between mb-1">
+                                  <h6 class="mb-0">
+
+                                      {{$messenger->user_from}}
+                                  </h6>
+                              </div>
+                              <p class="font-italic text-muted mb-0 text-small">{{$messenger->content}}</p>
+                          </div>
+                      </div>
+                  </a>
               @endif
             @endforeach
           </div>
         </div>
-          <div class="messages-box">
-              <div class="list-group rounded-0">
-                  @foreach($listUserTos as $user)
-                      @php
-                          $messenger = DB::table('messengers')->orderBy('created_at','desc')->where('user_from', $user->user_from)->first();
-                      @endphp
-                      @if($messenger->viewed == \App\Models\Messenger::SEEN)
-                          <a href="{{ route('admin.messengers.detail', $user->user_from) }}" style="opacity: 0.5" class="list-group-item list-group-item-action list-group-item-light rounded-0">
-                              <div class="media"><img src="{{asset('images/1.png')}}" alt="user" width="50" class="rounded-circle">
-                                  <div class="media-body ml-4">
-                                      <div class="d-flex align-items-center justify-content-between mb-1">
-                                          <h6 class="mb-0">
-
-                                          {{$messenger->user_from}}
-                                          </h6>
-                                      </div>
-                                      <p class="font-italic text-muted mb-0 text-small">{{$messenger->content}}</p>
-                                  </div>
-                              </div>
-                          </a>
-                      @endif
-                  @endforeach
-              </div>
-          </div>
-
       </div>
     </div>
   </div>
-</div>
 @endsection
 @section('script')
     <script>

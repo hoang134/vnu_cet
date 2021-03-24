@@ -46,7 +46,7 @@
                                 <img src="{{asset('/images/1.png')}}">
                             </div>
                             <div class="user_info">
-                                <span>{{\Illuminate\Support\Facades\Auth::user()->Hoten}}</span>
+                                <span>Trung tâm khảo thí</span>
                             </div>
                         </div>
                     </div>

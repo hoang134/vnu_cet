@@ -11,6 +11,7 @@ class Messenger extends Model
 
     const BELONG_USER = 'user';
     const BELONG_ADMIN = 'admin';
+    const TO_ADMIN ="admin";
     const SEEN = 'seen';
     const NOT_SEEN = 'not seen';
     const BELONG_VIEWED = false;

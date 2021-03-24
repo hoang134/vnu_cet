@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Events\ChatEvent;
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Messenger;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,21 +17,27 @@ class MessengerController extends Controller
 
     public function index()
     {
-//        dd(auth()->user()->role);
-//        $this->authorize('viewAny',Messenger::class);
-        //$messengers = DB::table('messengers')->where('user_to',Auth::user()->tendangnhap)->orderBy('created_at','desc')->get();
-        $listUserTos = DB::table('messengers')->select('user_from')->where('user_from','!=',Auth::user()->tendangnhap)
+        $this->authorize('viewAny',Messenger::class);
+        $listUserTos = DB::table('messengers')->select('user_from')->where('user_from','!=',Messenger::TO_ADMIN)
             ->groupBy('user_from')->get();
+        $messengers = [];
+        foreach ($listUserTos as $item)
+        {
+            $messenger = DB::table('messengers')->orderBy('created_at','desc')->where('user_from',$item->user_from)->first();
+            array_push($messengers,$messenger);
+        }
+        $messengers = collect($messengers)->sortBy('created_at')->reverse()->toArray();
         return view('admin.messengers.index',[
-            'listUserTos'=>$listUserTos
+            'listUserTos' => $listUserTos,
+            'messengers' => $messengers,
         ]);
     }
 
     public function detail( Request $request)
     {
         Messenger::where('user_from',$request->tendangnhap)->update(array('viewed' => Messenger::SEEN));
-        $messengers = DB::table('messengers')->where('user_from',Auth::user()->tendangnhap)->where('user_to',$request->tendangnhap)
-            ->orWhere('user_to',Auth::user()->tendangnhap)->where('user_from',$request->tendangnhap)->get();
+        $messengers = DB::table('messengers')->where('user_from',Messenger::TO_ADMIN)->where('user_to',$request->tendangnhap)
+            ->orWhere('user_to',Messenger::TO_ADMIN)->where('user_from',$request->tendangnhap)->get();
         return view('admin.messengers.detail-messenger',[
             'messengers'=> $messengers,
             'user_from'=> $request->tendangnhap,
@@ -40,7 +47,7 @@ class MessengerController extends Controller
     public function reply(Request $request)
     {
         $messenger = new Messenger();
-        $messenger ->user_from = Auth::user()->tendangnhap;
+        $messenger ->user_from = Messenger::TO_ADMIN;
         $messenger ->user_to = $request->tendangnhap;
         $messenger ->content = $request->messenger;
         $messenger ->belong = Messenger::BELONG_ADMIN;
